@@ -1,0 +1,23 @@
+{# Appending an assetHash to a stylesheet's href allows up-to-date CSS files to be cached correctly #}
+{# The random() fn is available through src/_data/globa.js #}
+
+{% set assetHash = global.random() %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+
+  <link rel="stylesheet" href="/css/global.css?{{ assetHash }}" />
+</head>
+<body>
+  <header>
+    <h1>{{ title }} </h1>
+  </header>
+  <main>
+    {{ content | safe }}
+  </main>
+</body>
+</html>
