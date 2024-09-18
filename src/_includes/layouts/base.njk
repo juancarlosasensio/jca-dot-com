@@ -1,23 +1,40 @@
-{# Appending an assetHash to a stylesheet's href allows up-to-date CSS files to be cached correctly #}
+{# Appending 'assetHash' to a stylesheet's href allows up-to-date CSS files to be cached correctly #}
 {# The random() fn is available through src/_data/globa.js #}
-
 {% set assetHash = global.random() %}
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
 
-  <link rel="stylesheet" href="/css/global.css?{{ assetHash }}" />
-</head>
-<body>
-  <header>
-    <h1>{{ title }} </h1>
-  </header>
-  <main>
-    {{ content | safe }}
-  </main>
-</body>
+    <link rel="stylesheet" href="/css/global.css?{{ assetHash }}" />
+  </head>
+  <body class="with-js">
+    <div class="docs-page">
+      <header class="docs-header">
+        <a href="" class="docs-logo">Home</a>
+        <button class="docs-nav-toggle" aria-expanded="false">
+          <svg class="docs-icon" focusable="false" viewBox="0 0 32 32">
+            <path d="M3,3 29,3 M3,16 29,16 M3,29 29,29"></path>
+          </svg>
+          Menu
+        </button>
+        <nav class="docs-nav" aria-labelledby="nav-label">
+          <span id="nav-label" hidden>main</span>
+          <h2>Posts</h2>
+          <ul>
+            <li><a href="/">The beginning</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="docs-main">
+        <h1>{{ title }}</h1>
+        <main id="main" tabindex="-1">
+          {{ content | safe }}
+        </main>
+      </div>
+    </div>
+  </body>
 </html>
