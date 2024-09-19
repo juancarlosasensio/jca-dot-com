@@ -1,15 +1,15 @@
-{# Appending 'assetHash' to a stylesheet's href allows up-to-date CSS files to be cached correctly #}
-{# The random() fn is available through src/_data/globa.js #}
-{% set assetHash = global.random() %}
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Second Post</title>
 
-    <link rel="stylesheet" href="/css/global.css?{{ assetHash }}" />
+    <link rel="stylesheet" href="/css/global.css?9976-03cf-5371" />
   </head>
   <body class="with-js">
     <div class="docs-page">
@@ -31,25 +31,32 @@
             Full blog archive
           </a>
           <ul>
-          {% for post in collections.posts %}
+          
             <li>
-              <a href="{{ post.url }}" {% if page.url == post.url %} aria-current="true"{% endif %}>
-                {% if page.url == post.url %}
+              <a href="/posts/my-first-post/" >
+                
+                My first post
+              </a>
+            </li>
+          
+            <li>
+              <a href="/posts/my-second-post/"  aria-current="true">
+                
                   <svg class="docs-icon" focusable="false">
                   <use href="/images/all.svg#icon-triangle-right"></use>
                 </svg>                
-                {% endif %}
-                {{ post.data.title }}
+                
+                Second Post
               </a>
             </li>
-          {% endfor %}  
+            
           </ul>
         </nav>
       </header>
       <div class="docs-main">
         <main id="main" tabindex="-1">
-          <h1>{{ title }}</h1>
-          {{ content | safe }}
+          <h1>Second Post</h1>
+          
         </main>
       </div>
     </div>

@@ -4,8 +4,12 @@ module.exports = function (eleventyConfig) {
 
   // For now, we want all our styles to be copied over
   eleventyConfig.addPassthroughCopy('./src/css/**/*.css');
+  eleventyConfig.addPassthroughCopy('./src/images');
 
   return {
+    markdownTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk',
+    htmlTemplateEngine: 'njk',
     dir: {
       input: "src",
       output: "dist"
