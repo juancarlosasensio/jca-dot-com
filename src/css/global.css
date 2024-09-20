@@ -520,6 +520,17 @@ label small {
     font-style: italic
 }
 
+.container {
+    background-color: var(--color-light);
+    box-sizing: border-box;
+    margin-inline: auto;
+    animation: 5s linear infinite alternate squeeze;
+    height: auto;
+    overflow-y: auto;
+    filter: invert(100%);
+    padding: var(--s2);
+}
+
 .card-container,[type=checkbox]~svg,input,textarea {
     box-shadow: inset .25rem .25rem 0 #ddd
 }
@@ -966,8 +977,23 @@ stack-l {
     justify-content: flex-start
 }
 
-stack-l>*+* {
-    margin-block-start:var(--s1)}
+stack-l > * + * {
+    margin-block-start:var(--s1)
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-block: 0;
+} 
+
+.stack > * + * {
+  margin-block-start: var(--space, 1.5rem);
+}
 
 box-l {
     display: block;
@@ -977,11 +1003,40 @@ box-l {
     outline-offset: calc(var(--border-thin)*-1)
 }
 
+.box {
+  padding: var(--s1);
+  border: var(--border-thin) solid;
+  --color-light: #fff;
+  --color-dark: #000;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+.box * {
+  color: inherit;
+}
+
+.box.invert {
+  color: var(--color-light);
+  background-color: var(--color-dark);
+}
+
 grid-l {
     display: grid;
     grid-gap: var(--s1);
     align-content: start;
     grid-template-columns: 100%
+}
+
+.grid {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+@supports (width: min(250px, 100%)) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  }
 }
 
 sidebar-l {
@@ -991,6 +1046,23 @@ sidebar-l {
 
 sidebar-l>* {
     flex-grow: 1
+}
+
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s1);
+}
+
+.with-sidebar > :first-child {
+  flex-grow: 1;
+}
+
+.with-sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
 }
 
 cluster-l {
@@ -1012,6 +1084,23 @@ frame-l>img,frame-l>video {
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover
+}
+
+.frame {
+  --n: 4;
+  --d: 5;
+  aspect-ratio: var(--n) / var(--d);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame > img,
+.frame > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
 }
 
 reel-l {

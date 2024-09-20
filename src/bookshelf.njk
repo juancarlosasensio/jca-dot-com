@@ -1,0 +1,50 @@
+---
+title: Bookshelf
+layout: "layouts/base.njk"
+---
+
+<p>Books I've read. Books I'm reading. Books I'd recommend! Inspired by Venkatesh Rao's <a href="https://www.ribbonfarm.com/now-reading/" target="_blank">Now Reading</a> page</p>
+
+<h2>All time favorites</h2>
+
+<div class="container">
+  <div class="grid">
+    {% for book in bookshelf %}
+      <div class="box">
+        <div class="stack">
+          <div class="frame">
+            <img src="{{ book.cover }}" alt="Book cover for {{ book.title }}, by {{ book.author }}">
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <h4>{{ book.title }}</h4>
+            <p style="margin-top: auto;">
+              {{ book.author }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<h2>In queue</h2>
+
+<div class="container">
+  <div class="grid">
+    {% for book in bookshelf %}
+      <div class="box">
+        <div class="stack">
+          <div class="frame">
+            <img src="{{ book.cover }}" alt="Book cover for {{ book.title }}, by {{ book.author }}">
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <h4>{{ book.title }}</h4>
+            <p style="margin-top: auto;">
+              {{ book.author }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>  
