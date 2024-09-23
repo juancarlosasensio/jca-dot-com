@@ -44,9 +44,15 @@
     "shelf": "queued"
   },
   {
-    "bookTitle": "Metaphors We Live",
+    "bookTitle": "Metaphors We Live By",
     "authors": ["George Lakoff", "Mark Johnson"],
     "cover": "https://images-us.bookshop.org/ingram/9780226468013.jpg?height=500&v=v2",
+    "shelf": "queued"
+  },
+  {
+    "bookTitle": "Istanbul: A Tale of Three Cities",
+    "authors": ["Bettany Hughes"],
+    "cover": "https://images-us.bookshop.org/ingram/9780306921995.jpg?height=500&v=v2",
     "shelf": "queued"
   }
 ]
