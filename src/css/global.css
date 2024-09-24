@@ -130,8 +130,16 @@ img {
     width: 100%
 }
 
-img.inverted {
+.inverted {
   filter: invert(100%);
+}
+
+img.rotate-minus-90 {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 [role=figure],figure {
@@ -989,14 +997,18 @@ stack-l > * + * {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-.stack > * {
-  margin-block: 0;
 } 
 
 .stack > * + * {
   margin-block-start: var(--space, 1.5rem);
+}
+
+.stack:only-child {
+  block-size: 100%;
+}
+
+.stack.book > :nth-child(2) {
+  margin-block-end: auto;
 }
 
 box-l {
