@@ -1,5 +1,6 @@
 {# Appending 'assetHash' to a stylesheet's href allows up-to-date CSS files to be cached correctly #}
 {# The random() fn is available through src/_data/globa.js #}
+{# TODO: do this only in a production environment #}
 {% set assetHash = global.random() %}
 
 <!DOCTYPE html>
@@ -14,7 +15,11 @@
   <body>
     <div class="docs-page">
       <header class="docs-header">
-        <a href="/" class="docs-logo">Home</a>
+        <a href="/" class="docs-logo" style="display: flex; justify-content: center;">
+          <div class="frame" style="max-width: 250px; height: auto;">
+            <img class="rotate-minus-90" src="/images/he-distinguished-it-all.jpg" alt="">
+          </div>
+        </a>
         <button class="docs-nav-toggle" aria-expanded="false">
           <svg class="docs-icon" focusable="false" viewBox="0 0 32 32">
             <path d="M3,3 29,3 M3,16 29,16 M3,29 29,29"></path>
@@ -23,7 +28,7 @@
         </button>
         <nav class="docs-nav" aria-labelledby="nav-label">
           <span id="nav-label" hidden>main</span>
-          <h2>Posts</h2>
+          <h2>Writing</h2>
           <a class="docs-index-link" href="/posts">
             <svg focusable="false" class="docs-icon">
               <use xlink:href="/images/all.svg#icon-eye"></use>
@@ -31,19 +36,58 @@
             Full blog archive
           </a>
           <ul>
-          {% for post in collections.posts %}
+            {% for post in collections.posts %}
+              <li>
+                <a href="{{ post.url }}" {% if page.url == post.url %} aria-current="true"{% endif %}>
+                  {% if page.url == post.url %}
+                    <svg class="docs-icon" focusable="false">
+                    <use href="/images/all.svg#icon-triangle-right"></use>
+                  </svg>                
+                  {% endif %}
+                  {{ post.data.title }}
+                </a>
+              </li>
+            {% endfor %}  
+            </ul>
+            <h2>Reading</h2>
+            <ul>
+              <li>
+                <a href="/bookshelf" {% if page.url == "/bookshelf/" %} aria-current="true"{% endif %}>
+                  {% if page.url == "/bookshelf/" %}
+                    <svg class="docs-icon" focusable="false">
+                    <use href="/images/all.svg#icon-triangle-right"></use>
+                  </svg>                
+                  {% endif %}
+                  Now Reading
+                </a>
+              </li>
+            </ul>
+            <h2>Doing</h2>
+            <ul>
+              <li>
+                <a href="/now/" {% if page.url == "/now/" %} aria-current="true"{% endif %}>
+                  {% if page.url == "/now/" %}
+                    <svg class="docs-icon" focusable="false">
+                    <use href="/images/all.svg#icon-triangle-right"></use>
+                  </svg>                
+                  {% endif %}
+                  What I'm up to now
+                </a>
+              </li>
+            </ul>
+           <h2>Thinking</h2>
+           <ul>
             <li>
-              <a href="{{ post.url }}" {% if page.url == post.url %} aria-current="true"{% endif %}>
-                {% if page.url == post.url %}
+              <a href="/" {% if page.url == "/notes" %} aria-current="true"{% endif %}>
+                {% if page.url == "/notes" %}
                   <svg class="docs-icon" focusable="false">
                   <use href="/images/all.svg#icon-triangle-right"></use>
                 </svg>                
                 {% endif %}
-                {{ post.data.title }}
+                Coming soon
               </a>
-            </li>
-          {% endfor %}  
-          </ul>
+            </li> 
+           </ul>
         </nav>
       </header>
       <div class="docs-main">
@@ -51,6 +95,13 @@
           <h1>{{ title }}</h1>
           {{ content | safe }}
         </main>
+        <div class="box footer">
+          <footer class="text-align:center">
+            <p>
+              <small><strong>juancarlosasensio.com</strong> is created, cared for and updated by me, <a href="/">Juan Carlos Asensio</a>.
+            </p>
+          </footer>
+      </div>
       </div>
     </div>
     <script src="/js/main.js?{{ assetHash }}"></script>

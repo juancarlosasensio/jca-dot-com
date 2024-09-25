@@ -1,0 +1,58 @@
+[
+  {
+    "bookTitle": "Tacit Dimension",
+    "authors": ["Michael Polanyi"],
+    "cover": "https://press.uchicago.edu/.imaging/mte/ucp/medium/dam/ucp/books/jacket/978/02/26/67/9780226672984.jpg/jcr:content/9780226672984.jpg",
+    "shelf": "all-time-favorites"
+  },
+  {
+    "bookTitle": "The Denial of Death",
+    "authors": ["Ernest Becker"],
+    "cover": "https://images-us.bookshop.org/ingram/9780684832401.jpg?height=500&v=v2-413ab87cbe49c5a46568315810b6abc7",
+    "shelf": "all-time-favorites"
+  },
+  {
+    "bookTitle": "The Wright Brothers",
+    "authors": ["David McCullough"],
+    "cover": "https://images-us.bookshop.org/ingram/9781476728759.jpg?height=500&v=v2",
+    "shelf": "all-time-favorites"
+  }, 
+  {
+    "bookTitle": "The Road Less Travelled",
+    "authors": ["M. Scott Peck"],
+    "cover": "https://images-us.bookshop.org/ingram/9780743243155.jpg?height=500&v=v2",
+    "shelf": "all-time-favorites"
+  },
+  {
+    "bookTitle": "The Medium Is the Massage",
+    "authors": ["Marshall McLuhan", "Quentin Fiore"],
+    "cover": "https://images-us.bookshop.org/ingram/9781584230700.jpg?height=500&v=v2-dcd3fd5697e4c94dff8db4253d2d4fc0",
+    "shelf": "all-time-favorites"
+  },
+  {
+    "bookTitle": "Ways of Being",
+    "subtitle": "Animals, Plants, Machines: The Search for a Planetary Intelligence",
+    "authors": ["James Bridle"],
+    "cover": "https://images-us.bookshop.org/ingram/9781250872968.jpg?height=500&v=v2-55def80c763b9e89f2de36b9a55ef98a",
+    "shelf": "all-time-favorites"
+  },
+  {
+    "bookTitle": "The Box",
+    "subtitle": "How the Shipping Container Made the World Smaller and the World Economy Bigger",
+    "authors": ["Marc Levinson"],
+    "cover": "https://images-us.bookshop.org/ingram/9780691170817.jpg?height=500&v=v2",
+    "shelf": "queued"
+  },
+  {
+    "bookTitle": "Metaphors We Live By",
+    "authors": ["George Lakoff", "Mark Johnson"],
+    "cover": "https://images-us.bookshop.org/ingram/9780226468013.jpg?height=500&v=v2",
+    "shelf": "queued"
+  },
+  {
+    "bookTitle": "Istanbul: A Tale of Three Cities",
+    "authors": ["Bettany Hughes"],
+    "cover": "https://images-us.bookshop.org/ingram/9780306921995.jpg?height=500&v=v2",
+    "shelf": "queued"
+  }
+]
