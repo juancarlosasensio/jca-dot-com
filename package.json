@@ -2,10 +2,10 @@
   "name": "jca-dot-com",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".eleventy.js",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "start": "eleventy --serve --quiet",
+    "build": "NODE_ENV=production eleventy"
   },
   "keywords": [],
   "author": "Juan Carlos Asensio",
