@@ -1037,6 +1037,11 @@ box-l {
   background-color: var(--color-dark);
 }
 
+.box.footer {
+  border: 0;
+  --color-light: var(--color-light);
+}
+
 grid-l {
     display: grid;
     grid-gap: var(--s1);

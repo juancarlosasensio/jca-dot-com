@@ -61,21 +61,8 @@
                   Now Reading
                 </a>
               </li>
-          </ul>
-           <h2>Thinking</h2>
-            <ul>
-              <li>
-                <a href="/" {% if page.url == "/notes" %} aria-current="true"{% endif %}>
-                  {% if page.url == "/notes" %}
-                    <svg class="docs-icon" focusable="false">
-                    <use href="/images/all.svg#icon-triangle-right"></use>
-                  </svg>                
-                  {% endif %}
-                  Coming soon
-                </a>
-              </li> 
             </ul>
-          <h2>Doing</h2>
+            <h2>Doing</h2>
             <ul>
               <li>
                 <a href="/now/" {% if page.url == "/now/" %} aria-current="true"{% endif %}>
@@ -87,7 +74,20 @@
                   What I'm up to now
                 </a>
               </li>
-          </ul>
+            </ul>
+           <h2>Thinking</h2>
+           <ul>
+            <li>
+              <a href="/" {% if page.url == "/notes" %} aria-current="true"{% endif %}>
+                {% if page.url == "/notes" %}
+                  <svg class="docs-icon" focusable="false">
+                  <use href="/images/all.svg#icon-triangle-right"></use>
+                </svg>                
+                {% endif %}
+                Coming soon
+              </a>
+            </li> 
+           </ul>
         </nav>
       </header>
       <div class="docs-main">
@@ -95,6 +95,13 @@
           <h1>{{ title }}</h1>
           {{ content | safe }}
         </main>
+        <div class="box footer">
+          <footer class="text-align:center">
+            <p>
+              <small><strong>juancarlosasensio.com</strong> is created, cared for and updated by me, <a href="/">Juan Carlos Asensio</a>.
+            </p>
+          </footer>
+      </div>
       </div>
     </div>
     <script src="/js/main.js?{{ assetHash }}"></script>
