@@ -99,7 +99,7 @@ pageComponents:
       </header>
       <div class="docs-main">
         <main id="main" tabindex="-1">
-          <h1>{{ title }}</h1>
+          <h1 {% if pageTitleClasses %} class="{{ pageTitleClasses }}" {% endif %} >{{ title }}</h1>
           {{ content | safe }}
         </main>
         <div class="box footer">

@@ -774,7 +774,8 @@ h1+.docs-blog-meta {
 .checkout-panel h2: first-of-type {
     font-size:var(--s5);
     max-width: 15ch;
-    margin-inline:auto}
+    margin-inline:auto;
+  }
 
 .checkout-panel h2+p {
     font-size: var(--s2);
@@ -949,7 +950,8 @@ words-l {
 
 shrink-grow {
     display: block;
-    margin-inline:0;max-width: none;
+    margin-inline:0;
+    max-width: none;
     overflow: hidden;
     border-width: var(--border-thin);
     padding: var(--s1)
@@ -1227,6 +1229,10 @@ icon-l svg {
 
 .max-width\:quarter {
     max-width: calc(var(--measure)/4)!important
+}
+
+.max-width\:100\% {
+  max-width: 100%;
 }
 
 .height\:100\% {

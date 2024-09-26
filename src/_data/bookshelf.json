@@ -54,5 +54,18 @@
     "authors": ["Bettany Hughes"],
     "cover": "https://images-us.bookshop.org/ingram/9780306921995.jpg?height=500&v=v2",
     "shelf": "queued"
+  },
+  {
+    "bookTitle": "Build",
+    "subtitle": "An Unorthodox Guide to Making Things Worth Making",
+    "authors": ["Tony Fadell"],
+    "cover": "https://images-us.bookshop.org/ingram/9780063046061.jpg?height=1200&v=v2-3c9ac53c0f034b7e578c10dd00000000",
+    "shelf": "queued"
+  }, {
+    "bookTitle": "Technopoly",
+    "subtitle": "The Surrender of Culture to Technology",
+    "authors": ["Neil Postman"],
+    "cover": "https://images-us.bookshop.org/ingram/9780679745402.jpg?height=500&v=v2",
+    "shelf": "queued"
   }
 ]
