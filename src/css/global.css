@@ -771,7 +771,7 @@ h1+.docs-blog-meta {
     filter: invert(1);
     margin-block-start:var(--s2)}
 
-.checkout-panel h2: first-of-type {
+.checkout-panel h2:first-of-type {
     font-size:var(--s5);
     max-width: 15ch;
     margin-inline:auto;
