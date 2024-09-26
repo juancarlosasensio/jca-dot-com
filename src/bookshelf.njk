@@ -13,8 +13,8 @@ layout: "layouts/base.njk"
   <div class="container">
     <div class="grid">
         {% for book in booksByShelf %}
-          <div class="box">
-            <div class="stack book">
+          <box-l padding="0" borderWidth="0">
+            <stack-l class="book">
               <div class="frame">
                 <img class="inverted" src="{{ book.cover }}" alt="Book cover for {{ book.bookTitle }}, by {{ book.authors | join(", ") }}">
               </div>
@@ -22,8 +22,8 @@ layout: "layouts/base.njk"
               <p>
                 {{ book.authors | join(", ") }}
               </p>
-            </div>
-          </div>
+            </stack-l>
+          </box-l>
         {% endfor %}
     </div>
 </div>

@@ -993,6 +993,14 @@ stack-l > * + * {
     margin-block-start:var(--s1)
 }
 
+stack-l.book > :nth-child(2) {
+  margin-block-end: auto;
+}
+
+stack-l:only-child {
+  block-size: 100%;
+}
+
 .stack {
   display: flex;
   flex-direction: column;
@@ -1001,14 +1009,6 @@ stack-l > * + * {
 
 .stack > * + * {
   margin-block-start: var(--space, 1.5rem);
-}
-
-.stack:only-child {
-  block-size: 100%;
-}
-
-.stack.book > :nth-child(2) {
-  margin-block-end: auto;
 }
 
 box-l {

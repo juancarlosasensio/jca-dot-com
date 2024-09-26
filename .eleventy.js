@@ -8,7 +8,7 @@ module.exports = function (eleventyConfig) {
   // For now, we want all our styles to be copied over
   eleventyConfig.addPassthroughCopy('./src/css/**/*.css');
   eleventyConfig.addPassthroughCopy('./src/images');
-  eleventyConfig.addPassthroughCopy('./src/js/main.js');
+  eleventyConfig.addPassthroughCopy('./src/js/**/*.js');
 
   return {
     markdownTemplateEngine: 'njk',
