@@ -127,7 +127,7 @@ button {
 }
 
 img {
-    width: 100%
+    max-inline-size: 100%;
 }
 
 .inverted {
@@ -1101,7 +1101,27 @@ frame-l {
     align-items: center
 }
 
-frame-l>img,frame-l>video {
+/* Sets localized styles for book images  */
+.book > frame-l {
+  justify-content: start;
+  aspect-ratio: 4/5;
+}
+
+.book > frame-l > img {
+  inline-size: auto;
+}
+
+@media (max-width: 655px) {
+  .book > frame-l {
+    justify-content: center;
+  }
+
+  .book {
+    text-align: center;
+  }
+}
+
+frame-l > img, frame-l > video {
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover

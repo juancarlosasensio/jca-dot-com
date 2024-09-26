@@ -15,9 +15,9 @@ layout: "layouts/base.njk"
         {% for book in booksByShelf %}
           <box-l padding="0" borderWidth="0">
             <stack-l class="book">
-              <div class="frame">
-                <img class="inverted" src="{{ book.cover }}" alt="Book cover for {{ book.bookTitle }}, by {{ book.authors | join(", ") }}">
-              </div>
+              <frame-l ratio="4:5">
+                <img class="inverted" {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.cover }}" alt="Book cover for {{ book.bookTitle }}, by {{ book.authors | join(", ") }}">
+              </frame-l>
               <h4>{{ book.bookTitle }}</h4>
               <p>
                 {{ book.authors | join(", ") }}
