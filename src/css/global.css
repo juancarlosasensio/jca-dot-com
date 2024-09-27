@@ -127,7 +127,7 @@ button {
 }
 
 img {
-    width: 100%
+    max-inline-size: 100%;
 }
 
 .inverted {
@@ -771,10 +771,11 @@ h1+.docs-blog-meta {
     filter: invert(1);
     margin-block-start:var(--s2)}
 
-.checkout-panel h2: first-of-type {
+.checkout-panel h2:first-of-type {
     font-size:var(--s5);
     max-width: 15ch;
-    margin-inline:auto}
+    margin-inline:auto;
+  }
 
 .checkout-panel h2+p {
     font-size: var(--s2);
@@ -949,7 +950,8 @@ words-l {
 
 shrink-grow {
     display: block;
-    margin-inline:0;max-width: none;
+    margin-inline:0;
+    max-width: none;
     overflow: hidden;
     border-width: var(--border-thin);
     padding: var(--s1)
@@ -993,6 +995,14 @@ stack-l > * + * {
     margin-block-start:var(--s1)
 }
 
+stack-l.book > :nth-child(2) {
+  margin-block-end: auto;
+}
+
+stack-l:only-child {
+  block-size: 100%;
+}
+
 .stack {
   display: flex;
   flex-direction: column;
@@ -1001,14 +1011,6 @@ stack-l > * + * {
 
 .stack > * + * {
   margin-block-start: var(--space, 1.5rem);
-}
-
-.stack:only-child {
-  block-size: 100%;
-}
-
-.stack.book > :nth-child(2) {
-  margin-block-end: auto;
 }
 
 box-l {
@@ -1101,7 +1103,27 @@ frame-l {
     align-items: center
 }
 
-frame-l>img,frame-l>video {
+/* Sets localized styles for book images  */
+.book > frame-l {
+  justify-content: start;
+  aspect-ratio: 4/5;
+}
+
+.book > frame-l > img {
+  inline-size: auto;
+}
+
+@media (max-width: 655px) {
+  .book > frame-l {
+    justify-content: center;
+  }
+
+  .book {
+    text-align: center;
+  }
+}
+
+frame-l > img, frame-l > video {
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover
@@ -1207,6 +1229,10 @@ icon-l svg {
 
 .max-width\:quarter {
     max-width: calc(var(--measure)/4)!important
+}
+
+.max-width\:100\% {
+  max-width: 100%;
 }
 
 .height\:100\% {
