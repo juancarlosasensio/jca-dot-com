@@ -1,0 +1,14 @@
+---
+title: What I'm up to now
+layout: 'layouts/base.njk'
+permalink: '/now/'
+eleventyExcludeFromCollections: true
+---
+
+{% set latestUpdate = collections['now-updates'] | reverse | first %}
+
+<p>Updated {{ latestUpdate.date | simpleDate }} from my home in New England, where it’s the start of Fall. Inspired by 
+  <a href="https://sive.rs/now" target="_blank">Derek Sivers</a>. Yup, it's now a <a href="https://sive.rs/nowff" target="_blank">movement</a>.
+</p>
+
+{{ latestUpdate.content | safe }}
