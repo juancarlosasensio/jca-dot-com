@@ -22,7 +22,7 @@ Art, we dare to remember, is what people make with what they sense, feel, fear, 
 
 - <sup>[1]</sup> [Here](https://www.youtube.com/watch?v=7BHX8V49Ixg&ab_channel=CassioVasconcellos) is the video of Cassio Vasconcellos describing OVER</li>
 
-- <sup>[2]</sup> See the purpose of ritual as described by Robin Wall Kimmerer in [Braiding Sweetgrass](https://bookshop.org/p/books/braiding-sweetgrass-robin-wall-kimmerer/16712606?gad_source=1&gclid=EAIaIQobChMIrOu3p8zZiQMVizcIBR3nKizqEAAYASAAEgK6EPD_BwE)
+- <sup>[2]</sup> See the purpose of ritual as described in [Braiding Sweetgrass](https://bookshop.org/p/books/braiding-sweetgrass-robin-wall-kimmerer/16712606?gad_source=1&gclid=EAIaIQobChMIrOu3p8zZiQMVizcIBR3nKizqEAAYASAAEgK6EPD_BwE) by Robin Wall Kimmerer
 
 - <sup>[3]</sup> [Paraphrasing](<https://www.robinsloan.com/newsletters/like-likes-like/#:~:text=What%20happened%20(and%20this%20always%20presages%20a%20good%20expe%C2%ADri%C2%ADence%20with%20art)%20was%20that%20I%C2%A0surrendered%20to%20the%20strangeness%2C%20and%20the%20strange%C2%ADness%20started%20to%20make%20sense.%20I%C2%A0entered%20OOF%E2%80%99s%20world%2C%20rather%20than%20insisting%20the%20band%20fit%20into%20mine%2C%20which%20is%2C%20of%20course%2C%20the%20demand%20of%20the%20Spotify%C2%A0playlist>) the ever-insightful Robin Sloan.
 
