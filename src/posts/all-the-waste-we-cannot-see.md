@@ -29,3 +29,7 @@ Art, we dare to remember, is what people make with what they sense, feel, fear, 
 - <sup>[4]</sup> Paraphrasing Tich Nhat Hanh in [Peace is Every Step](https://bookshop.org/p/books/peace-is-every-step-the-path-of-mindfulness-in-everyday-life-thich-nhat-hanh/8356129)
 
 - <sup>[5]</sup> This a [real and absurd problem](https://www.nytimes.com/2024/09/01/magazine/worthless-pennies-united-states-economy.html).
+
+### <a name="thank-you"></a>Thank yous
+
+To John Berger, and his [Confabulations](https://uk.bookshop.org/p/books/confabulations-john-berger/4612711).
