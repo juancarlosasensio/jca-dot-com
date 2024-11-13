@@ -30,6 +30,6 @@ Art, we dare to remember, is what people make with what they sense, feel, fear, 
 
 - <sup>[5]</sup> This a [real and absurd problem](https://www.nytimes.com/2024/09/01/magazine/worthless-pennies-united-states-economy.html).
 
-### <a name="thank-you"></a>Thank yous
+### <a name="thank-you"></a>Thank you
 
 To John Berger, and his [Confabulations](https://uk.bookshop.org/p/books/confabulations-john-berger/4612711).
