@@ -32,4 +32,4 @@ Art, we dare to remember, is what people make with what they sense, feel, fear, 
 
 ### <a name="thank-you"></a>Thank you
 
-To John Berger, and his [Confabulations](https://uk.bookshop.org/p/books/confabulations-john-berger/4612711).
+To John Berger, and his wonderful [Confabulations](https://uk.bookshop.org/p/books/confabulations-john-berger/4612711).
