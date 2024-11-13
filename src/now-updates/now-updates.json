@@ -1,0 +1,6 @@
+{
+	"layout": "layouts/base.njk",
+  "date": "Last Modified",
+  "permalink": "now-updates/{{ page.date | simpleDate | slugify }}-{{ page.date | timeOfDay | slugify }}",
+  "tags": ["now-updates"]
+}
