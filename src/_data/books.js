@@ -23,7 +23,7 @@ module.exports = async function() {
   const asset = new AssetCache("airtable_bookshelf");
   
   // check if the cache is fresh within the last day
-  if(asset.isCacheValid("1s")) {
+  if(asset.isCacheValid("1d")) {
     // return cached data.
     return asset.getCachedValue();
   }
