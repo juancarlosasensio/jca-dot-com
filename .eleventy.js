@@ -1,4 +1,5 @@
 const { DateTime } = require("luxon");
+require('dotenv').config()
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("simpleDate", (dateObj) => {
