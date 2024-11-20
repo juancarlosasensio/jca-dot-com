@@ -2,6 +2,8 @@
 title: Now Reading
 layout: "layouts/base.njk"
 pageTitleClasses: "text-align:center"
+pageComponents:
+  - Grid
 ---
 
 <p class="text-align:center">
@@ -12,7 +14,7 @@ pageTitleClasses: "text-align:center"
   {% for shelf, booksByShelf in books.current | groupby("shelf") %}
     <h2 class="text-align:center" >{{ shelf | capitalize }}</h2>
     <div class="container max-width:100%">
-    <div class="grid {% if booksByShelf.length === 1 %}grid-with-one-book{% endif %}">
+    <grid-l>
       {% for book in booksByShelf %}
         <box-l padding="0" borderWidth="0">
           <stack-l class="book">
@@ -26,7 +28,7 @@ pageTitleClasses: "text-align:center"
           </stack-l>
         </box-l>
       {% endfor %}
-    </div>
+    </grid-l>
   </div>
   {% endfor %}
 {% endif %}

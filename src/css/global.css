@@ -1060,10 +1060,6 @@ grid-l {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   }
-
-  .grid.grid-with-one-book {
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 300px));
-  }
 }
 
 sidebar-l {
