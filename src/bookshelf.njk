@@ -2,29 +2,37 @@
 title: Now Reading
 layout: "layouts/base.njk"
 pageTitleClasses: "text-align:center"
+pageComponents:
+  - Grid
 ---
 
 <p class="text-align:center">
  Books I've read. Books I'm reading. Books I recommend. Inspired by Venkatesh Rao's <a href="https://www.ribbonfarm.com/now-reading/" target="_blank">Now Reading</a> and Dave Rupert's <a href="https://daverupert.com/bookshelf" target="_blank">Bookshelf</a>.
 </p>
 
-{% for shelf, booksByShelf in bookshelf | groupby("shelf") %}
-  <h2 class="text-align:center" >{{ shelf | replace("-", " ") | capitalize }}</h2>
-  <div class="container max-width:100%">
-  <div class="grid">
-    {% for book in booksByShelf %}
-      <box-l padding="0" borderWidth="0">
-        <stack-l class="book">
-          <frame-l ratio="4:5">
-            <img class="inverted" {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.cover }}" alt="Book cover for {{ book.bookTitle }}, by {{ book.authors | join(", ") }}">
-          </frame-l>
-          <h4>{{ book.bookTitle }}</h4>
-          <p>
-            {{ book.authors | join(", ") }}
-          </p>
-        </stack-l>
-      </box-l>
-    {% endfor %}
+{% if books.current|length %}
+  {% for shelf, booksByShelf in books.current | groupby("shelf") %}
+    <h2 class="text-align:center" >{{ shelf | capitalize }}</h2>
+    <div class="container max-width:100%">
+    <grid-l>
+      {% for book in booksByShelf %}
+        <box-l padding="0" borderWidth="0">
+          <stack-l class="book">
+            <frame-l ratio="4:5">
+              <img class="inverted" {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
+            </frame-l>
+            <h4>{{ book.title }}</h4>
+            <p>
+              {{ book.authors }}
+            </p>
+          </stack-l>
+        </box-l>
+      {% endfor %}
+    </grid-l>
   </div>
-</div>
-{% endfor %}
+  {% endfor %}
+{% endif %}
+
+{% if not books.current|length %}
+  No books added yet! Check back soon to see what I've been reading.
+{% endif %}
