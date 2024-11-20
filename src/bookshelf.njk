@@ -12,7 +12,7 @@ pageTitleClasses: "text-align:center"
   {% for shelf, booksByShelf in books.current | groupby("shelf") %}
     <h2 class="text-align:center" >{{ shelf | capitalize }}</h2>
     <div class="container max-width:100%">
-    <div class="grid">
+    <div class="grid {% if booksByShelf.length === 1 %}grid-with-one-book{% endif %}">
       {% for book in booksByShelf %}
         <box-l padding="0" borderWidth="0">
           <stack-l class="book">
