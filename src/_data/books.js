@@ -31,7 +31,8 @@ module.exports = async function() {
   try {
     await base('Table 1').select({
       maxRecords: 100,
-      view: "Grid view"
+      view: "Grid view",
+      filterByFormula: "{isPublishable}"
     }).eachPage(function page(records, fetchNextPage) {
       // This function (`page`) will get called for each page of records.
       try {
