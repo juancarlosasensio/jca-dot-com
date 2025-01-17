@@ -1,0 +1,23 @@
+---
+title: 'Blog'
+pagination:
+  data: collections.drafts
+  size: 1
+  alias: item
+permalink: '/{{ item.slug }}/index.html'
+---
+{% extends "layouts/base.njk" %}
+{% set title = item.title.rendered %}
+
+{% set metaDesc = item.excerpt.rendered | striptags %}
+
+{% block content %}
+<article class="region prose flow wrapper">
+  <h1>{{ item.title.rendered | safe }}</h1>   
+  <time datetime="{{ item.date | w3DateFilter }}">{{ item.date | dateFilter }}</time> 
+
+  {{ item.content.rendered | safe }}
+  
+  <a href="/thinking">Back to drafts</a>
+</article>
+{% endblock %}
