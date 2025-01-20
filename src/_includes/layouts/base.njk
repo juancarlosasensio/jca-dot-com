@@ -45,8 +45,8 @@ pageComponents:
           <ul>
             {% for post in collections.blog %}
               <li>
-                <a href="/{{ post.slug }}" {% if page.url == post.slug %} aria-current="true"{% endif %}>
-                  {% if page.url == post.slug %}
+                <a href="/{{ post.slug }}" {% if page.url == "/"+post.slug+"/" %} aria-current="true"{% endif %}>
+                  {% if page.url == "/"+post.slug+"/" %}
                     <svg class="docs-icon" focusable="false">
                     <use href="/images/all.svg#icon-triangle-right"></use>
                   </svg>                
@@ -117,5 +117,6 @@ pageComponents:
       {% endfor %}
     {% endif %}
     <script src="/js/main.js?{{ assetHash }}"></script>
+    {{ page | dump }}
   </body>
 </html>
