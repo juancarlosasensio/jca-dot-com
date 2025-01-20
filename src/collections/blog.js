@@ -2,10 +2,10 @@ require('dotenv').config();
 
 const axios = require('axios');
 const {AssetCache} = require('@11ty/eleventy-fetch');
+const decodeHtmlCharCodes = require('../utils/htmlCharEncoder.js');
 
 module.exports = async function () {
   const url = `${process.env.WP_ROOT_URL}?&per_page=100`;
-  
   const asset = new AssetCache('blog');
 
   // If saved in cache, return that instead of fetching all the data
@@ -26,12 +26,6 @@ module.exports = async function () {
   let pageCount = 0;
   let items = data.posts;
 
-  function decodeHtmlCharCodes(str) { 
-    return str.replace(/(&#(\d+);)/g, function(match, capture, charCode) {
-      return String.fromCharCode(charCode);
-  });
-}
-
   // Loop until page limit exceeded
   while (pageCount < totalPages) {
     pageCount++;
@@ -50,15 +44,12 @@ module.exports = async function () {
     continue;
   }
 
+  // Replace chars like '&#8217' with their HTML-encoded equivalents
   items.forEach((item) => {
-    console.log(item);
     item.title = decodeHtmlCharCodes(item.title);
   })
 
-
-
   // Stick in cache for later
-  console.log(items)
   asset.save(items, 'json');
   return items;
 };
