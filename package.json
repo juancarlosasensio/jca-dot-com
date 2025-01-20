@@ -4,7 +4,7 @@
   "description": "",
   "main": ".eleventy.js",
   "scripts": {
-    "start": "eleventy --serve --quiet",
+    "start": "eleventy --serve",
     "build": "NODE_ENV=production eleventy"
   },
   "keywords": [],
@@ -12,9 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-fetch": "^5.0.1",
+    "@11ty/eleventy-cache-assets": "^2.3.0",
+    "@11ty/eleventy-fetch": "^5.0.2",
     "airtable": "^0.12.2",
-    "dotenv": "^16.4.5"
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7"
   },
   "devDependencies": {
     "prettier": "3.3.3"

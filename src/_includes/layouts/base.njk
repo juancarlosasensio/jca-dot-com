@@ -43,15 +43,15 @@ pageComponents:
             Full blog archive
           </a>
           <ul>
-            {% for post in collections.posts %}
+            {% for post in collections.blog %}
               <li>
-                <a href="{{ post.url }}" {% if page.url == post.url %} aria-current="true"{% endif %}>
-                  {% if page.url == post.url %}
+                <a href="/{{ post.slug }}" {% if page.url == post.slug %} aria-current="true"{% endif %}>
+                  {% if page.url == post.slug %}
                     <svg class="docs-icon" focusable="false">
                     <use href="/images/all.svg#icon-triangle-right"></use>
                   </svg>                
                   {% endif %}
-                  {{ post.data.title }}
+                  {{ post.title | safe }}
                 </a>
               </li>
             {% endfor %}  
