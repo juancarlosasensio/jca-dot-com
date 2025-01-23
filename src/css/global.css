@@ -1207,7 +1207,7 @@ icon-l svg {
     filter: invert(100%)!important
 }
 
-.text-align\:center {
+.text-align\:center, .has-text-align-center {
     text-align: center!important
 }
 

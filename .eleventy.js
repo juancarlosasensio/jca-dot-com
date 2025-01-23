@@ -1,10 +1,14 @@
 const { DateTime } = require("luxon");
 require('dotenv').config()
 
+const blog = require('./src/collections/blog.js')
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("simpleDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
   });
+
+  eleventyConfig.addCollection('blog', blog)
 
   // For now, we want all our styles to be copied over
   eleventyConfig.addPassthroughCopy('./src/css/**/*.css');

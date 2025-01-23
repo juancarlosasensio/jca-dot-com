@@ -1,0 +1,15 @@
+---
+title: 'Blog'
+eleventyExcludeFromCollections: true
+layout: 'layouts/base.njk'
+---
+
+<ul>
+{% for post in collections.blog | reverse %}
+  <li>
+    <a href="{{ post.slug }}">
+      {{ post.title }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
