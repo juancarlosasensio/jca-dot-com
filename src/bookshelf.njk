@@ -10,8 +10,8 @@ pageComponents:
  Books I've read. Books I'm reading. Books I recommend. Inspired by Venkatesh Rao's <a href="https://www.ribbonfarm.com/now-reading/" target="_blank">Now Reading</a> and Dave Rupert's <a href="https://daverupert.com/bookshelf" target="_blank">Bookshelf</a>.
 </p>
 
-{% if books.current|length %}
-  {% for shelf, booksByShelf in books.current | groupby("shelf") %}
+{% if collections.books|length %}
+  {% for shelf, booksByShelf in collections.books | groupby("shelf") %}
     <h2 class="text-align:center" >{{ shelf | capitalize }}</h2>
     <div class="container max-width:100%">
     <grid-l>
@@ -33,6 +33,7 @@ pageComponents:
   {% endfor %}
 {% endif %}
 
-{% if not books.current|length %}
+{% if not collections.books|length %}
+  <p>pavlatitos</p>
   <p>No books added yet! Check back soon to see what I've been reading.</p>
 {% endif %}

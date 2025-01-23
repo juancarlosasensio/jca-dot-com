@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const axios = require('axios');
-const {AssetCache} = require('@11ty/eleventy-fetch');
+const { AssetCache } = require('@11ty/eleventy-fetch');
 const decodeHtmlCharCodes = require('../utils/htmlCharEncoder.js');
 
 module.exports = async function () {
