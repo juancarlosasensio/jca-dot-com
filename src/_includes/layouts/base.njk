@@ -36,14 +36,14 @@ pageComponents:
         <nav class="docs-nav" aria-labelledby="nav-label">
           <span id="nav-label" hidden>main</span>
           <h2>Writing</h2>
-          <a class="docs-index-link" href="/posts">
+          <a class="docs-index-link" href="/blog">
             <svg focusable="false" class="docs-icon">
               <use xlink:href="/images/all.svg#icon-eye"></use>
             </svg>
             Full blog archive
           </a>
           <ul>
-            {% for post in collections.blog %}
+            {% for post in collections.blog | reverse %}
               <li>
                 <a href="/{{ post.slug }}" {% if page.url == "/"+post.slug+"/" %} aria-current="true"{% endif %}>
                   {% if page.url == "/"+post.slug+"/" %}
