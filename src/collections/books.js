@@ -52,13 +52,17 @@ module.exports = async function() {
         // If there are no more records, the promise will resolve.
         fetchNextPage();
     });
-    console.log("saving");
 
-    console.log(books)
+    if (process.env.NODE_ENV === 'development') {
+      console.log("saving books...");
+    }
 
     await asset.save(books, "json");
-    return books;
 
+    if (process.env.NODE_ENV === 'development') {
+      console.log('books saved successfully', { books });
+    }
+    return books;
   } catch (err) {
     
     return asset.getCachedValue();
