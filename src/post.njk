@@ -6,9 +6,9 @@ pagination:
 permalink: '/{{ item.slug }}/index.html'
 layout: 'layouts/base'
 eleventyComputed:
-  title: "{{ item.title | safe }}"
+  title: "{{ item.title.rendered | safe }}"
 ---
 
-{{ item.content | safe }}
+{{ item.content.rendered | safe }}
   
 <a href="/blog">Back to blog</a>

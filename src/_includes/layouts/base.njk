@@ -51,7 +51,7 @@ pageComponents:
                     <use href="/images/all.svg#icon-triangle-right"></use>
                   </svg>                
                   {% endif %}
-                  {{ post.title | safe }}
+                  {{ post.title.rendered | safe }}
                 </a>
               </li>
             {% endfor %}  
