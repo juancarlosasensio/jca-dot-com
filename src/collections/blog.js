@@ -12,7 +12,6 @@ module.exports = async function () {
   if (asset.isCacheValid('8h')) {
     return asset.getCachedValue();
   }
-
   // Grab the first page of posts
   let res = await axios.get(url);
 
