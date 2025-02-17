@@ -4,6 +4,7 @@
   "description": "",
   "main": ".eleventy.js",
   "scripts": {
+    "dev": "NODE_ENV=development netlify dev -c 'eleventy --serve --quiet'",
     "start": "eleventy --serve",
     "build": "NODE_ENV=production eleventy"
   },
@@ -14,6 +15,7 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-cache-assets": "^2.3.0",
     "@11ty/eleventy-fetch": "^5.0.2",
+    "@netlify/functions": "^3.0.0",
     "airtable": "^0.12.2",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7"
