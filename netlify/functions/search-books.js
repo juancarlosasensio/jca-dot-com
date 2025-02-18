@@ -48,13 +48,18 @@ export default async function handler(req, context) {
         status: 200,
         headers: { 'Content-Type': 'application/json' }
       });    
+    } else if (data.docs && data.docs.length === 0) { 
+      return new Response(JSON.stringify([]), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      });
     } else {
       throw new Error('No books found');
     }
   } catch (error) {
     // If an error occurs during the fetch request, alert the user
     return new Response(error.message, {
-      status: 500,
+      status: 204,
       headers: { 'Content-Type': 'text/html' }
     })
   }

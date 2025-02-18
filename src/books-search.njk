@@ -98,10 +98,14 @@ layout: 'layouts/base.njk'
           // Append the completed list item to the results list
           resultsList.appendChild(li);
         });
+      } else if (data && data.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = `No results found for "${query}". Please try another search term.`;
+        resultsList.appendChild(li);
       } else {
         // If no results are found, display a message
         const li = document.createElement('li');
-        li.textContent = 'No results found. Please try a different search term.';
+        li.textContent = `No results found for "${query}". Please try another search term.`;
         resultsList.appendChild(li);
       }
     } catch (error) {
