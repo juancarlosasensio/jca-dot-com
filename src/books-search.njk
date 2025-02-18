@@ -16,105 +16,80 @@ layout: 'layouts/base.njk'
 <ul id="results" class="results"></ul>
 
 {% block scripts %}
-<script>
-  // Book Search functionality using the Open Library Search API
+  <script>
+    // Book Search functionality using the Open Library Search API
+    // Select the necessary DOM elements by their IDs
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+    const resultsList = document.getElementById('results');
 
-  // Select the necessary DOM elements by their IDs
-  const searchForm = document.getElementById('search-form');
-  const searchInput = document.getElementById('search-input');
-  const resultsList = document.getElementById('results');
-
-  // Listen for the form's submit event
-  searchForm.addEventListener('submit', async (event) => {
-    // Prevent the default form submission (prevents page reload)
-    event.preventDefault();
-
-    // Retrieve and trim the user's input query
-    const query = searchInput.value.trim();
-
-    // If no query is provided, alert the user and exit
-    if (!query) {
-      alert("Please enter a search term");
-      return;
-    }
-
-    // Clear any previous search results
-    resultsList.innerHTML = '';
-
-    try {
-      // Construct the API URL for the search-books endpoint
-      const apiUrl = `/search-books/${query}`;
-
-      // Fetch data from the API
-      const response = await fetch(apiUrl);
-
-      // If the response is not OK, throw an error
-      if (!response.ok) {
-        throw new Error(`An error occurred: ${response.statusText}`);
-      }
-
-      // Parse the API response as JSON
-      const data = await response.json();
-
-      // Check if the API returned any book documents
-      if (data && data.length > 0) {
+    // Update the UI with latest search results
+    function displaySearchResults(results, id) {
+      // Get results list element
+      const resultsList = document.getElementById('results');
+      
+      if (resultsList) {
         // Process each book record
-        data.forEach(book => {
-          // Create a list item to display the book
+        resultsList.innerHTML = results.map(book => `
+          <li>
+            <img src="${book.coverImage.src}" alt="${book.coverImage.alt}">
+            <h3>${book.title}</h3>
+            <p>${book.author}</p>
+            <p>${book.year}</p>
+          </li>
+        `).join('');
+      }
+    }  
+
+    // Listen for the form's submit event
+    searchForm.addEventListener('submit', async (event) => {
+      // Prevent the default form submission (prevents page reload)
+      event.preventDefault();
+      // Retrieve and trim the user's input query
+      const query = searchInput.value.trim();
+      // If no query is provided, alert the user and exit
+      if (!query) {
+        alert("Please enter a search term");
+        return;
+      }
+      // Clear any previous search results
+      resultsList.innerHTML = '';
+
+      try {
+        // Construct the API URL for the search-books endpoint
+        const apiUrl = `/search-books/${query}`;
+
+        // Fetch data from the API
+        const response = await fetch(apiUrl);
+
+        // If the response is not OK, throw an error
+        if (!response.ok) {
+          throw new Error(`An error occurred: ${response.statusText}`);
+        }
+
+        // Parse the API response as JSON
+        const data = await response.json();
+
+        // Check if the API returned any book documents
+        if (data && data.length > 0) {
+          displaySearchResults(data);
+        } else if (data && data.length === 0) {
           const li = document.createElement('li');
-
-          // Create an image element for the book cover
-          const coverImg = document.createElement('img');
-          coverImg.classList.add('book-cover');
-
-          // If a cover ID exists, use it to create the image URL
-          coverImg.src = book.coverImage.src;
-          coverImg.alt = book.coverImage.alt;
-
-          // Create a container div for book details
-          const infoDiv = document.createElement('div');
-          infoDiv.classList.add('book-info');
-
-          // Create an element for the book title
-          const titleHeading = document.createElement('h3');
-          titleHeading.classList.add('book-title');
-          titleHeading.textContent = book.title;
-
-          // Create an element for additional book details (author and publish year)
-          const detailsPara = document.createElement('p');
-          detailsPara.classList.add('book-details');
-          const author = book.author;
-          const year = book.year;
-          detailsPara.textContent = `Author(s): ${author} | First Published: ${year}`;
-
-          // Append the title and details to the information div
-          infoDiv.appendChild(titleHeading);
-          infoDiv.appendChild(detailsPara);
-
-          // Append the cover image and book info to the list item
-          li.appendChild(coverImg);
-          li.appendChild(infoDiv);
-
-          // Append the completed list item to the results list
+          li.textContent = `No results found for "${query}". Please try another search term.`;
           resultsList.appendChild(li);
-        });
-      } else if (data && data.length === 0) {
+        } else {
+          // If no results are found, display a message
+          const li = document.createElement('li');
+          li.textContent = `No results found for "${query}". Please try another search term.`;
+          resultsList.appendChild(li);
+        }
+      } catch (error) {
+        // Log errors to the console and display an error message to the user
+        console.error('Error fetching data:', error);
         const li = document.createElement('li');
-        li.textContent = `No results found for "${query}". Please try another search term.`;
-        resultsList.appendChild(li);
-      } else {
-        // If no results are found, display a message
-        const li = document.createElement('li');
-        li.textContent = `No results found for "${query}". Please try another search term.`;
+        li.textContent = 'There was an error fetching the data. Please try again later.';
         resultsList.appendChild(li);
       }
-    } catch (error) {
-      // Log errors to the console and display an error message to the user
-      console.error('Error fetching data:', error);
-      const li = document.createElement('li');
-      li.textContent = 'There was an error fetching the data. Please try again later.';
-      resultsList.appendChild(li);
-    }
-  });
-</script>
+    });
+  </script>
 {% endblock %}
