@@ -43,7 +43,7 @@ layout: 'layouts/base.njk'
 
     try {
       // Construct the API URL for the search-books endpoint
-      const apiUrl = `http://localhost:8888/search-books/${query}`;
+      const apiUrl = `/search-books/${query}`;
 
       // Fetch data from the API
       const response = await fetch(apiUrl);
@@ -55,8 +55,6 @@ layout: 'layouts/base.njk'
 
       // Parse the API response as JSON
       const data = await response.json();
-
-      console.log(Array.isArray(data), data[0])
 
       // Check if the API returned any book documents
       if (data && data.length > 0) {

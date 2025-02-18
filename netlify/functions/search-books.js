@@ -1,8 +1,6 @@
 export default async function handler(req, context) {
-  // console.log('Request received:', req, 'Context:', context);
   const { query } = context.params;
-  console.log('Logging query, Tom Sawyer!!!', query)
-// Book Search functionality using the Open Library Search API
+  // Book Search functionality using the Open Library Search API
   try {
     // Construct the API URL for the Open Library Search API
     // const query = 'the lord of the rings';
@@ -11,8 +9,6 @@ export default async function handler(req, context) {
     // Fetch data from the API
     const response = await fetch(apiUrl);
 
-    console.log('Response from function', response)
-
     // If the response is not OK, throw an error
     if (!response.ok) {
       throw new Error(`An error occurred: ${response.statusText}`);
@@ -20,11 +16,6 @@ export default async function handler(req, context) {
 
     // Parse the API response as JSON
     const data = await response.json();
-
-    if (data) {
-      console.log('WE found daata from netlify search-books function');
-    }
-
     const results = [];
 
     if (data.docs && data.docs.length > 0) {
