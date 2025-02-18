@@ -13,7 +13,7 @@ layout: 'layouts/base.njk'
 </form>
 
 <!-- Container for dynamically displaying search results -->
-<ul id="results" class="results"></ul>
+<ul id="results" class="results grid" role="list"></ul>
 
 {% block scripts %}
   <script>
@@ -33,7 +33,7 @@ layout: 'layouts/base.njk'
         resultsList.innerHTML = results.map(book => `
           <li>
             <img src="${book.coverImage.src}" alt="${book.coverImage.alt}">
-            <h3>${book.title}</h3>
+            <h4>${book.title}</h4>
             <p>${book.author}</p>
             <p>${book.year}</p>
           </li>
