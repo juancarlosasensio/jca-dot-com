@@ -117,5 +117,7 @@ pageComponents:
       {% endfor %}
     {% endif %}
     <script src="/js/main.js?{{ assetHash }}"></script>
+    {# Only include extra scripts if a page defines the "scripts" block #}
+    {% block scripts %}{% endblock %}
   </body>
 </html>
