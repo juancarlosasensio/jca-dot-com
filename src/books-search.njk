@@ -26,10 +26,9 @@ layout: 'layouts/base.njk'
     // Update the UI with latest search results
     function displaySearchResults(results, id) {
       // Get results list element
-      const resultsList = document.getElementById('results');
-      
+      const resultsList = document.getElementById('results');      
       if (resultsList) {
-        // Process each book record
+        // Process each book record and return HTML
         resultsList.innerHTML = results.map(book => `
           <li>
             <img src="${book.coverImage.src}" alt="${book.coverImage.alt}">

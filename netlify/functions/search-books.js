@@ -1,10 +1,10 @@
 const getBookData = (book) => {
   const bookData = {
-              coverImage: {src: '', alt: ''},
-              title: '',
-              author: '',
-              year: ''
-            }
+    coverImage: {src: '', alt: ''},
+    title: '',
+    author: '',
+    year: ''
+  }
   // If a cover ID exists, use it to create the image URL
   if (book.cover_i) {
     bookData.coverImage.src = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
