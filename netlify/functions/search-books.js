@@ -28,7 +28,7 @@ export default async function handler(req, context) {
   try {
     // Construct the API URL for the Open Library Search API
     // const query = 'the lord of the rings';
-    const apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&lang=en`;
+    const apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&sort=new`;
     // Fetch data from the API
     const response = await fetch(apiUrl);
     // If the response is not OK, throw an error
