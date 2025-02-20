@@ -40,8 +40,12 @@ layout: 'layouts/base.njk'
     }
 
     function renderLoadMoreButton() {
+      if (totalResults === 0 || totalResults < 10) {
+        return;
+      }
       const buttonExists = document.getElementById('load-more');
-      if (buttonExists && (currentPage + 1) * 10 >= totalResults) {
+
+      if (buttonExists && ((currentPage + 1) * 10 >= totalResults)) {
         buttonExists.remove();
         return;
       } else if (buttonExists) {
