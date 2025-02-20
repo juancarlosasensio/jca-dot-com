@@ -11,7 +11,7 @@ const getBookData = (book) => {
     bookData.coverImage.alt = `${book.title} cover`;
   } else {
     // Otherwise, use a placeholder image
-    bookData.coverImage.src = 'https://via.placeholder.com/80x120?text=No+Cover';
+    bookData.coverImage.src = 'https://www.gifpng.com/300/333333/ffffff/?border-color=ffffff&text=No%20book%20cover';
     bookData.coverImage.alt = 'No book cover available';
   }
   bookData.title = book.title ? book.title : 'No Title Available';
