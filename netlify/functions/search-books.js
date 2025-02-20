@@ -23,13 +23,11 @@ const getBookData = (book) => {
 }
 
 export default async function handler(req, context) {
-  const { query } = context.params;
-  // Book Search functionality using the Open Library Search API
+  const { query, offset } = context.params;
+  const limit = 10;
+
   try {
-    // Construct the API URL for the Open Library Search API
-    // const query = 'the lord of the rings';
-    const apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&sort=new`;
-    // Fetch data from the API
+    const apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&sort=new&limit=${limit}&offset=${offset}`;
     const response = await fetch(apiUrl);
     // If the response is not OK, throw an error
     if (!response.ok) {
@@ -47,7 +45,7 @@ export default async function handler(req, context) {
         });
 
     // Return the results as JSON
-    return new Response(JSON.stringify(results), {
+    return new Response(JSON.stringify({ results, numFound: data.numFound }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });    
@@ -68,4 +66,4 @@ export default async function handler(req, context) {
   }
 }
 
-export const config = { path: "/search-books/:query" };
+export const config = { path: "/search-books/:query/:offset" };

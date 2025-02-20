@@ -17,78 +17,81 @@ layout: 'layouts/base.njk'
 
 {% block scripts %}
   <script>
-    // Book Search functionality using the Open Library Search API
-    // Select the necessary DOM elements by their IDs
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
     const resultsList = document.getElementById('results');
+    const loadMoreButton = document.getElementById('load-more');
+    let currentPage = 0;
+    let totalResults = 0;
+    let currentQuery = '';
 
-    // Update the UI with latest search results
-    function displaySearchResults(results, id) {
-      // Get results list element
-      const resultsList = document.getElementById('results');      
-      if (resultsList) {
-        // Process each book record and return HTML
-        resultsList.innerHTML = results.map(book => `
-          <li>
-            <img src="${book.coverImage.src}" alt="${book.coverImage.alt}">
-            <h4>${book.title}</h4>
-            <p>${book.author}</p>
-            <p>${book.year}</p>
-          </li>
-        `).join('');
+    function displaySearchResults(results, append = false) {
+      if (!append) {
+        resultsList.innerHTML = '';
       }
-    }  
+      resultsList.innerHTML += results?.map(book => `
+        <li class="flow flow-space-xs">
+          <img src="${book.coverImage.src}" alt="${book.coverImage.alt}">
+          <h4>${book.title}</h4>
+          <p>${book.author}</p>
+          <p>${book.year}</p>
+        </li>
+      `).join('');
+    }
 
-    // Listen for the form's submit event
-    searchForm.addEventListener('submit', async (event) => {
-      // Prevent the default form submission (prevents page reload)
-      event.preventDefault();
-      // Retrieve and trim the user's input query
-      const query = searchInput.value.trim();
-      // If no query is provided, alert the user and exit
-      if (!query) {
-        alert("Please enter a search term");
+    function renderLoadMoreButton() {
+      const loadMoreButton = document.createElement('button');
+      loadMoreButton.id = 'load-more';
+      loadMoreButton.textContent = 'Load more books';
+
+      loadMoreButton.addEventListener('click', () => {
+        currentPage++;
+        fetchBooks(currentQuery, currentPage, true);
+        updateLoadMoreButton();
+      });
+
+      resultsList.after(loadMoreButton)
+    }
+
+    function updateLoadMoreButton() {
+      if (!loadMoreButton) {
         return;
       }
-      // Clear any previous search results
-      resultsList.innerHTML = '';
+      if ((currentPage + 1) * 10 >= totalResults) {
+        loadMoreButton.remove();
+      }
+    }
 
+    async function fetchBooks(query, page = 0, append = false) {
+      const offset = page * 10;
+      const apiUrl = `/search-books/${query}/${offset}`;
       try {
-        // Construct the API URL for the search-books endpoint
-        const apiUrl = `/search-books/${query}`;
-
-        // Fetch data from the API
         const response = await fetch(apiUrl);
-
-        // If the response is not OK, throw an error
         if (!response.ok) {
           throw new Error(`An error occurred: ${response.statusText}`);
         }
-
-        // Parse the API response as JSON
         const data = await response.json();
-
-        // Check if the API returned any book documents
-        if (data && data.length > 0) {
-          displaySearchResults(data);
-        } else if (data && data.length === 0) {
-          const li = document.createElement('li');
-          li.textContent = `No results found for "${query}". Please try another search term.`;
-          resultsList.appendChild(li);
-        } else {
-          // If no results are found, display a message
-          const li = document.createElement('li');
-          li.textContent = `No results found for "${query}". Please try another search term.`;
-          resultsList.appendChild(li);
-        }
+        totalResults = data.numFound;
+        displaySearchResults(data.results, append);
+        renderLoadMoreButton();
       } catch (error) {
-        // Log errors to the console and display an error message to the user
         console.error('Error fetching data:', error);
         const li = document.createElement('li');
         li.textContent = 'There was an error fetching the data. Please try again later.';
         resultsList.appendChild(li);
       }
+    }
+
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const query = searchInput.value.trim();
+      if (!query) {
+        alert("Please enter a search term");
+        return;
+      }
+      currentQuery = query;
+      currentPage = 0;
+      fetchBooks(query, currentPage);
     });
   </script>
 {% endblock %}
