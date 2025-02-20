@@ -41,7 +41,10 @@ layout: 'layouts/base.njk'
 
     function renderLoadMoreButton() {
       const buttonExists = document.getElementById('load-more');
-      if (buttonExists) {
+      if (buttonExists && (currentPage + 1) * 10 >= totalResults) {
+        buttonExists.remove();
+        return;
+      } else if (buttonExists) {
         return;
       }
 
@@ -52,16 +55,9 @@ layout: 'layouts/base.njk'
       loadMoreButton.addEventListener('click', () => {
         currentPage++;
         fetchBooks(currentQuery, currentPage, true);
-        updateLoadMoreButton();
       });
 
       resultsList.after(loadMoreButton)
-    }
-
-    function updateLoadMoreButton() {
-      if ((currentPage + 1) * 10 >= totalResults) {
-        loadMoreButton.remove();
-      }
     }
 
     async function fetchBooks(query, page = 0, append = false) {
