@@ -40,6 +40,11 @@ layout: 'layouts/base.njk'
     }
 
     function renderLoadMoreButton() {
+      const buttonExists = document.getElementById('load-more');
+      if (buttonExists) {
+        return;
+      }
+
       const loadMoreButton = document.createElement('button');
       loadMoreButton.id = 'load-more';
       loadMoreButton.textContent = 'Load more books';
@@ -54,9 +59,6 @@ layout: 'layouts/base.njk'
     }
 
     function updateLoadMoreButton() {
-      if (!loadMoreButton) {
-        return;
-      }
       if ((currentPage + 1) * 10 >= totalResults) {
         loadMoreButton.remove();
       }
