@@ -73,7 +73,15 @@ layout: 'layouts/base.njk'
           throw new Error(`An error occurred: ${response.statusText}`);
         }
         const data = await response.json();
-        totalResults = data.numFound;
+        totalResults = data?.numFound;
+        const results = data?.results;
+
+        if (!results || totalResults === 0) {
+          const li = document.createElement('li');
+          li.textContent = `No results found for "${query}". Please try a different search.`;
+          resultsList.appendChild(li);
+          return;
+        }
         displaySearchResults(data.results, append);
         renderLoadMoreButton();
       } catch (error) {

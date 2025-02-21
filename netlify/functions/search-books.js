@@ -23,10 +23,11 @@ const getBookData = (book) => {
 
 export default async function handler(req, context) {
   const { query, offset } = context.params;
+  const decodedQuery = decodeURIComponent(query);
   const limit = 10;
 
   try {
-    const apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&fields=title,author_name,first_publish_year,cover_i&sort=new&limit=${limit}&offset=${offset}&mode=everything`;
+    const apiUrl = `https://openlibrary.org/search.json?q=${decodedQuery}&fields=title,author_name,first_publish_year,cover_i&limit=${limit}&offset=${offset}&mode=everything`;
     const response = await fetch(apiUrl);
     // If the response is not OK, throw an error
     if (!response.ok) {
