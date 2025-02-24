@@ -1,16 +1,18 @@
 const getBookData = (book) => {
   const bookData = {
-    coverImage: {src: '', alt: ''},
+    coverImage: {src: '', alt: '', cover_i: ''},
     title: '',
     author: '',
     year: ''
   }
   // If a cover ID exists, use it to create the image URL
   if (book.cover_i) {
+    bookData.coverImage.cover_i = book.cover_i;
     bookData.coverImage.src = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
     bookData.coverImage.alt = `${book.title} cover`;
   } else {
     // Otherwise, use a placeholder image
+    bookData.coverImage.cover_i = 'no-cover';
     bookData.coverImage.src = 'https://openlibrary.org/images/icons/avatar_book-lg.png';
     bookData.coverImage.alt = 'No book cover available';
   }
