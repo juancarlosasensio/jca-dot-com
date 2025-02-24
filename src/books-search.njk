@@ -25,18 +25,54 @@ layout: 'layouts/base.njk'
     let totalResults = 0;
     let currentQuery = '';
 
+    // Attach event listeners to the "Add to shelf" buttons
+    const addToShelfHandler = async (event) => {
+      const title = event.target.getAttribute('data-title');
+      const author = event.target.getAttribute('data-author');
+      const coverImage = event.target.getAttribute('data-cover-image-src');
+      const apiUrl = `/add-book/${encodeURIComponent(title)}/${encodeURIComponent(author)}/${encodeURIComponent(coverImage)}`;
+
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error(`An error occurred: ${response.statusText}`);
+        }
+        console.log('Book added successfully!');
+      } catch (error) {
+        console.error('Error adding book:', error);
+      }
+    };   
+
     function displaySearchResults(results, append = false) {
       if (!append) {
         resultsList.innerHTML = '';
       }
-      resultsList.innerHTML += results?.map(book => `
+
+      resultsList.innerHTML += results?.map(book => {
+        const { title, subtitle, author, coverImage, year } = book;
+
+        return `
         <li class="flow flow-space-xs">
-          <img src="${book.coverImage.src}" alt="${book.coverImage.alt}">
-          <h4>${book.title}</h4>
-          <p>${book.author}</p>
-          <p>${book.year}</p>
+          <img src="${coverImage.src}" alt="${coverImage.alt}">
+          <h4>${title}</h4>
+          <p>${author}</p>
+          <p>${year}</p>
+          <button
+            id="book-to-add-${title}-${subtitle}-${author}"
+            data-title="${title}"
+            data-author="${author}" 
+            data-cover-image-src="${
+              coverImage.src.includes('icons/avatar_book') 
+              ? coverImage.cover_i
+              : coverImage.src }"
+          >
+            Add to shelf
+          </button>
         </li>
-      `).join('');
+      `}).join('');
+
+      document.querySelectorAll("button[id^='book-to-add']").forEach(button => 
+        button.addEventListener('click', addToShelfHandler))
     }
 
     function renderLoadMoreButton() {

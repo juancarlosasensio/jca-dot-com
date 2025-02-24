@@ -2,6 +2,7 @@ const getBookData = (book) => {
   const bookData = {
     coverImage: {src: '', alt: '', cover_i: ''},
     title: '',
+    subtitle: '',
     author: '',
     year: ''
   }
@@ -17,6 +18,7 @@ const getBookData = (book) => {
     bookData.coverImage.alt = 'No book cover available';
   }
   bookData.title = book.title ? book.title : 'No Title Available';
+  bookData.subtitle = book.subtitle ? book.subtitle : 'No Subtitle Available';
   bookData.author = book.author_name ? book.author_name.join(', ') : 'Unknown Author';
   bookData.year = book.first_publish_year ? book.first_publish_year : 'Year not available';
 
@@ -29,7 +31,7 @@ export default async function handler(req, context) {
   const limit = 10;
 
   try {
-    const apiUrl = `https://openlibrary.org/search.json?q=${decodedQuery}&fields=title,author_name,first_publish_year,cover_i&limit=${limit}&offset=${offset}&mode=everything`;
+    const apiUrl = `https://openlibrary.org/search.json?q=${decodedQuery}&fields=title,subtitle,author_name,first_publish_year,cover_i&limit=${limit}&offset=${offset}&mode=everything`;
     const response = await fetch(apiUrl);
     // If the response is not OK, throw an error
     if (!response.ok) {

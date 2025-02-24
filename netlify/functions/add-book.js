@@ -9,6 +9,7 @@ export default async function handler(req, context) {
     "fields": {
       "Title": `${decodeURIComponent(title)}`,
       "Author(s)": `${decodeURIComponent(author)}`,
+      "Tags": ["Queued"]
     }
   }
   
@@ -24,7 +25,7 @@ export default async function handler(req, context) {
         console.log(err)
         throw new Error(err);
       }
-      console.log(results)
+      console.log('REcord created successfully', records)
         // Return the results as JSON
       return new Response(JSON.stringify(records), {
         status: 200,
