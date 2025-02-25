@@ -31,7 +31,12 @@ layout: 'layouts/base.njk'
       const author = event.target.getAttribute('data-author');
       const coverImage = event.target.getAttribute('data-cover-image-src');
       const apiUrl = `/add-book/${encodeURIComponent(title)}/${encodeURIComponent(author)}/${encodeURIComponent(coverImage)}`;
-
+      // Prevent fetching if any of the required param values is missing
+      if (!title || !author || !coverImage) {
+        console.error('Missing required data to add book to shelf');
+        return;
+      }
+      // Fetch the API endpoint to add the book to the Bookshelf, Table 1 Airtable base
       try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
@@ -75,19 +80,20 @@ layout: 'layouts/base.njk'
         button.addEventListener('click', addToShelfHandler))
     }
 
-    function renderLoadMoreButton() {
+    function displayLoadMoreButton() {
+      // Prevents rendering the button if there are no results or less than 10 results
       if (totalResults === 0 || totalResults < 10) {
         return;
       }
       const buttonExists = document.getElementById('load-more');
-
+      // Prevents rendering the button if all results have already been displayed
       if (buttonExists && ((currentPage + 1) * 10 >= totalResults)) {
         buttonExists.remove();
         return;
       } else if (buttonExists) {
         return;
       }
-
+      // Only display the button if there are more results to fetch
       const loadMoreButton = document.createElement('button');
       loadMoreButton.id = 'load-more';
       loadMoreButton.textContent = 'Load more books';
@@ -119,7 +125,7 @@ layout: 'layouts/base.njk'
           return;
         }
         displaySearchResults(data.results, append);
-        renderLoadMoreButton();
+        displayLoadMoreButton();
       } catch (error) {
         console.error('Error fetching data:', error);
         const li = document.createElement('li');
