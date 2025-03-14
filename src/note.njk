@@ -1,0 +1,14 @@
+---
+pagination:
+  data: collections.notes
+  size: 1
+  alias: item
+permalink: '/{{ item.slug }}/index.html'
+layout: 'layouts/base'
+eleventyComputed:
+  title: "{{ item.title | safe }}"
+---
+
+{{ item.content | safe }}
+  
+<a href="/thinking">Back to Notes</a>

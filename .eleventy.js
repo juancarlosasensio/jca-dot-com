@@ -9,7 +9,28 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
   });
 
-  eleventyConfig.addCollection('blog', blog);
+  // Add 'blog' as its own collection
+  eleventyConfig.addCollection('blog', async function collectionCallback(collectionApi) {
+    const allPosts = await blog();
+
+    // Posts are all posts that are not notes
+    const posts = allPosts.filter(post => !post.categories.hasOwnProperty('Notes'));
+
+    return posts;
+  });
+
+  // TODO: avoid caling await blog() twice.
+  // Add 'notes' as its own collection
+  eleventyConfig.addCollection('notes', async function collectionCallback(collectionApi) {
+    const allPosts = await blog();
+
+    // Notes are all posts that have a category of Notes
+    const notes = allPosts.filter(note => note.categories.hasOwnProperty('Notes'));
+
+    return notes;
+  });
+
+  // Add books as its own collection
   eleventyConfig.addCollection('books', books);
 
   // For now, we want all our styles to be copied over

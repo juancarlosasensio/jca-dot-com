@@ -1,14 +1,14 @@
 ---
-title: 'Blog'
+title: 'Thinking'
 eleventyExcludeFromCollections: true
 layout: 'layouts/base.njk'
 ---
 
 <ul>
-{% for post in collections.blog | reverse %}
+{% for note in collections.notes | reverse %}
   <li>
-    <a href="/{{ post.slug }}">
-      {{ post.title }}
+    <a href="/{{ note.slug }}">
+      {{ note.title }}
     </a>
   </li>
 {% endfor %}
