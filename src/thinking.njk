@@ -5,7 +5,7 @@ layout: 'layouts/base.njk'
 ---
 
 <ul>
-{% for note in collections.notes | reverse %}
+{% for note in collections.wpContent | getNotes | reverse %}
   <li>
     <a href="/{{ note.slug }}">
       {{ note.title }}

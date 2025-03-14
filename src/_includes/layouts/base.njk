@@ -43,7 +43,7 @@ pageComponents:
             Full blog archive
           </a>
           <ul>
-            {% for post in collections.blog | reverse %}
+            {% for post in collections.wpContent | getPosts | reverse %}
               <li>
                 <a href="/{{ post.slug }}" {% if page.url == "/"+post.slug+"/" %} aria-current="true"{% endif %}>
                   {% if page.url == "/"+post.slug+"/" %}

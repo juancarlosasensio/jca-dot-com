@@ -5,7 +5,7 @@ layout: 'layouts/base.njk'
 ---
 
 <ul>
-{% for post in collections.blog | reverse %}
+{% for post in collections.wpContent | getPosts | reverse %}
   <li>
     <a href="/{{ post.slug }}">
       {{ post.title }}
