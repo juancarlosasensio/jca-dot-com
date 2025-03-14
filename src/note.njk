@@ -5,7 +5,7 @@
     size: 1,
     alias: "item",
     before: function(paginationData) { 
-      const notes = this.getPosts(paginationData);
+      const notes = this.getNotes(paginationData);
       return notes;
     }
   },
@@ -19,4 +19,4 @@
 
 {{ item.content | safe }}
   
-<a href="/blog">Back to blog</a>
+<a href="/thinking">Back to Notes</a>

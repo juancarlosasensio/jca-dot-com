@@ -1,0 +1,15 @@
+---
+title: 'Thinking'
+eleventyExcludeFromCollections: true
+layout: 'layouts/base.njk'
+---
+
+<ul>
+{% for note in collections.wpContent | getNotes | reverse %}
+  <li>
+    <a href="/{{ note.slug }}">
+      {{ note.title }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
