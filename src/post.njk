@@ -1,12 +1,20 @@
----
-pagination:
-  data: collections.blog
-  size: 1
-  alias: item
-permalink: '/{{ item.slug }}/index.html'
-layout: 'layouts/base'
-eleventyComputed:
-  title: "{{ item.title | safe }}"
+---js
+{
+  pagination:{
+    data:"collections.wpContent",
+    size: 1,
+    alias: "item",
+    before: function(paginationData) { 
+      const notes = this.getPosts(paginationData);
+      return notes;
+    }
+  },
+  permalink:"/{{ item.slug }}/index.html",
+  layout:"layouts/base",
+  eleventyComputed: {
+    title:"{{ item.title | safe }}"
+  }  
+}
 ---
 
 {{ item.content | safe }}
