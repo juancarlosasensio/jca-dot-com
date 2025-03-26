@@ -1033,6 +1033,7 @@ box-l {
 .box.book {
   padding: 0;
   border: none;
+  max-width: 350px;
 }
 
 .box * {
