@@ -995,11 +995,11 @@ stack-l > * + * {
     margin-block-start:var(--s1)
 }
 
-stack-l.book > :nth-child(2) {
+.stack.book > :nth-child(2) {
   margin-block-end: auto;
 }
 
-stack-l:only-child {
+.stack:only-child {
   block-size: 100%;
 }
 
@@ -1028,6 +1028,12 @@ box-l {
   --color-dark: #000;
   color: var(--color-dark);
   background-color: var(--color-light);
+}
+
+.box.book {
+  padding: 0;
+  border: none;
+  max-width: 350px;
 }
 
 .box * {
@@ -1103,40 +1109,14 @@ frame-l {
     align-items: center
 }
 
-/* Sets localized styles for book images  */
-.book > frame-l {
-  justify-content: start;
-  aspect-ratio: 4/5;
-}
-
-.book > frame-l > img {
-  inline-size: auto;
-}
-
-@media (max-width: 655px) {
-  .book > frame-l {
-    justify-content: center;
-  }
-
-  .book {
-    text-align: center;
-  }
-}
-
-frame-l > img, frame-l > video {
-    inline-size: 100%;
-    block-size: 100%;
-    object-fit: cover
-}
-
 .frame {
   --n: 4;
   --d: 5;
   aspect-ratio: var(--n) / var(--d);
   overflow: hidden;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
 }
 
 .frame > img,
@@ -1144,6 +1124,11 @@ frame-l > img, frame-l > video {
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
+}
+
+.frame.book > img,
+.frame.book > video {
+  inline-size: auto;
 }
 
 reel-l {
