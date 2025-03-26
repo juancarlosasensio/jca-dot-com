@@ -5,10 +5,10 @@
   project: https://cube.fyi/css.html
 */
 
-/* 
+
 body {
-  background: var(--color-dark);
-  color: var(--color-primary);
+  background: var(--color-light);
+  color: var(--color-dark);
   font-size: var(--size-step-1);
   font-family: var(--font-base);
   line-height: var(--leading-standard);
@@ -65,7 +65,7 @@ ins {
   box-decoration-break: clone;
 }
 
-// This is quite a new property, so we want code styles to at least, not be huge or tiny
+/* This is quite a new property, so we want code styles to at least, not be huge or tiny */
 @supports not (font-size-adjust: from-font) {
   :is(code, kbd, samp) {
     font-size: 0.8em;
@@ -123,7 +123,7 @@ ol ::marker {
 }
 
 
-// Lists with classes and roles will be out of standard flow, so remove the default spacing
+/* Lists with classes and roles will be out of standard flow, so remove the default spacing */
 [role='list'][class],
 [role='tablist'][class] {
   margin-block: 0;
@@ -250,9 +250,9 @@ a:not([class]):hover {
 }
 
 
-// Firefox is the only browser that doesn't outline the whole element 
-// unless you make it display: inline-block. 
-// That in itself causes multiple flow issues so we can detect it, using its own vendor prefix and reduce focus offset
+/* Firefox is the only browser that doesn't outline the whole element 
+unless you make it display: inline-block. 
+That in itself causes multiple flow issues so we can detect it, using its own vendor prefix and reduce focus offset */
 @supports (-moz-appearance: none) {
   :root {
     --focus-offset: 0.08em;
@@ -295,7 +295,7 @@ svg[role='img'][width][height] {
 }
 
 
-// There's a .flow composition, but this prevents forms from having to have that applied where markup is harder to control in certain systems. It still uses the --flow-space variables though to make managing space easier
+/* There's a .flow composition, but this prevents forms from having to have that applied where markup is harder to control in certain systems. It still uses the --flow-space variables though to make managing space easier */
 form > * + * {
   margin-top: var(--flow-space, 1rem);
 }
@@ -332,7 +332,7 @@ label::after {
 }
 
 
-// Usually label wraps checkbox and radio buttons, so we give ourselves more layout and text-flow control with flex
+/* Usually label wraps checkbox and radio buttons, so we give ourselves more layout and text-flow control with flex */
 label:has(input) {
   display: flex;
   align-items: baseline;
@@ -379,13 +379,14 @@ summary {
 details[open] summary {
   margin-block-end: var(--space-s);
 }
-*/
+
 
 /*
   Begin Styles that work for current page
   Will want to delete or improve these...
 */
-:root {
+
+/* :root {
     --font-plain: Helvetica Neue,Helvetica,Arial,sans-serif;
     --font-serif: Georgia,serif;
     --font-special: Barlow Condensed,Helvetica,sans-serif;
@@ -1610,4 +1611,4 @@ icon-l svg {
 
 .measure\:short {
     max-width: 40ch
-}
+} */
