@@ -1,0 +1,13 @@
+{% if data.href %}
+  <a class="button" href="{{ data.href }}" {% if data.variant %}data-button-variant="{{ data.variant }}"{% endif %}>
+  {% else %}
+    <button class="button"  {% if data.variant %}data-button-variant="{{ data.variant }}"{% endif %}>
+    {% endif %}
+    <span>{{ data.label }}</span>
+    {% include "icons/arrow.svg" %}
+    <span class="corner" aria-hidden="true"></span>
+    {% if data.href %}
+    </a>
+  {% else %}
+  </button>
+{% endif %}

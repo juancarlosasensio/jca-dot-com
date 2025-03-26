@@ -1,0 +1,11 @@
+{
+  "title": "Hero",
+  "context": {
+    "img": {
+      "src": "/images/hero.jpg",
+      "alt": "A female barrista with a hat and glasses smiles while making coffee"
+    },
+    "label": "Discover our courses",
+    "href": "#courses"
+  }
+}
