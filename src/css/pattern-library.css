@@ -1,0 +1,146 @@
+body:has(.pattern-library) {
+  background: var(--color-dark-glare);
+}
+
+.pattern-library {
+  --wrapper-max-width: 1500px;
+  --stroke: 1px solid currentColor;
+}
+
+.pattern-library h1 {
+  font-size: var(--size-step-10);
+}
+
+.pattern-library svg[role='img'] {
+  width: 100%;
+  height: auto;
+}
+
+.pattern-library__header {
+  padding: var(--space-s) 0;
+  border-bottom: var(--stroke);
+}
+.pattern-library__header svg {
+  width: 100%;
+  height: auto;
+}
+
+.pattern-library .sidebar {
+  --sidebar-target-width: 22rem;
+  container-type: inline-size;
+  border-bottom: var(--stroke);
+}
+
+.pattern-library__sidebar-inner {
+  border-bottom: var(--stroke);
+  height: 100%;
+}
+
+/* Switch border when the sidebar wraps */
+@container (min-width: 75vw) {
+  .pattern-library__sidebar-inner {
+    border-right: var(--stroke);
+    border-bottom: 0;
+  }
+}
+
+.pattern-library__sidebar h2 {
+  --flow-space: var(--space-l);
+  font-size: var(--size-step-6);
+}
+
+.pattern-library__swatch {
+  width: 40px;
+  aspect-ratio: 1/1;
+  border: var(--stroke);
+  border-radius: var(--radius-m);
+}
+
+.pattern-library__preview-frame {
+  width: 100%;
+  border: var(--stroke);
+  min-height: 25rem;
+  resize: auto;
+}
+
+.pattern-library .header-anchor {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+.pattern-library__nav {
+  text-transform: uppercase;
+  letter-spacing: var(--uppercase-kerning);
+  font-weight: var(--font-bold);
+  font-size: var(--size-step-0);
+}
+
+.pattern-library__nav a:not([aria-current]):not(:hover) {
+  text-decoration: none;
+}
+
+.pattern-library__nav[role='list'] {
+  margin-block-start: var(--space-m);
+  margin-block-end: var(--space-xl);
+}
+
+.pattern-library__toc {
+  --gutter: 0.5em;
+
+  display: flex;
+  align-items: center;
+  border-block: var(--stroke);
+  padding-block: var(--space-s);
+  font-size: var(--size-step-00);
+  font-weight: var(--font-bold);
+  gap: var(--gutter);
+}
+
+.pattern-library__toc p {
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.pattern-library__toc ul {
+  display: flex;
+  overflow-x: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pattern-library__toc li {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.pattern-library__toc li + li {
+  /* Overrides a more specific prose style without having to write a horror selector */
+  margin: 0 !important;
+
+  &::before {
+    content: '/';
+    display: block;
+    margin-inline-end: var(--gutter);
+  }
+}
+
+.pattern-library__toc a {
+  text-underline-offset: 0.1lh;
+}
+
+.pattern-library__nav li + li {
+  margin-block-start: 0.45em;
+}
+
+.pattern-library__nav [aria-current='page'] {
+  font-weight: var(--font-bold);
+}
+
+.pattern-library .switcher > * {
+  max-width: 100%;
+}
+
+.pattern-library .prose {
+  padding-bottom: var(--space-2xl);
+}
