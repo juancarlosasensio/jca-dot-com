@@ -995,11 +995,11 @@ stack-l > * + * {
     margin-block-start:var(--s1)
 }
 
-stack-l.book > :nth-child(2) {
+.stack.book > :nth-child(2) {
   margin-block-end: auto;
 }
 
-stack-l:only-child {
+.stack:only-child {
   block-size: 100%;
 }
 
