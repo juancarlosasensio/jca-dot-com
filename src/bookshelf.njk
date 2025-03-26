@@ -2,8 +2,6 @@
 title: Now Reading
 layout: "layouts/base.njk"
 pageTitleClasses: "text-align:center"
-pageComponents:
-  - Grid
 ---
 
 <p class="text-align:center">
@@ -18,9 +16,9 @@ pageComponents:
       {% for book in booksByShelf %}
         <article class="box book">
           <div class="stack book">
-            <frame-l ratio="4:5">
+            <div class="frame book">
               <img class="inverted" {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
-            </frame-l>
+            </div>
             <h4>{{ book.title }}</h4>
             <p>
               {{ book.authors }}
