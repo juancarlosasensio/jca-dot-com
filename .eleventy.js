@@ -32,6 +32,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('./src/css/**/*.css');
   eleventyConfig.addPassthroughCopy('./src/images');
   eleventyConfig.addPassthroughCopy('./src/js/**/*.js');
+  eleventyConfig.addPassthroughCopy({ static: "/" });
 
   return {
     markdownTemplateEngine: 'njk',
