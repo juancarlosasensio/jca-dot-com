@@ -16,7 +16,7 @@ pageComponents:
     <div class="container max-width:100%">
     <grid-l>
       {% for book in booksByShelf %}
-        <box-l padding="0" borderWidth="0">
+        <div class="box book">
           <stack-l class="book">
             <frame-l ratio="4:5">
               <img class="inverted" {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
@@ -26,7 +26,7 @@ pageComponents:
               {{ book.authors }}
             </p>
           </stack-l>
-        </box-l>
+        </div>
       {% endfor %}
     </grid-l>
   </div>

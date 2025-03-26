@@ -1030,6 +1030,11 @@ box-l {
   background-color: var(--color-light);
 }
 
+.box.book {
+  padding: 0;
+  border: none;
+}
+
 .box * {
   color: inherit;
 }
