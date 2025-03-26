@@ -1,10 +1,3 @@
----
-pageComponents:
-  - Box
-  - Stack
-  - Frame
----
-
 {# Appending 'assetHash' to a stylesheet's href allows up-to-date CSS files to be cached correctly #}
 {# The random() fn is available through src/_data/globa.js #}
 {# TODO: do this only in a production environment #}
@@ -111,11 +104,6 @@ pageComponents:
       </div>
       </div>
     </div>
-    {% if pageComponents %}
-      {% for comp in pageComponents %}
-        <script src="/js/components/{{ comp }}.js?{{ assetHash }}" type="module"></script>
-      {% endfor %}
-    {% endif %}
     <script src="/js/main.js?{{ assetHash }}"></script>
     {# Only include extra scripts if a page defines the "scripts" block #}
     {% block scripts %}{% endblock %}
