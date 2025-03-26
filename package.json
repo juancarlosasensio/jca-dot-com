@@ -4,9 +4,11 @@
   "description": "",
   "main": ".eleventy.js",
   "scripts": {
-    "dev": "NODE_ENV=development netlify dev -c 'eleventy --serve --quiet'",
-    "start": "eleventy --serve",
-    "build": "NODE_ENV=production eleventy"
+    "css": "npx postcss src/css/*.css --dir dist/css",
+    "clean": "rm -r -f dist && mkdir dist",
+    "dev": "concurrently \"netlify dev -c 'eleventy --serve --quiet'\" 'npm run css -- --watch'",
+    "build": "npm run clean && eleventy && NODE_ENV=production npm run css",
+    "patterns:create": "node src/lib/code-sample-generator.js -b 'patterns'"
   },
   "keywords": [],
   "author": "Juan Carlos Asensio",
@@ -18,9 +20,21 @@
     "@netlify/functions": "^3.0.0",
     "airtable": "^0.12.2",
     "axios": "^1.7.9",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "chalk": "^4.1.2",
+    "clean-css": "^5.3.2",
+    "concurrently": "^8.2.2",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-import-ext-glob": "^2.1.1",
+    "postcss-js": "^4.0.1",
+    "slugify": "^1.6.6",
+    "tailwindcss": "^3.3.5"
   },
   "devDependencies": {
+    "postcss-nesting": "^12.1.1",
     "prettier": "3.3.3"
   }
 }
