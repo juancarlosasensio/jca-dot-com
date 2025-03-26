@@ -18,6 +18,12 @@
     <title>{{ title }}</title>
   </head>
   <body>
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+  </body>
+
+  {# Previous <body> with sidebar #}
+  {# <body>
     <div class="docs-page">
       <header class="docs-header">
         <a href="/" class="docs-logo" style="display: flex; justify-content: center;">
@@ -111,6 +117,6 @@
     </div>
     <script src="/js/main.js?{{ assetHash }}"></script>
     {# Only include extra scripts if a page defines the "scripts" block #}
-    {% block scripts %}{% endblock %}
-  </body>
+    {# {% block scripts %}{% endblock %} #}
+  {# </body> #}
 </html>
