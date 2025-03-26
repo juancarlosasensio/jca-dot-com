@@ -5,6 +5,10 @@ const wpContent = require('./src/collections/blog.js');
 const books = require('./src/collections/books.js');
 
 module.exports = function (eleventyConfig) {
+  // Creates a global variable for the current __dirname to make including and
+  // working with files in the pattern library a little easier
+  global.__basedir = __dirname;
+
   eleventyConfig.addFilter("simpleDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
   });
@@ -29,8 +33,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection('books', books);
 
   // For now, we want all our styles to be copied over
-  eleventyConfig.addPassthroughCopy('./src/css/**/*.css');
-  eleventyConfig.addPassthroughCopy('./src/images');
+  eleventyConfig.addPassthroughCopy('src/css');
+  eleventyConfig.addPassthroughCopy('src/images');
   eleventyConfig.addPassthroughCopy('./src/js/**/*.js');
 
   return {
