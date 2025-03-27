@@ -22,3 +22,20 @@
   font-size: var(--size-step-00);
   font-weight: var(--font-bold);
 }
+
+.button:hover {
+  filter: brightness(105%);
+}
+
+.button:active {
+  transform: scale(99%);
+}
+
+/* Variant exceptions */
+.button[data-button-variant='secondary'] {
+  --button-bg: var(--color-light);
+  --button-text: var(--color-dark);
+  --focus-color: var(--color-dark);
+
+  border: var(--stroke);
+}
