@@ -153,12 +153,12 @@ dd {
 
 blockquote {
   margin-inline: 0;
-  color: var(--color-light);
+  color: var(--color-dark);
 }
 
 blockquote footer {
   margin-block-start: var(--space-s);
-  color: var(--color-primary);
+  color: var(--color-dark);
   font-size: var(--size-step-0);
 }
 

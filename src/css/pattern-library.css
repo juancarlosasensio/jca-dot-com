@@ -1,6 +1,7 @@
-body:has(.pattern-library) {
+/* Where is the pattern-library class being set for the pattern-library page? */
+/* body:has(.pattern-library) {
   background: var(--color-dark-glare);
-}
+} */
 
 .pattern-library {
   --wrapper-max-width: 1500px;
