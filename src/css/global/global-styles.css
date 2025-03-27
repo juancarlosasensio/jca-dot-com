@@ -313,7 +313,7 @@ form > * + * {
   padding: 0.5em 0.8em;
   border-radius: var(--radius-s);
   border: var(--stroke-solid);
-  background: var(--color-dark-glare);
+  background: var(--color-dark);
   color: var(--color-light);
   width: 100%;
 
