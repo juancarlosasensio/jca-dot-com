@@ -32,10 +32,11 @@ module.exports = function (eleventyConfig) {
   // Add books as its own collection
   eleventyConfig.addCollection('books', books);
 
-  // For now, we want all our styles to be copied over
-  eleventyConfig.addPassthroughCopy('src/css');
-  eleventyConfig.addPassthroughCopy('src/images');
-  eleventyConfig.addPassthroughCopy('src/js');
+  // Pass through fonts and images
+  config.addPassthroughCopy('./src/fonts');
+  config.addPassthroughCopy('./src/images');
+  config.addPassthroughCopy('./src/js');
+  config.addPassthroughCopy('./src/_redirects');
 
   return {
     markdownTemplateEngine: 'njk',

@@ -7,7 +7,7 @@
     "css": "npx postcss src/css/*.css --dir dist/css",
     "clean": "rm -r -f dist && mkdir dist",
     "dev": "concurrently \"netlify dev -c 'eleventy --serve --quiet'\" 'npm run css -- --watch'",
-    "build": "npm run clean && eleventy && NODE_ENV=production npm run css",
+    "build": "NODE_ENV=production eleventy && NODE_ENV=production npm run css",
     "patterns:create": "node src/lib/code-sample-generator.js -b 'patterns'"
   },
   "keywords": [],

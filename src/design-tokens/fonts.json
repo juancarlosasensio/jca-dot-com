@@ -6,11 +6,8 @@
       "name": "Base",
       "description": "System fonts for body copy and globally set text.",
       "value": [
-        "Satoshi",
-        "Inter",
-        "Segoe UI",
-        "Roboto",
         "Helvetica Neue",
+        "Helvetica",
         "Arial",
         "sans-serif"
       ]
