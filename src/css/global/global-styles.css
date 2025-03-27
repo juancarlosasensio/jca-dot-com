@@ -248,6 +248,9 @@ a:not([class]):hover {
 }
 
 :focus-visible {
+  --focus-color: var(--color-dark);
+  --focus-offset: 0.08em;
+
   outline: 2px solid var(--focus-color, currentColor);
   outline-offset: var(--focus-offset, 0.2lh);
 }
@@ -267,12 +270,10 @@ a:not([class]):hover {
   scroll-margin-block: 5lh;
 }
 
-
 ::selection {
   color: var(--color-light);
   background: var(--color-dark);
 }
-
 
 hr {
   border: none;
@@ -293,7 +294,7 @@ svg {
 svg[role='img'][width][height] {
   width: revert;
   height: revert;
-  background: var(--color-dark);
+  background: var(--color-light);
   padding: var(--space-xs);
 }
 
