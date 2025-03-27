@@ -1,10 +1,12 @@
 ---
 title: Books Search
 permalink: '/books-search/index.html'
-layout: 'layouts/base.njk'
 ---
 
-<!-- Search form for entering book title or author -->
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+  <!-- Search form for entering book title or author -->
 <form id="search-form">
   <!-- Input for user to type the query -->
   <input type="text" id="search-input" placeholder="Enter book title or author" required>
@@ -14,6 +16,7 @@ layout: 'layouts/base.njk'
 
 <!-- Container for dynamically displaying search results -->
 <ul id="results" class="results grid" role="list"></ul>
+{% endblock %}
 
 {% block scripts %}
   <script>

@@ -68,7 +68,10 @@ ins {
   box-decoration-break: clone;
 }
 
-/* This is quite a new property, so we want code styles to at least, not be huge or tiny */
+/* 
+  This is quite a new property, 
+  so we want code styles to at least, not be huge or tiny 
+*/
 @supports not (font-size-adjust: from-font) {
   :is(code, kbd, samp) {
     font-size: 0.8em;
@@ -101,7 +104,6 @@ var {
 q {
   font-style: italic;
 }
-
 
 ul:not([class]) {
   padding-inline-start: 1.7ch;
@@ -228,7 +230,6 @@ caption {
   margin-block-start: var(--space-s);
 }
 
-
 a:not([class]):hover {
   text-underline-offset: 0.2lh;
 }
@@ -242,7 +243,6 @@ a:not([class]):hover {
   text-underline-offset: 0.3ex;
 }
 
-
 :focus {
   outline: none;
 }
@@ -252,16 +252,16 @@ a:not([class]):hover {
   outline-offset: var(--focus-offset, 0.2lh);
 }
 
-
-/* Firefox is the only browser that doesn't outline the whole element 
-unless you make it display: inline-block. 
-That in itself causes multiple flow issues so we can detect it, using its own vendor prefix and reduce focus offset */
+/* 
+  Firefox is the only browser that doesn't outline the whole element 
+  unless you make it display: inline-block. 
+  That in itself causes multiple flow issues so we can detect it, using its own vendor prefix and reduce focus offset 
+*/
 @supports (-moz-appearance: none) {
   :root {
     --focus-offset: 0.08em;
   }
 }
-
 
 :target {
   scroll-margin-block: 5lh;
@@ -269,8 +269,8 @@ That in itself causes multiple flow issues so we can detect it, using its own ve
 
 
 ::selection {
-  color: var(--color-dark);
-  background: var(--color-light);
+  color: var(--color-light);
+  background: var(--color-dark);
 }
 
 
@@ -293,7 +293,7 @@ svg {
 svg[role='img'][width][height] {
   width: revert;
   height: revert;
-  background: var(--color-light);
+  background: var(--color-dark);
   padding: var(--space-xs);
 }
 
