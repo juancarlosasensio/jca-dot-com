@@ -13,6 +13,16 @@
       ]
     },
     {
+      "name": "Special",
+      "description": "System fonts for headings and special text.",
+      "value": [
+        "Barlow Condensed",
+        "Helvetica Neue",
+        "Helvetica",
+        "sans-serif"
+      ]
+    },
+    {
       "name": "Mono",
       "description": "Monospace font for code samples etc",
       "value": ["DM Mono", "monospace"]
