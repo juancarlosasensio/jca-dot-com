@@ -1,10 +1,3 @@
----
-pageComponents:
-  - Box
-  - Stack
-  - Frame
----
-
 {# Appending 'assetHash' to a stylesheet's href allows up-to-date CSS files to be cached correctly #}
 {# The random() fn is available through src/_data/globa.js #}
 {# TODO: do this only in a production environment #}
@@ -15,11 +8,22 @@ pageComponents:
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link rel="stylesheet" href="/css/global.css?{{ assetHash }}" />
+    {% if extraCSSFiles %}
+      {% for file in extraCSSFiles %}
+        <link rel="stylesheet" href="/css/{{ file }}"/>
+      {% endfor %}
+    {% endif %}
+    <title>{{ title }}</title>
   </head>
   <body>
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+  </body>
+
+  {# Previous <body> with sidebar #}
+  {# <body>
     <div class="docs-page">
       <header class="docs-header">
         <a href="/" class="docs-logo" style="display: flex; justify-content: center;">
@@ -111,13 +115,8 @@ pageComponents:
       </div>
       </div>
     </div>
-    {% if pageComponents %}
-      {% for comp in pageComponents %}
-        <script src="/js/components/{{ comp }}.js?{{ assetHash }}" type="module"></script>
-      {% endfor %}
-    {% endif %}
     <script src="/js/main.js?{{ assetHash }}"></script>
     {# Only include extra scripts if a page defines the "scripts" block #}
-    {% block scripts %}{% endblock %}
-  </body>
+    {# {% block scripts %}{% endblock %} #}
+  {# </body> #}
 </html>

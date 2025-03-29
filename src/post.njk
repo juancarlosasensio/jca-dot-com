@@ -10,13 +10,18 @@
     }
   },
   permalink:"/{{ item.slug }}/index.html",
-  layout:"layouts/base",
   eleventyComputed: {
     title:"{{ item.title | safe }}"
   }  
 }
 ---
 
-{{ item.content | safe }}
-  
-<a href="/blog">Back to blog</a>
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+  <div class="wrapper prose flow">
+    <h1>{{ item.title }}</h1>
+    {{ item.content | safe }}
+    <a href="/blog">Back to blog</a>
+  </div>
+{% endblock %}

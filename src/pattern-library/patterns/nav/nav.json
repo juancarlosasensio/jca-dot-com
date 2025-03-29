@@ -1,0 +1,30 @@
+{
+  "title": "Nav",
+  "context": {
+    "label": "Primary",
+    "items": [
+      {
+        "label": "Courses",
+        "href": "#",
+        "current": true
+      },
+      {
+        "label": "About",
+        "href": "#"
+      },
+      {
+        "label": "Contact",
+        "href": "#"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "name": "stacked",
+      "title": "Stacked",
+      "context": {
+        "variant": "stacked"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Quote",
+  "context": {
+    "content": "Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum."
+  },
+  "variants": [
+    {
+      "name": "With Cite",
+      "context": {
+        "content": "",
+        "quote": "Words can be like X-rays, if you use them properly—they’ll go through anything. You read and you’re pierced.",
+        "cite": {
+          "url": "https://www.huxley.net/bnw/four.html",
+          "text": "Aldous Huxley, Brave New World"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<article class="card">
+  <a href="{{ data.href }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ data.img.src }}" alt="{{ data.img.alt }}"/>
+  </a>
+  <div class="card__content flow">
+    <h3 class="card__heading">{{ data.heading }}</h3>
+    <p class="card__meta">{{ data.meta }}</p>
+    {% if data.alertText %}
+      <p class="card__alert">
+        <span>{{ data.alertText }}</span>
+      </p>
+    {% endif %}
+    <a class="button" href="{{ data.href }}">
+      <span>{{ data.buttonLabel }}</span>
+      {% include "icons/arrow.svg" %}
+      <span class="corner" aria-hidden="true"></span>
+    </a>
+  </div>
+</article>

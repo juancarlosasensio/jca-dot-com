@@ -1,0 +1,14 @@
+@font-face {
+    font-family: Barlow Condensed;
+    src: url('/fonts/barlowcondensed-bold.woff2') format("woff2");
+    font-weight: 700;
+    font-style: normal
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/dm-mono-v14-latin-500.woff2') format('woff2');
+}

@@ -1,0 +1,63 @@
+---
+title: "Core CSS Utilities"
+toc:
+  - text: 'Indent'
+    slug: '#indent'
+  - text: 'Region'
+    slug: '#region'
+  - text: 'Visually hidden'
+    slug: '#visually-hidden'
+---
+
+{% extends "layouts/pattern-library.njk" %}
+
+<!-- prettier-ignore -->
+{% block inner %}
+
+  <h2 id="indent">Indent</h2>
+
+  <p>A visual utility that applies a consistent left-hand border to an element. The width of the border isn’t configurable, but the colour is. The default colour is <code>currentColor</code>, but specifying <code>--indent-color</code> with a <a href="/pattern-library/colors/">colour design token</a> will change the colour for you. </p>
+
+  <p>You can also use an <code>indent-color</code> utility class which will apply <code>--indent-color</code> for you. </p>
+
+  <pre><code class="html">&lt;div class=&quot;region indent indent-color-primary&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+  <pre><code class="css">.my-block {
+  --indent-color: var(--color-primary);
+}
+</code></pre>
+
+  <h2 id="region">Region</h2>
+
+  <p>A container that provides consistent vertical spacing for</p>
+
+  <p>chunks/sections/regions of content.</p>
+
+  <pre><code class="html">&lt;div class=&quot;region&quot;&gt;I have consistent space now.&lt;/div&gt;
+</code></pre>
+
+  <p>To disable the top spacing on the <code>region</code> use the following data attribute:</p>
+
+  <pre><code class="html">&lt;div class=&quot;region&quot; data-disable-space-top&gt;Top spacing is disabled.&lt;/div&gt;
+</code></pre>
+
+  <p>To disable the bottom spacing on the <code>region</code> use the following data attribute:</p>
+
+  <pre><code class="html">&lt;div class=&quot;region&quot; data-disable-space-bottom&gt;Bottom spacing is disabled.&lt;/div&gt;
+</code></pre>
+
+  <h2 id="visually-hidden">Visually hidden</h2>
+
+  <p>If you hide an element with <code>display: none</code>, it will also hide it from assistive</p>
+
+  <p>technology, such as screen readers. This utility allows you to get the effect</p>
+
+  <p>of <code>display: none</code>, without the screen reader issues.</p>
+
+  <pre><code class="html">&lt;p class=&quot;visually-hidden&quot;&gt;
+  You can’t see me, but a screen reader can still access me
+&lt;/p&gt;
+</code></pre>
+
+{% endblock %}

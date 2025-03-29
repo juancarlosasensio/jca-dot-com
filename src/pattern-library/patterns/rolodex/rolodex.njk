@@ -1,0 +1,15 @@
+<div class="rolodex">
+  <ol class="rolodex__list flow" role="list">
+    {% for item in data.items %}
+      <li>
+        <a href="{{ item.link }}" class="rolodex__item sidebar" data-rolodex-theme="{{ item.theme }}" data-reversed>
+          <h3 class="rolodex__heading">
+            <span class="rolodex__number">*{{ item.heading.number }}</span>
+            <span>{{ item.heading.text }}</span>
+          </h3>
+          <img src="{{ item.img.src }}" alt="{{ item.img.alt }}"/>
+        </a>
+      </li>
+    {% endfor %}
+  </ol>
+</div>
