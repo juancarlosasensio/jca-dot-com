@@ -28,11 +28,20 @@
     --line-height-small: calc(0.8*var(--ratio));
     --border-thin: var(--s-5);
     --border-thick: var(--s-2);
+    --flow-space: var(--s-1);
     line-height: var(--ratio);
     font-size: calc(.333vw + 1em);
     font-family: var(--font-plain);
     background-color: var(--color-light);
     color: var(--color-dark)
+}
+
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+.flow-space-xs {
+  --flow-space: var(--s-4);
 }
 
 *,:after,:before {
