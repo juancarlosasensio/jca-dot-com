@@ -1,0 +1,10 @@
+{
+  "title": "Headline",
+  "context": {
+    "heading": "Tasting notes.",
+    "labelledIcon": {
+      "utilities": "text-light text-step-2",
+      "text": "Latest articles"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Button",
+  "context": {
+    "label": "Find out more"
+  },
+  "variants": [
+    {
+      "name": "link",
+      "title": "Link",
+      "context": {
+        "href": "#"
+      }
+    },
+    {
+      "name": "secondary",
+      "title": "Secondary",
+      "context": {
+        "variant": "secondary"
+      }
+    }
+  ]
+}

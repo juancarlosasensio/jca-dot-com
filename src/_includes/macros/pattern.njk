@@ -1,0 +1,18 @@
+{% macro pattern(previewUrl, markup, rendered, size) %}
+  <div class="flow">
+    <iframe class="pattern-library__preview-frame" src="{{ previewUrl }}?state=window" data-size="{{ size if size else 'standard' }}"></iframe>
+    <div>
+      <a href="{{ previewUrl }}" class="button">View full screen</a>
+    </div>
+    {% if markup %}
+      <div class="py-m">
+        <div>
+          <p>
+            <strong>Source (Nunjucks)</strong>
+          </p>
+          <pre><code>{{ markup }}</code></pre>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endmacro %}

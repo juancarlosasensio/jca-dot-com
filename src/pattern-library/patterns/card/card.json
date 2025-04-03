@@ -1,0 +1,22 @@
+{
+  "title": "Card",
+  "extraSampleCSS": ".card { max-width: 380px }",
+  "context": {
+    "img": {
+      "src": "/images/card-image.jpg",
+      "alt": "An over-head shot of someone making a latte with frothed milk from a jug"
+    },
+    "heading": "Barista essentials",
+    "meta": "Sep 29. London, UK.",
+    "buttonLabel": "Find out more",
+    "href": "#"
+  },
+  "variants": [
+    {
+      "name": "With alert text",
+      "context": {
+        "alertText": "Last few spots"
+      }
+    }
+  ]
+}

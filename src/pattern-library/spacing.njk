@@ -1,0 +1,75 @@
+---
+title: 'Spacing'
+toc: 
+  - text: 'Usage'
+    slug: '#usage'
+---
+
+{% extends "layouts/pattern-library.njk" %}
+
+{% block inner %}
+  <p>Spacing follows a fluid scale, meaning that text scales based on the size of the viewport and follows a sizing ratio.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th width="100px"></th>
+        <th>Name</th>
+        <th>Min</th>
+        <th>Max</th>
+      </tr>
+    </thead>
+    {% for size in design.tokens.spacing %}
+      <tr>
+        <td>
+          <div class="bg-dark p-[3px]" style="min-height: var(--space-{{ size.name | slug }})"></div>
+        </td>
+        <td>{{ size.name }}</td>
+        <td>{{ size.min }}px</td>
+        <td>{{ size.max }}px</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <hr/>
+
+  <h2 id="usage">Usage</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Vertical Padding Utility</th>
+        <th>Horizontal Padding Utility</th>
+        <th>Margin Top Utility</th>
+        <th>Flow Space Utility</th>
+        <th>Gutter Utility</th>
+        <th>CSS Custom Property</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for size in design.tokens.spacing %}
+        <tr>
+          <td>
+            <code>.py-{{ size.name | slug }}</code>
+          </td>
+          <td>
+            <code>.px-{{ size.name | slug }}</code>
+          </td>
+          <td>
+            <code>.mt-{{ size.name | slug }}</code>
+          </td>
+          <td>
+            <code>.flow-space-{{ size.name | slug }}</code>
+          </td>
+          <td>
+            <code>.gutter-{{ size.name | slug }}</code>
+          </td>
+          <td>
+            <code>var(--space-{{ size.name | slug }})</code>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

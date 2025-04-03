@@ -1,0 +1,29 @@
+{
+  "title": "Gallery",
+  "context": {
+    "byline": "the two go hand in hand",
+    "summary": "Our London HQ is home to a community of passionate coffee lovers and baristas.",
+    "button": {
+      "href": "#",
+      "label": "About us"
+    },
+    "images": [
+      {
+        "src": "/images/gallery-1.jpg",
+        "alt": "An over head shot of someone handing a latte to another person"
+      },
+      {
+        "src": "/images/gallery-2.jpg",
+        "alt": "Three people holding their coffees up as they are about to “cheers”"
+      },
+      {
+        "src": "/images/gallery-3.jpg",
+        "alt": "A friendly looking Barista looking straight at the camera with a coffee shop kitchen in the background"
+      },
+      {
+        "src": "/images/gallery-4.jpg",
+        "alt": "Ambient shot of a coffee shop"
+      }
+    ]
+  }
+}
