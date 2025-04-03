@@ -1,7 +1,48 @@
 {# Appending 'assetHash' to a stylesheet's href allows up-to-date CSS files to be cached correctly #}
 {# The random() fn is available through src/_data/globa.js #}
 {# TODO: do this only in a production environment #}
+
+{# FROM Andy's blog #}
+
 {% set assetHash = global.random() %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml" />
+    <link rel="stylesheet" href="/css/global.css" />
+
+    {# Add facility for pages to delare an array of critical styles #}
+    {% if pageCriticalStyles %}
+      {% for item in pageCriticalStyles %}
+        <style>{% include item %}</style>
+      {% endfor %}
+    {% endif %}
+
+    {# Add facility for pages to declare an array of stylesheet paths #}
+    {% if pageStylesheets %}
+      {% for item in pageStylesheets %}
+        <link rel="stylesheet" media="print" href="{{ item }}?{{ assetHash }}" onload="this.media='all'" />
+      {% endfor %}
+    {% endif %}
+  </head>
+  <body>
+    {% include "partials/site-head.njk" %}
+    <main tabindex="-1" id="main-content">
+      {% block content %}{% endblock %}
+    </main>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
+
+
+{# MY CURRENT PAGE #}
+
+
+{# {% set assetHash = global.random() %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,27 +59,12 @@
     <title>{{ title }}</title>
   </head>
   <body>
-    {% block content %}{% endblock %}
-    {% block scripts %}{% endblock %}
-  </body>
-
-  {# Previous <body> with sidebar #}
-  {# <body>
-    <div class="docs-page">
-      <header class="docs-header">
-        <a href="/" class="docs-logo" style="display: flex; justify-content: center;">
-          <div class="frame" style="max-width: 250px; height: auto;">
-            <img class="rotate-minus-90" src="/images/he-distinguished-it-all.jpg" alt="">
-          </div>
-        </a>
-        <button class="docs-nav-toggle" aria-expanded="false">
-          <svg class="docs-icon" focusable="false" viewBox="0 0 32 32">
-            <path d="M3,3 29,3 M3,16 29,16 M3,29 29,29"></path>
-          </svg>
-          Menu
-        </button>
-        <nav class="docs-nav" aria-labelledby="nav-label">
-          <span id="nav-label" hidden>main</span>
+    <div class="pattern-library wrapper">
+    <header class="pattern-library__header flow">
+    </header>
+    <main class="sidebar">
+      <nav class="pattern-library__sidebar flow" aria-label="design system">
+        <div class="pattern-library__sidebar-inner pt-2xl">
           <h2>Writing</h2>
           <a class="docs-index-link" href="/blog">
             <svg focusable="false" class="docs-icon">
@@ -59,8 +85,9 @@
                 </a>
               </li>
             {% endfor %}  
-            </ul>
-            <h2>Reading</h2>
+          </ul>
+          <hr>
+           <h2>Reading</h2>
             <ul>
               <li>
                 <a href="/bookshelf" {% if page.url == "/bookshelf/" %} aria-current="true"{% endif %}>
@@ -99,24 +126,15 @@
               </a>
             </li> 
            </ul>
-        </nav>
-      </header>
-      <div class="docs-main">
-        <main id="main" tabindex="-1">
-          <h1 {% if pageTitleClasses %} class="{{ pageTitleClasses }}" {% endif %} >{{ title }}</h1>
-          {{ content | safe }}
-        </main>
-        <div class="box footer">
-          <footer class="text-align:center">
-            <p>
-              <small><strong>juancarlosasensio.com</strong> is created, cared for and updated by me, <a href="/">Juan Carlos Asensio</a>.
-            </p>
-          </footer>
+        </div>
+      </nav>
+      <div>
+        <div class="wrapper flow prose pt-2xl">
+          {% block content %}{% endblock %}
+        </div>
       </div>
-      </div>
-    </div>
-    <script src="/js/main.js?{{ assetHash }}"></script>
-    {# Only include extra scripts if a page defines the "scripts" block #}
-    {# {% block scripts %}{% endblock %} #}
-  {# </body> #}
-</html>
+    </main>
+  </div>
+    {% block scripts %}{% endblock %}
+  </body>
+</html> #}

@@ -1,11 +1,8 @@
 ---
 title: Now Reading
 pageTitleClasses: "text-align:center"
+layout: "layouts/page.njk"
 ---
-
-{% extends "layouts/base.njk" %}
-
-{% block content %}
 
 <p class="text-align:center">
  Books I've read. Books I'm reading. Books I recommend. Inspired by Venkatesh Rao's <a href="https://www.ribbonfarm.com/now-reading/" target="_blank">Now Reading</a> and Dave Rupert's <a href="https://daverupert.com/bookshelf" target="_blank">Bookshelf</a>.
@@ -33,4 +30,3 @@ pageTitleClasses: "text-align:center"
 {% if not collections.books|length %}
   <p>No books added yet! Check back soon to see what I've been reading.</p>
 {% endif %}
-{% endblock %}
