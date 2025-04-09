@@ -3,11 +3,11 @@
   {# <a href="/" class="logo">
     <img src="/images/he-distinguished-it-all.jpg" alt="">
   </a> #}
-  <nav class="nav p-l" aria-label="main navigation">
+  <nav class="nav p-xl" aria-label="main navigation">
            <div class="flow">
           <h2>Writing</h2>
-          <a class="docs-index-link" href="/blog">
-            <svg focusable="false" class="docs-icon">
+          <a class="nav-link" href="/blog">
+            <svg focusable="false" class="nav-icon">
               <use xlink:href="/images/all.svg#icon-eye"></use>
             </svg>
             Full blog archive
@@ -15,9 +15,9 @@
           <ul>
             {% for post in collections.wpContent | getPosts | reverse %}
               <li>
-                <a href="/{{ post.slug }}" {% if page.url == "/"+post.slug+"/" %} aria-current="true"{% endif %}>
+                <a class="nav-link" href="/{{ post.slug }}" {% if page.url == "/"+post.slug+"/" %} aria-current="true"{% endif %}>
                   {% if page.url == "/"+post.slug+"/" %}
-                    <svg class="docs-icon" focusable="false">
+                    <svg class="nav-icon" focusable="false">
                     <use href="/images/all.svg#icon-triangle-right"></use>
                   </svg>                
                   {% endif %}
@@ -29,9 +29,9 @@
            <h2>Reading</h2>
             <ul>
               <li>
-                <a href="/bookshelf" {% if page.url == "/bookshelf/" %} aria-current="true"{% endif %}>
+                <a class="nav-link" href="/bookshelf" {% if page.url == "/bookshelf/" %} aria-current="true"{% endif %}>
                   {% if page.url == "/bookshelf/" %}
-                    <svg class="docs-icon" focusable="false">
+                    <svg class="nav-icon" focusable="false">
                     <use href="/images/all.svg#icon-triangle-right"></use>
                   </svg>                
                   {% endif %}
@@ -42,9 +42,9 @@
             <h2>Doing</h2>
             <ul>
               <li>
-                <a href="/now/" {% if page.url == "/now/" %} aria-current="true"{% endif %}>
+                <a class="nav-link" href="/now/" {% if page.url == "/now/" %} aria-current="true"{% endif %}>
                   {% if page.url == "/now/" %}
-                    <svg class="docs-icon" focusable="false">
+                    <svg class="nav-icon" focusable="false">
                     <use href="/images/all.svg#icon-triangle-right"></use>
                   </svg>                
                   {% endif %}
@@ -57,7 +57,7 @@
             <li>
               <a href="/thinking" {% if page.url == "/thinking" %} aria-current="true"{% endif %}>
                 {% if page.url == "/thinking" %}
-                  <svg class="docs-icon" focusable="false">
+                  <svg class="nav-icon" focusable="false">
                   <use href="/images/all.svg#icon-triangle-right"></use>
                 </svg>                
                 {% endif %}
