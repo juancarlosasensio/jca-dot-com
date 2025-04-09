@@ -247,11 +247,11 @@ a:not([class]):hover {
 }
 
 :focus-visible {
-  --focus-color: var(--color-dark);
-  --focus-offset: 0.08em;
+  --focus-color: var(--color-mid);
+  --focus-offset: 0.3em;
 
-  outline: 2px solid var(--focus-color, currentColor);
-  outline-offset: var(--focus-offset, 0.2lh);
+  outline: var(--focus-offset) solid var(--focus-color, currentColor);
+  outline-offset: var(--focus-offset);
 }
 
 /* 
