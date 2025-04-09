@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
   {% block content %}
-    <main tabindex="-1" id="main-content">
+    <main class="wider-content" tabindex="-1" id="main-content">
       <article class="wrapper region prose flow">
         <h1 {% if pageTitleClasses %} class="{{ pageTitleClasses }}" {% endif %} >{{ pageTitle if pageTitle else title }}</h1> 
         {# {% if summary %}
