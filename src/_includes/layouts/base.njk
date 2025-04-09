@@ -30,10 +30,13 @@
     {% endif %}
   </head>
   <body>
-    {% include "partials/site-head.njk" %}
-    <main tabindex="-1" id="main-content">
-      {% block content %}{% endblock %}
-    </main>
+    {# <a class="[ skip-link ] [ button ]" href="#main-content">Skip to content</a> #}
+      <div class="sidebar">
+        {% include 'partials/site-head.njk' %}
+        <main tabindex="-1" id="main-content">
+          {% block content %}{% endblock %}
+        </main>
+      </div>
     {% block scripts %}{% endblock %}
   </body>
 </html>

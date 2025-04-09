@@ -1,15 +1,7 @@
-.site-header .repel {
-  --gutter: 0.5rem var(--space-m);
-  padding-block: var(--space-m);
-}
-
-.site-header nav ul {
-  margin: 0;
-}
-
-.site-header__brand {
-  display: inline-block;
-  font-size: 2.5rem;
-  height: 2.5rem;
-  color: var(--color-mid);
+.site-header {
+    flex-basis: 15rem;
+    flex-grow: 1;
+    position: relative;
+    outline: var(--space-xs) dashed;
+    padding-top: var(--space-s-m);
 }

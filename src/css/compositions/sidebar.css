@@ -25,8 +25,14 @@ EXCEPTIONS
 }
 
 .sidebar:not([data-direction]) > :first-child {
-  flex-basis: var(--sidebar-target-width, 20rem);
+  flex-basis: var(--sidebar-target-width, 15rem);
   flex-grow: 1;
+}
+
+.base-page__header {
+  position: relative;
+  outline: --s-2 dashed;
+  padding-top: var(--space-s-l);
 }
 
 .sidebar:not([data-direction]) > :last-child {
