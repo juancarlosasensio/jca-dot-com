@@ -1,0 +1,20 @@
+{
+  "title": "Site Head",
+  "context": {
+    "brandName": "Bloom Barista Academy",
+    "items": [
+      {
+        "label": "Courses",
+        "href": "#"
+      },
+      {
+        "label": "About",
+        "href": "#"
+      },
+      {
+        "label": "Contact",
+        "href": "#"
+      }
+    ]
+  }
+}

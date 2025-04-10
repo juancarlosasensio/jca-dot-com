@@ -1,0 +1,51 @@
+---
+title: 'Colors'
+---
+
+{% extends "layouts/pattern-library.njk" %}
+{% set summary %}
+You can either use colors directly, using a CSS Custom
+Property, or with generated CSS utility classes.
+{% endset %}
+
+{% block inner %}
+
+  <div class="table-wrapper scrollbar">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Hex code</th>
+          <th>Custom Property</th>
+          <th>Color Utility Class</th>
+          <th>BG Utility Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for color in design.tokens.colors %}
+          <tr>
+            <td>
+              <div class="cluster items-center gutter-s" style="flex-wrap: nowrap">
+                <div class="pattern-library__swatch" style="background: {{ color.value }}" role="presentation"></div>
+                <strong>{{ color.name }}</strong>
+              </div>
+            </td>
+            <td>
+              <code>{{ color.value }}</code>
+            </td>
+            <td>
+              <code>var(--color-{{ color.name | slug }})</code>
+            </td>
+            <td>
+              <code>.text-{{ color.name | slug }}</code>
+            </td>
+            <td>
+              <code>.bg-{{ color.name | slug }}</code>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

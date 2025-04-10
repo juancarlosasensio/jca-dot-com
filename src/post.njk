@@ -10,13 +10,16 @@
     }
   },
   permalink:"/{{ item.slug }}/index.html",
-  layout:"layouts/base",
+  layout: "layouts/page.njk",
   eleventyComputed: {
     title:"{{ item.title | safe }}"
-  }  
+  },
+  pageStylesheets: ["../css/wordpress.css"]    
 }
 ---
-
-{{ item.content | safe }}
   
-<a href="/blog">Back to blog</a>
+{{ item.content | safe }}
+
+<div>
+  <a href="/blog">Back to blog</a>
+</div>

@@ -1,28 +1,24 @@
 ---
 title: Now Reading
-layout: "layouts/base.njk"
-pageTitleClasses: "text-align:center"
+pageTitleClasses: "text-center"
+layout: "layouts/wider-content-page.njk"
 ---
 
-<p class="text-align:center">
+<p class="text-center">
  Books I've read. Books I'm reading. Books I recommend. Inspired by Venkatesh Rao's <a href="https://www.ribbonfarm.com/now-reading/" target="_blank">Now Reading</a> and Dave Rupert's <a href="https://daverupert.com/bookshelf" target="_blank">Bookshelf</a>.
 </p>
 
 {% if collections.books|length %}
   {% for shelf, booksByShelf in collections.books | groupby("shelf") %}
-    <h2 class="text-align:center" >{{ shelf | capitalize }}</h2>
-    <div class="container max-width:100%">
+    <h2 class="text-center" >{{ shelf | capitalize }}</h2>
+    <div class="container bg-dark p-l text-light">
     <div class="grid">
       {% for book in booksByShelf %}
-        <article class="box book">
-          <div class="stack book">
-            <div class="frame book">
-              <img class="inverted" {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
-            </div>
-            <h4>{{ book.title }}</h4>
-            <p>
-              {{ book.authors }}
-            </p>
+        <article class="card" data-card-variant='book'>
+          <img {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
+          <div class="card__content flow">
+            <h4 class="card__heading">{{ book.title }}</h4>
+            <p class="card__meta">{{ book.authors }}</p>
           </div>
         </article>
       {% endfor %}
