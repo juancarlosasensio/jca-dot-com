@@ -2,6 +2,12 @@
   --flow-space: var(--space-l);
 }
 
+.prose.centered,
+.prose.centered > * {
+  margin-left: auto;
+  margin-right:  auto;
+}
+
 
 .prose :is(h1, h2, h3) {
   overflow-wrap: anywhere;
