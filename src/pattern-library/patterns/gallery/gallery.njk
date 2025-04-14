@@ -1,0 +1,21 @@
+<article class="gallery grid">
+  <div class="flow">
+    <p class="gallery__byline">{{ data.byline }}</p>
+    <img src="{{ data.images[0].src }}" alt="{{ data.images[0].alt }}" loading="lazy"/>
+  </div>
+  <div class="flow">
+    <img src="{{ data.images[1].src }}" alt="{{ data.images[1].alt }}" loading="lazy"/>
+  </div>
+  <div class="flow">
+    <p>{{ data.summary }}</p>
+    <img src="{{ data.images[2].src }}" alt="{{ data.images[2].alt }}" loading="lazy"/>
+  </div>
+  <div class="flow">
+    <img src="{{ data.images[3].src }}" alt="{{ data.images[3].alt }}" loading="lazy"/>
+    <a href="{{ data.button.href }}" class="button" data-button-variant="secondary">
+      <span>{{ data.button.label }}</span>
+      {% include "icons/arrow.svg" %}
+      <span class="corner" aria-hidden="true"></span>
+    </a>
+  </div>
+</article>

@@ -1,0 +1,5 @@
+{
+  "title": "Corner",
+  "extraSampleCSS": "body { background: var(--color-dark-glare) }",
+  "context": {}
+}

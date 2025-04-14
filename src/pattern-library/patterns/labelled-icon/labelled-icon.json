@@ -1,0 +1,14 @@
+{
+  "title": "Labelled Icon",
+  "context": {
+    "text": "Upcoming courses"
+  },
+  "variants": [
+    {
+      "name": "Styled with utilities",
+      "context": {
+        "utilities": "text-light text-step-2"
+      }
+    }
+  ]
+}

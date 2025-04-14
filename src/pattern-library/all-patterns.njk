@@ -1,0 +1,70 @@
+---
+title: 'All components'
+summary: 'A collection of every component and their variants as a cumulutive reference.'
+---
+
+{% from 'macros/pattern.njk' import pattern with context %}
+
+{% extends "layouts/pattern-library.njk" %}
+
+{% block inner %}
+
+  {% for item in design.patterns.items %}
+    <hr/>
+    <div class="flow">
+      <h2>{{ item.data.title }}</h2>
+      <p class="mt-xs">
+        <code class="text-primary-shade">{{ item.renderPatternSnippet }}</code>
+      </p>
+      {% if item.variants | length %}
+        <nav class="cluster" aria-label="variants">
+          {% for variant in item.variants %}
+            <a href="#{{ variant.data.title | slug }}">{{ variant.data.title }}</a>
+          {% endfor %}
+        </nav>
+      {% endif %}
+
+      {{ pattern(item.previewUrl, item.markup, item.rendered) }}
+
+      {% if item.docs %}
+        <article class="flow">
+          <h2>Information</h2>
+          {{ item.docs | safe }}
+          {% if item.data.keyLinks | length %}
+            <h3>Key links</h3>
+            <ul>
+              {% for link in item.data.keyLinks %}
+                <li>
+                  {% if '://' in link.url %}
+                    <a href="{{ link.url }}">{{ link.label }}</a>
+                  {% else %}
+                    <dl>
+                      <dt>{{ link.label }}</dd>
+                      <dd>
+                        <code>{{ link.url }}</code>
+                      </dd>
+                    </dl>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </article>
+      {% endif %}
+
+      {% if item.variants | length %}
+        <h2>Variants</h2>
+        {% for variant in item.variants %}
+          <h3 id="{{ variant.data.title | slug }}">{{ variant.data.title }}</h3>
+          <p class="mt-xs">
+            <code class="text-primary-shade">{{ variant.renderPatternSnippet }}</code>
+          </p>
+          <div class="flow-space-size-1">
+            {{ pattern(variant.previewUrl, variant.markup, variant.rendered) }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endfor %}
+
+{% endblock %}

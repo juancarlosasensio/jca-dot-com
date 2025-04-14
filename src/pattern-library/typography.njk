@@ -1,0 +1,144 @@
+---
+title: 'Typography'
+toc: 
+  - text: 'Sizes'
+    slug: '#sizes'
+  - text: 'Leading'
+    slug: '#leading'
+  - text: 'Weights'
+    slug: '#weights'
+  - text: 'Fonts'
+    slug: '#sizes'
+---
+
+{% extends "layouts/pattern-library.njk" %}
+
+{% block inner %}
+
+  <h2 tabindex="-1" id="sizes">Sizes</h2>
+  <p>Text sizes follow a fluid scale, meaning that text scales based on the size of the viewport and follows a sizing ratio.</p>
+
+  {% for size in design.tokens.textSizes %}
+    <p style="font-size: var(--size-{{ size.name | slug }})" class="leading-[1] {% if loop.index > 5 %}font-display{% endif %} {% if loop.index > 8 %}font-special{% endif %}">{{ size.name }} (min: {{ size.min }}px / max: {{ size.max }}px)</p>
+  {% endfor %}
+
+  <hr/>
+
+  <h3>Usage</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Utility Class</th>
+        <th>CSS Custom Property</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for size in design.tokens.textSizes %}
+        <tr>
+          <td>
+            <code>.text-{{ size.name | slug }}</code>
+          </td>
+          <td>
+            <code>var(--size-{{ size.name | slug }})</code>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 tabindex="-1" id="leading">Leading</h2>
+  {% for size in design.tokens.textLeading %}
+    <p style="line-height: var(--leading-{{ size.name | slug }}); font-weight: bold;">{{ size.name }} (value: {{ size.value }})</p>
+    <p style="line-height: var(--leading-{{ size.name | slug }})">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+  {% endfor %}
+  <hr/>
+
+  <h3>Usage</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Utility Class</th>
+        <th>CSS Custom Property</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for size in design.tokens.textLeading %}
+        <tr>
+          <td>
+            <code>.leading-{{ size.name | slug }}</code>
+          </td>
+          <td>
+            <code>var(--leading-{{ size.name | slug }})</code>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 tabindex="-1" id="weights">Weights</h2>
+
+  {% for weight in design.tokens.textWeights %}
+    <p class="font-{{ weight.name | slug }}">
+      <span class="font-{{ weight.name }}">{{ weight.name }}</span> ({{ weight.value }})</p>
+  {% endfor %}
+  <hr/>
+
+  <h3>Usage</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Utility Class</th>
+        <th>CSS Custom Property</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for weight in design.tokens.textWeights %}
+        <tr>
+          <td>
+            <code>.font-{{ weight.name | slug }}</code>
+          </td>
+          <td>
+            <code>var(--font-{{ weight.name | slug }})</code>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 tabindex="-1" id="sizes">Fonts</h2>
+
+  {% for font in design.tokens.fonts %}
+    <div style="font-family: var(--font-{{ font.name | slug }});" class="leading-loose py-m flow">
+      <p class="text-step-4">{{ font.name }}</p>
+      <p class="text-step-1">{{ font.description }}</p>
+    </div>
+  {% endfor %}
+
+  <hr/>
+
+  <h3>Usage</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Utility Class</th>
+        <th>CSS Custom Property</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for font in design.tokens.fonts %}
+        <tr>
+          <td>
+            <code>.font-{{ font.name | slug }}</code>
+          </td>
+          <td>
+            <code>var(--font-{{ font.name | slug }})</code>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

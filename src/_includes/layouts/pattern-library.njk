@@ -1,0 +1,94 @@
+{% extends "layouts/base.njk" %}
+
+{% set extraCSSFiles = ['pattern-library.css'] %}
+
+{% macro stackLink(url, pageUrl, text) %}
+  {% if url == pageUrl %}
+    <a href="{{ url }}" aria-current="page">{{ text }}</a>
+  {% else %}
+    <a href="{{ url }}">{{ text }}</a>
+  {% endif %}
+{% endmacro %}
+
+{% set brandNav %}
+<div class="repel">
+  <p>Bloom Barista academy: Pattern Library</p>
+  <p>
+    <a href="/">View the website ←</a>
+  </p>
+</div>
+{% endset %}
+
+{% block content %}
+  <div class="pattern-library wrapper">
+    <header class="pattern-library__header flow">
+      <a href="/pattern-library">
+        {% include "icons/brand-full.svg" %}
+      </a>
+      {{ brandNav | safe }}
+    </header>
+    <main class="sidebar">
+      <nav class="pattern-library__sidebar flow" aria-label="design system">
+        <div class="pattern-library__sidebar-inner pt-2xl">
+          {% for group in design.sidebar.linkGroups %}
+            {% if not loop.first %}<hr/>{% endif %}
+            <h2>{{ group.title }}</h2>
+            <ul class="pattern-library__nav" role="list">
+              {% for link in group.items %}
+                <li>{{ stackLink(link.url, page.url, link.text)}}</li>
+              {% endfor %}
+            </ul>
+          {% endfor %}
+          <hr/>
+          <h2>Patterns</h2>
+          <ul class="pattern-library__nav" role="list">
+            <li>
+              {{ stackLink('/pattern-library/all-patterns/', page.url, 'All') }}
+            </li>
+            {% for item in design.patterns.items %}
+              <li>{{ stackLink(item.url, page.url, item.data.title) }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </nav>
+      <div>
+        <div class="wrapper flow prose pt-2xl">
+          <h1 class="cluster">
+            {{ pageTitle if pageTitle else title }}
+            {% if '/component' in page.url %}
+              {% if item.data.status %}
+                <span class="badge" data-type="{{ 'info' if item.data.status == 'WIP' else 'warn' }}" aria-label="status">
+                  {{item.data.status}}
+                </span>
+              {% else %}
+                <span class="badge" aria-label="status">Live</span>
+              {% endif %}
+            {% endif %}
+          </h1>
+          {% if summary %}
+            {{ summary | safe }}
+          {% endif %}
+          {% if toc %}
+            <nav class="pattern-library__toc" aria-label="table of contents">
+              <p>Skip to section:</p>
+              <ul>
+                {% for item in toc %}
+                  <li>
+                    <a href="{{ item.slug }}">{{ item.text }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </nav>
+          {% endif %}
+          {% block inner %}{% endblock %}
+        </div>
+      </div>
+    </main>
+    <div class="py-m leading-[0.75]">
+      {{ brandNav | safe }}
+    </div>
+  </div>
+
+  {{ design.patterns.renderPattern('closer', {navItems: []}) | safe }}
+  {{ design.patterns.renderPattern('site-foot', {}) | safe }}
+{% endblock %}

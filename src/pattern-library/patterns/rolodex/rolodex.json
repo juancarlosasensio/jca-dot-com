@@ -1,0 +1,44 @@
+{
+  "title": "Rolodex",
+  "extraSampleCSS": ".rolodex { max-width: 900px }",
+  "context": {
+    "items": [
+      {
+        "link": "#",
+        "theme": "light",
+        "heading": {
+          "number": "07",
+          "text": "A step-by-step guide to brewing with Chemex"
+        },
+        "img": {
+          "src": "/images/rolodex-1.jpg",
+          "alt": "Ground coffee being poured into a Chemex from a height"
+        }
+      },
+      {
+        "link": "#",
+        "theme": "primary",
+        "heading": {
+          "number": "06",
+          "text": "The science of coffee extraction"
+        },
+        "img": {
+          "src": "/images/rolodex-2.jpg",
+          "alt": "Under-shot of an espresso machine, pouring espresso"
+        }
+      },
+      {
+        "link": "#",
+        "theme": "dark",
+        "heading": {
+          "number": "05",
+          "text": "A guide to achieving next-level latte art"
+        },
+        "img": {
+          "src": "/images/rolodex-3.jpg",
+          "alt": "A leaf being added to latte foam"
+        }
+      }
+    ]
+  }
+}
