@@ -15,6 +15,38 @@
   width: 8em;
   height: 8em;
 }
+
+.site-header__nav-toggle {
+    font-size: var(--size-step-1);
+    margin-top: var(--size-step-1);
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.site-header__nav-toggle path {
+    transition: d .25s;
+}
+
+.site-header__nav-toggle[aria-expanded=true] path {
+    d: path("M3,3 29,29 M16,16 16,16 M3,29 29,3");
+}
+
+@media (max-width: 827px) {
+    .with-js .site-header__nav-toggle {
+        display: block;
+    }
+
+    .with-js .site-header__nav {
+        display: none;
+    }
+
+    [aria-expanded=true]+.site-header__nav {
+        display: block;
+    }
+}
+
 .site-header__nav {
   margin-block-start: var(--flow-space, 1em);
 }
