@@ -1,27 +1,24 @@
-const { DateTime } = require("luxon");
 require('dotenv').config()
 
 const wpContent = require('./src/collections/blog.js');
 const books = require('./src/collections/books.js');
+
+const simpleDateFilter = require('./src/filters/simpleDate.js');
+const notePostsFilter = require('./src/filters/notesPosts.js');
+const genericPostsFilter = require('./src/filters/genericPosts.js');
 
 module.exports = function (config) {
   // Creates a global variable for the current __dirname to make including and
   // working with files in the pattern library a little easier
   global.__basedir = __dirname;
 
-  config.addFilter("simpleDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
-  });
-
-  // Get 'notes' from Wordpress content
-  config.addFilter("getNotes", (arr) => {
-    return arr.filter(note => note.categories.hasOwnProperty('Notes'));
-  });
+  
+  // Filters
+  config.addFilter("simpleDate", simpleDateFilter);
+  config.addFilter("getNotes", notePostsFilter);
 
   // Get 'blog posts' from Wordpress content
-  config.addFilter("getPosts", (arr) => {
-    return arr.filter(note => !note.categories.hasOwnProperty('Notes'));
-  });
+  config.addFilter("getPosts", genericPostsFilter)
 
   // Add all Wordpress posts as its own collection
   config.addCollection('wpContent', async function collectionCallback(collectionApi) {
