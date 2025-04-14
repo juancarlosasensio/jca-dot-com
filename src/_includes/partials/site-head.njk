@@ -1,70 +1,72 @@
-<header class="site-header">
+<header class="site-header px-l">
   {# Need logo styles #}
-  {# <a href="/" class="logo">
-    <img src="/images/he-distinguished-it-all.jpg" alt="">
-  </a> #}
-  <nav class="nav p-xl" aria-label="main navigation">
-           <div class="flow">
-          <h2>Writing</h2>
-          <a class="nav-link" href="/blog">
-            <svg focusable="false" class="nav-icon">
-              <use xlink:href="/images/all.svg#icon-eye"></use>
-            </svg>
-            Full blog archive
+  <div class="flex justify-between align-center" style="width: 100%;">
+    <div>
+      <a href="/">
+        <img class="site-header__logo" src="/images/phenakistoscope.png" alt="">
+      </a>
+    </div>
+  </div>
+    <nav class="site-header__nav flow" aria-label="main navigation">
+      <h2>Writing</h2>
+      <a class="site-header__link" href="/blog">
+        <svg focusable="false" class="site-header__icon">
+          <use xlink:href="/images/all.svg#icon-eye"></use>
+        </svg>
+          Full blog archive
+      </a>
+      <ul>
+      {% for post in collections.wpContent | getPosts | reverse %}
+        <li>
+          <a class="site-header__link" href="/{{ post.slug }}" {% if page.url == "/"+post.slug+"/" %} aria-current="true"{% endif %}>
+            {% if page.url == "/"+post.slug+"/" %}
+              <svg class="site-header__icon" focusable="false">
+              <use href="/images/all.svg#icon-triangle-right"></use>
+            </svg>                
+            {% endif %}
+            {{ post.title | safe }}
           </a>
-          <ul>
-            {% for post in collections.wpContent | getPosts | reverse %}
-              <li>
-                <a class="nav-link" href="/{{ post.slug }}" {% if page.url == "/"+post.slug+"/" %} aria-current="true"{% endif %}>
-                  {% if page.url == "/"+post.slug+"/" %}
-                    <svg class="nav-icon" focusable="false">
-                    <use href="/images/all.svg#icon-triangle-right"></use>
-                  </svg>                
-                  {% endif %}
-                  {{ post.title | safe }}
-                </a>
-              </li>
-            {% endfor %}  
-          </ul>
-           <h2>Reading</h2>
-            <ul>
-              <li>
-                <a class="nav-link" href="/bookshelf" {% if page.url == "/bookshelf/" %} aria-current="true"{% endif %}>
-                  {% if page.url == "/bookshelf/" %}
-                    <svg class="nav-icon" focusable="false">
-                    <use href="/images/all.svg#icon-triangle-right"></use>
-                  </svg>                
-                  {% endif %}
-                  Now Reading
-                </a>
-              </li>
-            </ul>
-            <h2>Doing</h2>
-            <ul>
-              <li>
-                <a class="nav-link" href="/now/" {% if page.url == "/now/" %} aria-current="true"{% endif %}>
-                  {% if page.url == "/now/" %}
-                    <svg class="nav-icon" focusable="false">
-                    <use href="/images/all.svg#icon-triangle-right"></use>
-                  </svg>                
-                  {% endif %}
-                  What I'm up to now
-                </a>
-              </li>
-            </ul>
-           <h2>Thinking</h2>
-           <ul>
-            <li>
-              <a href="/thinking" {% if page.url == "/thinking" %} aria-current="true"{% endif %}>
-                {% if page.url == "/thinking" %}
-                  <svg class="nav-icon" focusable="false">
-                  <use href="/images/all.svg#icon-triangle-right"></use>
-                </svg>                
-                {% endif %}
-                Notes
-              </a>
-            </li> 
-           </ul>
-        </div>
-  </nav>
+        </li>
+      {% endfor %}  
+      </ul>
+      <h2>Reading</h2>
+      <ul>
+        <li>
+          <a class="site-header__link" href="/bookshelf" {% if page.url == "/bookshelf/" %} aria-current="true"{% endif %}>
+            {% if page.url == "/bookshelf/" %}
+              <svg class="site-header__icon" focusable="false">
+              <use href="/images/all.svg#icon-triangle-right"></use>
+            </svg>                
+            {% endif %}
+            Now Reading
+          </a>
+        </li>
+      </ul>
+      <h2>Doing</h2>
+      <ul>
+        <li>
+          <a class="site-header__link" href="/now/" {% if page.url == "/now/" %} aria-current="true"{% endif %}>
+            {% if page.url == "/now/" %}
+              <svg class="site-header__icon" focusable="false">
+              <use href="/images/all.svg#icon-triangle-right"></use>
+            </svg>                
+            {% endif %}
+            What I'm up to now
+          </a>
+        </li>
+      </ul>
+      <h2>Thinking</h2>
+      <ul>
+        <li>
+          <a href="/thinking" {% if page.url == "/thinking" %} aria-current="true"{% endif %}>
+            {% if page.url == "/thinking" %}
+              <svg class="site-header__icon" focusable="false">
+              <use href="/images/all.svg#icon-triangle-right"></use>
+            </svg>                
+            {% endif %}
+            Notes
+          </a>
+        </li> 
+      </ul>
+    </nav>
 </header>

@@ -1,48 +1,63 @@
 .site-header {
+    --aspect-ratio: 1/1;
+
     flex-basis: 15rem;
     flex-grow: 1;
     position: relative;
     outline: var(--space-xs) dashed;
-    padding-top: var(--space-s-m);
+    padding-block: var(--region-space, var(--space-m));
 }
 
-.nav h2 {
+.site-header__logo {
+  --flow-space: var(--space-s-m);
+  
+  aspect-ratio: var(--aspect-ratio);
+  object-fit: cover;
+  width: 6em;
+  height: 6em;
+}
+
+.site-header__nav {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+.site-header__nav h2 {
     text-transform: uppercase;
     letter-spacing: var(--uppercase-kerning);
 }
 
-.nav a {
+.site-header__nav a {
   display: inline-block;
   line-height: var(--line-height-small);
   font-weight: 700;
   text-decoration: none;
 }
 
-.nav a:visited {
+.site-header__nav a:visited {
   color: currentColor;
 }
 
-.nav [aria-current=true] {
+.site-header__nav [aria-current=true] {
     position: relative;
     text-indent: -1.25em;
 }
 
-.nav ul {
+.site-header__nav ul {
   list-style: none;
   padding-inline-start: 0px;
 }
 
-.nav ul > li {
+.site-header__nav ul > li {
   padding-inline-start: 0px;
 }
 
-.nav-link .nav-icon {
+.site-header__link .site-header__icon {
     width: 1em;
     height: 1em;
     vertical-align: -.15em;
 }
 
-.nav-icon {
+.site-header__icon {
     width: .75em;
     height: .75em;
     stroke: currentColor;
