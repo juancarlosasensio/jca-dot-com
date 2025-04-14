@@ -17,12 +17,16 @@ between the sidebar and main content.
 
 EXCEPTIONS
 .sidebar[data-direction='rtl']: flips the sidebar to be on the right 
-.sidebar[data-layout='main']: flips the sidebar to be on the right
+.sidebar[data-layout='main']: sets specific styles for when the sidebar is used as the main layout pattern
 */
 .sidebar {
   display: flex;
   flex-wrap: wrap;
   gap: var(--gutter, var(--space-s-l));
+}
+
+.sidebar[data-layout='main'] > * {
+  padding-block-start: var(--space-xl);
 }
 
 .sidebar[data-layout='main'] > :last-child:not([class]) {
@@ -37,6 +41,7 @@ EXCEPTIONS
 .sidebar:not([data-direction]) > :first-child {
   flex-basis: var(--sidebar-target-width, 20rem);
   flex-grow: 1;
+  padding-block-end: var(--space-xl);
 }
 
 .sidebar:not([data-direction]) > :last-child {

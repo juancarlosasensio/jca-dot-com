@@ -5,7 +5,6 @@
     flex-grow: 1;
     position: relative;
     outline: var(--space-xs) dashed;
-    padding-block: var(--region-space, var(--space-m));
 }
 
 .site-header__logo {
@@ -13,10 +12,9 @@
   
   aspect-ratio: var(--aspect-ratio);
   object-fit: cover;
-  width: 6em;
-  height: 6em;
+  width: 8em;
+  height: 8em;
 }
-
 .site-header__nav {
   margin-block-start: var(--flow-space, 1em);
 }
