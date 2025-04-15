@@ -6,6 +6,7 @@ const books = require('./src/collections/books.js');
 const simpleDateFilter = require('./src/filters/simpleDate.js');
 const notePostsFilter = require('./src/filters/notesPosts.js');
 const genericPostsFilter = require('./src/filters/genericPosts.js');
+const nowPageUpdatesFilter = require('./src/filters/nowPosts.js');
 
 module.exports = function (config) {
   // Creates a global variable for the current __dirname to make including and
@@ -16,13 +17,19 @@ module.exports = function (config) {
   // Filters
   config.addFilter("simpleDate", simpleDateFilter);
   config.addFilter("getNotes", notePostsFilter);
-
-  // Get 'blog posts' from Wordpress content
-  config.addFilter("getPosts", genericPostsFilter)
+  config.addFilter("getPosts", genericPostsFilter);
+  config.addFilter("getNowUpdates", nowPageUpdatesFilter);
 
   // Add all Wordpress posts as its own collection
   config.addCollection('wpContent', async function collectionCallback(collectionApi) {
     const allContent = await wpContent();
+
+    // const nowUpdates = post => post.categories.hasOwnProperty('Notes');
+    
+    // console.log('----------------------------------');
+    // console.log(allContent.filter(nowUpdates));
+
+
     return allContent;
   });
   

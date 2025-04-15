@@ -48,6 +48,8 @@ module.exports = async function () {
     item.title = decodeHtmlCharCodes(item.title);
   })
 
+  console.log('from blog.js', items.length);
+
   // Stick in cache for later
   asset.save(items, 'json');
   return items;
