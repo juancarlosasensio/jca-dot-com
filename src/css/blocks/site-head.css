@@ -63,6 +63,10 @@
   text-decoration: none;
 }
 
+.site-header__nav a:hover {
+  text-decoration: underline;
+}
+
 .site-header__nav a:visited {
   color: currentColor;
 }
@@ -85,6 +89,11 @@
     width: 1em;
     height: 1em;
     vertical-align: -.15em;
+}
+
+.site-header__link[aria-current=true],
+.site-header__link[aria-current=true]:hover {
+    text-decoration: none;
 }
 
 .site-header__icon {
