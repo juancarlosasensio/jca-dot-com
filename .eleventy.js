@@ -4,6 +4,7 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 
 const wpContent = require('./src/collections/blog.js');
 const books = require('./src/collections/books.js');
+const blogroll = require('./src/collections/blogroll.js');
 
 const simpleDateFilter = require('./src/filters/simpleDate.js');
 const notePostsFilter = require('./src/filters/notesPosts.js');
@@ -30,6 +31,9 @@ module.exports = function (config) {
   
   // Add books as its own collection
   config.addCollection('books', books);
+  
+  // Add blogroll as its own collection
+  config.addCollection('blogroll', blogroll);
 
   // Pass through fonts and images
   config.addPassthroughCopy('./src/fonts');

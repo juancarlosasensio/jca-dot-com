@@ -1,0 +1,15 @@
+---
+title: 'Blogroll'
+eleventyExcludeFromCollections: true
+layout: 'layouts/page.njk'
+---
+
+<ul>
+{% for person in collections.blogroll %}
+  <li>
+    <a href="/{{ person.site_url }}">
+      {{ person.title }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
