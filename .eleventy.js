@@ -18,17 +18,11 @@ module.exports = function (config) {
   config.addFilter("simpleDate", simpleDateFilter);
   config.addFilter("getNotes", notePostsFilter);
   config.addFilter("getPosts", genericPostsFilter);
-  config.addFilter("getNowUpdates", nowPageUpdatesFilter);
+  config.addFilter("getNowEntries", nowPageUpdatesFilter);
 
   // Add all Wordpress posts as its own collection
   config.addCollection('wpContent', async function collectionCallback(collectionApi) {
     const allContent = await wpContent();
-
-    // const nowUpdates = post => post.categories.hasOwnProperty('Notes');
-    
-    // console.log('----------------------------------');
-    // console.log(allContent.filter(nowUpdates));
-
 
     return allContent;
   });

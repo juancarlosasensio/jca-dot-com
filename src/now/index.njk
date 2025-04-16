@@ -7,9 +7,11 @@
   },
   eleventyComputed: {
     nowEntries: function(data) {
-      return this.getNowUpdates(data.allPosts());
+      return this.getNowEntries(data.allPosts());
     }
-  }
+  },
+  permalink: "/now/index.html",
+  eleventyExcludeFromCollections: true
 }
 ---
 
@@ -17,7 +19,7 @@
   <p>
     <em>Last updated: {{ nowEntries[0].date | simpleDate }}</em>
   </p>
-  <a href="/">Read previous entries</a>
+  <a href="/now/archive">← Read previous entries</a>
 </div>
 
 {{ nowEntries[0].content | safe }}
