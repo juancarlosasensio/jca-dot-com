@@ -7,7 +7,7 @@ layout: 'layouts/page.njk'
 <ul>
 {% for person in collections.blogroll %}
   <li>
-    <a href="/{{ person.site_url }}">
+    <a href="{{ person.site_url }}" target="_blank">
       {{ person.title }}
     </a>
   </li>
