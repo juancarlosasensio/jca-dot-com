@@ -4,6 +4,14 @@ eleventyExcludeFromCollections: true
 layout: 'layouts/page.njk'
 ---
 
+<aside class="alert bg-dark text-light p-m">
+  <p>
+    Notes are a collection of my thoughts, ideas, and reflections.
+    They are not polished articles. They are raw, unfiltered musings.
+    Proceed at your own risk.
+  </p>
+</aside>
+
 <ul>
 {% for note in collections.wpContent | getNotes | reverse %}
   <li>
