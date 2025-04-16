@@ -1,6 +1,5 @@
 ---
 title: Juan Carlos Asensio
-heroImageSrc: '/images/he-distinguished-it-all.jpg'
 layout: 'layouts/page'
 ---
 
