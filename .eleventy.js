@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+const rssPlugin = require('@11ty/eleventy-plugin-rss');
+
 const wpContent = require('./src/collections/blog.js');
 const books = require('./src/collections/books.js');
 
@@ -34,6 +36,9 @@ module.exports = function (config) {
   config.addPassthroughCopy('./src/images');
   config.addPassthroughCopy('./src/js');
   config.addPassthroughCopy('./src/_redirects');
+
+  // Add RSS plugin
+  config.addPlugin(rssPlugin);
 
   return {
     markdownTemplateEngine: 'njk',
