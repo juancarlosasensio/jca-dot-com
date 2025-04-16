@@ -68,7 +68,7 @@
 }
 
 .site-header__nav a:visited {
-  color: currentColor;
+  color: inherit;
 }
 
 .site-header__nav [aria-current=true] {

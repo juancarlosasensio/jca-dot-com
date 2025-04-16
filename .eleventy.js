@@ -23,7 +23,6 @@ module.exports = function (config) {
   // Add all Wordpress posts as its own collection
   config.addCollection('wpContent', async function collectionCallback(collectionApi) {
     const allContent = await wpContent();
-
     return allContent;
   });
   
