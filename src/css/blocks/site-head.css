@@ -67,10 +67,6 @@
   text-decoration: underline;
 }
 
-.site-header__nav a:visited {
-  color: inherit;
-}
-
 .site-header__nav [aria-current=true] {
     position: relative;
     text-indent: -1.25em;
