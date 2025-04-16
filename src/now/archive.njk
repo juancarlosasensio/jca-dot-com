@@ -1,0 +1,16 @@
+---
+title: 'Now Entries'
+eleventyExcludeFromCollections: true
+layout: 'layouts/page.njk'
+permalink: '/now/archive/index.html'
+---
+
+<ul>
+{% for post in collections.wpContent | getNowEntries %}
+  <li>
+    <a href="/now/{{ post.date | simpleDate | slugify }}/index.html">
+      {{ post.title }}
+    </a>
+  </li>
+{% endfor %}
+</ul>

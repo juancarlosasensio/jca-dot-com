@@ -25,7 +25,7 @@ body {
 }
 
 h1 {
-  font-size: var(--size-step-8);
+  font-size: var(--size-step-9);
   max-width: 20ch;
 }
 
@@ -126,14 +126,12 @@ ol ::marker {
   font-weight: var(--font-bold);
 }
 
-
 /* Lists with classes and roles will be out of standard flow, so remove the default spacing */
 [role='list'][class],
 [role='tablist'][class] {
   margin-block: 0;
   padding: 0;
 }
-
 
 dt {
   font-weight: var(--font-medium);
@@ -150,7 +148,6 @@ dd + dt {
 dd {
   margin-inline-start: 1.5ch;
 }
-
 
 blockquote {
   margin-inline: 0;
@@ -185,7 +182,6 @@ figcaption {
   font-size: var(--size-step-0);
   font-family: monospace;
 }
-
 
 table {
   border: var(--stroke);
@@ -303,11 +299,9 @@ form > * + * {
   margin-top: var(--flow-space, 1rem);
 }
 
-
 :is(input, select, textarea) {
   accent-color: var(--color-primary);
 }
-
 
 :is(input:not([type='checkbox'], [type='radio'], [type='color']), select, textarea) {
   padding: 0.5em 0.8em;
@@ -323,7 +317,6 @@ form > * + * {
   }
 }
 
-
 label {
   line-height: var(--leading-fine);
   font-weight: var(--font-medium);
@@ -333,7 +326,6 @@ label::after {
   content: '\A';
   white-space: pre;
 }
-
 
 /* Usually label wraps checkbox and radio buttons, so we give ourselves more layout and text-flow control with flex */
 label:has(input) {
@@ -347,11 +339,10 @@ label:has(input) + label:has(input) {
   --flow-spce: var(--space-s-m);
 }
 
-Slightly adjusts the vertical position of the check/radio
+/* Slightly adjusts the vertical position of the check/radio */
 label:has(input) input {
   transform: translateY(-0.1ex);
 }
-
 
 input:disabled {
   background: var(--color-mid);
@@ -361,7 +352,6 @@ input:disabled,
 label input:disabled + * {
   cursor: not-allowed;
 }
-
 
 fieldset {
   border: var(--stroke);
