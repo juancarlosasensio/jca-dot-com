@@ -8,6 +8,11 @@
   position: relative;
 }
 
+.card__heading {
+  font-size: var(--size-step-00);
+  color: var(--color-light)
+}
+
 .card__meta {
   --flow-space: var(--space-s);
 

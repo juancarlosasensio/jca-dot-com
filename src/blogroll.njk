@@ -1,24 +1,35 @@
 ---
 title: 'Blogroll'
+pageTitleClasses: 'text-center'
 eleventyExcludeFromCollections: true
-layout: 'layouts/page.njk'
+layout: 'layouts/wider-content-page.njk'
 ---
 
-<ul>
-{% for person in collections.blogroll %}
-  <li>
-    <a href="{{ person.site_url }}" target="_blank">
-      {{ person.title }}
-    </a>
-    {% if person.latest_post.url %}
-      <ul>
-        <li>
-          <a href="{{ person.latest_post.url }}" target="_blank">
-            {{ person.latest_post.title if person.latest_post.title else person.latest_post.url }}
-          </a>
-        </li>
-      </ul>
-    {% endif %}
-  </li>
-{% endfor %}
-</ul>
+{% if collections.blogroll | length %}
+  <div class="container bg-dark p-l text-light">
+    <div class="grid">
+          {% for person in collections.blogroll | sort(collections.blogroll, false, false, 'title' ) %}
+            <article class="card flow">
+              <div class="card__heading">
+                {{ person.latest_post.published | simpleDate if person.latest_post.published}}
+              </div>
+              <div class="card__meta">
+                <a href="{{ person.site_url }}" target="_blank">
+                  {{ person.title }}
+                </a>
+                {% if person.latest_post.url %}
+                  <div>
+                    <a href="{{ person.latest_post.url }}" target="_blank">
+                      {{ person.latest_post.title if person.latest_post.title else person.latest_post.url }}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+    </div>
+  </div>    
+{% else %}
+  <p>The blogroll appears to be empty. Check back later to see the cool people I follow online.</p>
+  <a href="/">← Back to homepage</a>
+{% endif %}
