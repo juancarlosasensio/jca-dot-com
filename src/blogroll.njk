@@ -10,6 +10,15 @@ layout: 'layouts/page.njk'
     <a href="{{ person.site_url }}" target="_blank">
       {{ person.title }}
     </a>
+    {% if person.latest_post.url %}
+      <ul>
+        <li>
+          <a href="{{ person.latest_post.url }}" target="_blank">
+            {{ person.latest_post.title if person.latest_post.title else person.latest_post.url }}
+          </a>
+        </li>
+      </ul>
+    {% endif %}
   </li>
 {% endfor %}
 </ul>
