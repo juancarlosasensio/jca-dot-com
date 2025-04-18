@@ -6,24 +6,31 @@ layout: 'layouts/wider-content-page.njk'
 ---
 
 {% if collections.blogroll | length %}
+  <p class="text-center">
+    Cool people I follow online and how to find them.
+    Their work and writing makes me hopeful about the future of the web.
+  </p>
   <div class="container bg-dark p-l text-light">
     <div class="grid">
           {% for person in collections.blogroll | sort(collections.blogroll, false, false, 'title' ) %}
-            <article class="card flow">
-              <div class="card__heading">
-                {{ person.latest_post.published | simpleDate if person.latest_post.published}}
-              </div>
-              <div class="card__meta">
-                <a href="{{ person.site_url }}" target="_blank">
-                  {{ person.title }}
-                </a>
-                {% if person.latest_post.url %}
-                  <div>
-                    <a href="{{ person.latest_post.url }}" target="_blank">
-                      {{ person.latest_post.title if person.latest_post.title else person.latest_post.url }}
-                    </a>
-                  </div>
-                {% endif %}
+            <article class="card" data-card-variant="blogroll">
+              <div class="card__content flow">
+                <div class="card__heading">
+                  <em>{{ person.latest_post.published | simpleDate if person.latest_post.published}}</em>
+                </div>
+                <div class="card__meta">
+                  <p>
+                    {{ person.title }}
+                  </p>
+                  </a>
+                </div>  
+                  {% if person.latest_post.url %}
+                    <div>
+                      <a href="{{ person.latest_post.url }}" target="_blank" style="text-wrap: wrap;">
+                        {{ person.latest_post.title if person.latest_post.title else person.latest_post.url }}
+                      </a>
+                    </div>
+                  {% endif %}
               </div>
             </article>
           {% endfor %}
