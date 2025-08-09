@@ -21,6 +21,7 @@ module.exports = async function () {
 
   // Turn the initial page into consumable JSON
   let items = await res.data;
+  let data;
 
   // Set a counter and a return array, setting the initial page of data as it's value
   let pageCount = 0;
