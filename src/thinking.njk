@@ -13,10 +13,10 @@ layout: 'layouts/page.njk'
 </aside>
 
 <ul>
-{% for note in collections.wpContent | getNotes | reverse %}
+{% for note in collections.wpContent | getNotes %}
   <li>
     <a href="/{{ note.slug }}">
-      {{ note.title }}
+      {{ note.title.rendered | safe }}
     </a>
   </li>
 {% endfor %}
