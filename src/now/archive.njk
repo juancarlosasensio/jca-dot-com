@@ -9,7 +9,7 @@ permalink: '/now/archive/index.html'
 {% for post in collections.wpContent | getNowEntries %}
   <li>
     <a href="/now/{{ post.date | simpleDate | slugify }}/index.html">
-      {{ post.title }}
+      {{ post.title.rendered | safe }}
     </a>
   </li>
 {% endfor %}

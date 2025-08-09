@@ -12,13 +12,13 @@
   permalink:"/{{ item.slug }}/index.html",
   layout: "layouts/page.njk",
   eleventyComputed: {
-    title:"{{ item.title | safe }}"
+    title:"{{ item.title.rendered | safe }}"
   },
   pageStylesheets: ["../css/wordpress.css"]    
 }
 ---
   
-{{ item.content | safe }}
+{{ item.content.rendered | safe }}
 
 <div>
   <a href="/blog">← Back to blog</a>

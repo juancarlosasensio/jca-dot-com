@@ -5,10 +5,10 @@ layout: 'layouts/page.njk'
 ---
 
 <ul>
-{% for post in collections.wpContent | getPosts | reverse %}
+{% for post in collections.wpContent | getPosts  %}
   <li>
     <a href="/{{ post.slug }}">
-      {{ post.title }}
+      {{ post.title.rendered | safe }}
     </a>
   </li>
 {% endfor %}

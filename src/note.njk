@@ -12,7 +12,7 @@
   permalink:"/{{ item.slug }}/index.html",
   layout:"layouts/page",
   eleventyComputed: {
-    title:"{{ item.title | safe }}"
+    title:"{{ item.title.rendered | safe }}"
   }  
 }
 ---
@@ -25,7 +25,7 @@
   </p>
 </aside>
 
-{{ item.content | safe }}
+{{ item.content.rendered | safe }}
 
 <div>
   <a href="/thinking">← Back to Notes</a>
