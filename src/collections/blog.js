@@ -5,13 +5,14 @@ const { AssetCache } = require('@11ty/eleventy-fetch');
 const decodeHtmlCharCodes = require('../utils/htmlCharEncoder.js');
 
 module.exports = async function () {
-  const url = `${process.env.WP_ROOT_URL}?&per_page=100`;
+  const url = `${process.env.WP_ROOT_URL}?per_page=100`;
   const asset = new AssetCache('blog');
 
   // If saved in cache, return that instead of fetching all the data
   if (asset.isCacheValid('8h')) {
     return asset.getCachedValue();
   }
+
   // Grab the first page of posts
   let res = await axios.get(url);
 
@@ -19,11 +20,10 @@ module.exports = async function () {
   const totalPages = parseInt(res.headers['x-wp-totalpages']);
 
   // Turn the initial page into consumable JSON
-  let data = await res.data;
+  let items = await res.data;
 
   // Set a counter and a return array, setting the initial page of data as it's value
   let pageCount = 0;
-  let items = data.posts;
 
   // Loop until page limit exceeded
   while (pageCount < totalPages) {
@@ -45,7 +45,7 @@ module.exports = async function () {
 
   // Replace chars like '&#8217' with their HTML-encoded equivalents
   items.forEach((item) => {
-    item.title = decodeHtmlCharCodes(item.title);
+    item.title.rendered = decodeHtmlCharCodes(item.title.rendered);
   })
 
   // Stick in cache for later
