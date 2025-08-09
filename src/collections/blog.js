@@ -6,6 +6,9 @@ const decodeHtmlCharCodes = require('../utils/htmlCharEncoder.js');
 
 module.exports = async function () {
   const url = `${process.env.WP_ROOT_URL}?per_page=100`;
+
+  console.log(url)
+
   const asset = new AssetCache('blog');
 
   // If saved in cache, return that instead of fetching all the data
