@@ -7,8 +7,6 @@ const decodeHtmlCharCodes = require('../utils/htmlCharEncoder.js');
 module.exports = async function () {
   const url = `${process.env.WP_ROOT_URL}?per_page=100`;
 
-  console.log(url)
-
   const asset = new AssetCache('blog');
 
   // If saved in cache, return that instead of fetching all the data
@@ -48,7 +46,7 @@ module.exports = async function () {
   }
 
   // Replace chars like '&#8217' with their HTML-encoded equivalents
-  items.forEach((item) => {
+  items?.forEach((item) => {
     item.title.rendered = decodeHtmlCharCodes(item.title.rendered);
   })
 
