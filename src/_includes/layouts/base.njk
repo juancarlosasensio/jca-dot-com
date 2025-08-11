@@ -1,10 +1,11 @@
 {# Appending 'assetHash' to a stylesheet's href allows up-to-date CSS files to be cached correctly #}
-{# The random() fn is available through src/_data/globa.js #}
-{# TODO: do this only in a production environment #}
-
-{# FROM Andy's blog #}
-
-{% set assetHash = global.random() %}
+{# The random() function is available through src/_data/global.js #}
+{# Hat-tip to Andy Bell for this idea... #}
+{% if process.env.NODE_ENV == 'production' %}
+  {% set assetHash = global.random() %}
+{% else %}
+  {% set assetHash = '' %}
+{% endif %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +38,5 @@
       </div>
     <script src="/js/main.js?{{ assetHash }}"></script>
     {% block scripts %}{% endblock %}
-    <script src=> </script>
   </body>
 </html>

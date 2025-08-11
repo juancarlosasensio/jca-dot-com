@@ -1,3 +1,3 @@
 module.exports =  function (arr) {
-  return arr.filter(note => note.categories.hasOwnProperty('Now') && !note.categories.hasOwnProperty('Notes'));
+  return arr.filter(note => note.categories.includes(67434) && !note.categories.hasOwnProperty(785));
 };

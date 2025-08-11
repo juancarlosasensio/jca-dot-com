@@ -12,10 +12,10 @@
   permalink:"/now/{{ item.date | simpleDate | slugify }}/index.html",
   layout: "layouts/page.njk",
   eleventyComputed: {
-    title:"{{ item.title | safe }}"
+    title:"{{ item.title.rendered | safe }}"
   },
   pageStylesheets: ["../css/wordpress.css"]    
 }
 ---
   
-{{ item.content | safe }}
+{{ item.content.rendered | safe }}
