@@ -6,7 +6,7 @@
  */
 module.exports = (str) => {
   // First decode numeric HTML entities like &#160;
-  let decoded = str.replace(/&#(\d+);/g, (match, charCode) => (
+  let decoded = str.replace(/&#(\d+);/g, (match, charCode) => (    
     String.fromCharCode(charCode)
   ));
   
