@@ -7,27 +7,27 @@ layout: 'layouts/wider-content-page.njk'
 
 {% if collections.blogroll | length %}
   <p class="text-center">
-    Cool people I follow online and how to find them.
-    Their work and writing makes me hopeful about the future of the web.
+    The cool people, blogs and newsletters I read online, and where to find them.
+    What's the common thread? They make me hopeful about the future of the web.
   </p>
   <div class="container bg-dark p-l text-light">
     <div class="grid">
-          {% for person in collections.blogroll | sort(collections.blogroll, false, false, 'title' ) %}
+          {% for blog in collections.blogroll | sort(collections.blogroll, false, false, 'title' ) %}
             <article class="card" data-card-variant="blogroll">
               <div class="card__content flow">
                 <div class="card__heading">
-                  <em>{{ person.latest_post.published | simpleDate if person.latest_post.published}}</em>
+                  <em>{{ blog.latest_post.published | simpleDate if blog.latest_post.published}}</em>
                 </div>
                 <div class="card__meta">
                   <p>
-                    {{ person.title }}
+                    {{ blog.title }}
                   </p>
                   </a>
                 </div>  
-                  {% if person.latest_post.url %}
+                  {% if blog.latest_post.url %}
                     <div>
-                      <a href="{{ person.latest_post.url }}" target="_blank" style="text-wrap: wrap;">
-                        {{ person.latest_post.title if person.latest_post.title else person.latest_post.url }}
+                      <a href="{{ blog.latest_post.url }}" target="_blank" style="text-wrap: wrap;">
+                        {{ blog.latest_post.title if blog.latest_post.title else blog.latest_post.url }}
                       </a>
                     </div>
                   {% endif %}
