@@ -52,6 +52,6 @@ module.exports = async function () {
 
   } catch (error) {
     console.error('Error fetching data from Feedbin:', error.message);
-    throw new Error('Failed to fetch blogroll data');
+    return asset.getCachedValue();
   }
 };
