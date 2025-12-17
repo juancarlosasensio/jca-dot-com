@@ -12,15 +12,15 @@ layout: 'layouts/wider-content-page.njk'
   </p>
   <div class="container bg-dark p-l text-light">
     <div class="grid">
-          {% for blog in collections.blogroll | sort(false, false, 'title' ) %}
+          {% for blog in collections.blogroll | sort(true, false, 'title' ) %}
             <article class="card">
               <div class="card__content flow">
                 <div class="card__heading">
                   <em>{{ blog.latest_post.published | simpleDate if blog.latest_post.published}}</em>
                 </div>
                 <h4>
-                  <a href="{{ blog.site_url }}" target="_blank">
-                    {{ blog.title }}
+                  <a href="{{ blog.site_url }}" target="_blank" class="no-underline text-light underline-on-hover">
+                    {{ blog.title }} <small>↗</small> 
                   </a>
                 </h4>
                 {% if blog.latest_post.url %}
