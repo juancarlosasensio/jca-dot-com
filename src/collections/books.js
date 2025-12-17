@@ -52,15 +52,13 @@ module.exports = async function() {
         // If there are no more records, the promise will resolve.
         fetchNextPage();
     });
-    console.log("saving");
-
-    console.log(books)
-
+    // console.log("saving");
+    // console.log(books)
     await asset.save(books, "json");
     return books;
-
-  } catch (err) {
     
+  } catch (error) {
+    console.error('Error fetching data from Airtable:', error.message);
     return asset.getCachedValue();
   }
 };

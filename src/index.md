@@ -8,6 +8,6 @@ Hi. I’m working towards a better web for people and the planet. Currently, I'm
 While you're here, you may want to:
 
 - Read my [blog](/blog) and [notes](/thinking)
-- Check out my [bookshelf](/bookshelf) and what I'm up to [now](/now)
+- Check out my [bookshelf](/bookshelf), [blogroll](/blogroll) and what I'm up to [now](/now)
 - Subscribe to my [RSS feed](/rss)
 - Reach out via email

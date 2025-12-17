@@ -16,10 +16,10 @@
 ---
 
 <div class="[ alert ] repel bg-dark text-light p-s">
+  <a href="/now/archive">← Read previous entries</a>
   <p>
     <em>Last updated: {{ nowEntries[0].date | simpleDate }}</em>
   </p>
-  <a href="/now/archive">← Read previous entries</a>
 </div>
 
 {{ nowEntries[0].content.rendered | safe }}
