@@ -17,8 +17,8 @@ layout: "layouts/wider-content-page.njk"
         <article class="card" data-card-variant='book'>
           <img {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
           <div class="card__content flow">
-            <h4 class="card__heading">{{ book.title }}</h4>
-            <p class="card__meta">{{ book.authors }}</p>
+            <h4>{{ book.title }}</h4>
+            <p>{{ book.authors }}</p>
           </div>
         </article>
       {% endfor %}

@@ -43,13 +43,3 @@
 .card[data-card-variant='book'] {
   --aspect-ratio: 4/6;
 }
-
-.card[data-card-variant='blogroll'] .card__content.flow {
-  --flow-space: var(--space-s);
-  
-  margin-block-start: 0;
-
-  & a {
-    font-size: var(--size-step-0);
-  }
-}
