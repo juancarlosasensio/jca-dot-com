@@ -10,13 +10,13 @@
       </svg>
       Menu
     </button>
-    <nav class="site-header__nav flow" aria-label="main navigation">
+    <nav class="site-header__nav" aria-label="main navigation">
       <h2>Writing</h2>
       <a class="site-header__link" href="/blog">
         <svg focusable="false" class="site-header__icon">
           <use xlink:href="/images/all.svg#icon-eye"></use>
         </svg>
-          Full blog archive
+          <small>Full blog archive</small>
       </a>
       <ul>
       {% for post in collections.wpContent | getPosts %}
