@@ -171,6 +171,15 @@ blockquote q {
   aspect-ratio: 16/9;
 }
 
+.icon {
+    width: .75em;
+    height: .75em;
+    stroke: currentColor;
+    stroke-width: 4;
+    fill: none;
+    text-decoration-skip: objects
+}
+
 img {
   height: auto;
   max-width: 100%;

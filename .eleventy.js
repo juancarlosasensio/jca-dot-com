@@ -10,14 +10,16 @@ const simpleDateFilter = require('./src/filters/simpleDate.js');
 const notePostsFilter = require('./src/filters/notesPosts.js');
 const genericPostsFilter = require('./src/filters/genericPosts.js');
 const nowPageUpdatesFilter = require('./src/filters/nowPosts.js');
+const limitFilter = require('./src/filters/limit.js');
 
 module.exports = function (config) {
   // Creates a global variable for the current __dirname to make including and
   // working with files in the pattern library a little easier
   global.__basedir = __dirname;
 
-  
+
   // Filters
+  config.addFilter("limit", limitFilter);
   config.addFilter("simpleDate", simpleDateFilter);
   config.addFilter("getNotes", notePostsFilter);
   config.addFilter("getPosts", genericPostsFilter);

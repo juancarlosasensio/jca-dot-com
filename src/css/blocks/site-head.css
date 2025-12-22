@@ -51,9 +51,14 @@
   margin-block-start: var(--flow-space, 1em);
 }
 
+.site-header__nav *+* {
+  margin-top: var(--space-s);
+}
+
 .site-header__nav h2 {
     text-transform: uppercase;
     letter-spacing: var(--uppercase-kerning);
+    margin-block-start: var(--space-m)
 }
 
 .site-header__nav a {
@@ -61,6 +66,7 @@
   line-height: var(--line-height-small);
   font-weight: 700;
   text-decoration: none;
+  color: var(--text-dark)
 }
 
 .site-header__nav a:hover {
@@ -88,7 +94,7 @@
 .site-header__link .site-header__icon {
     width: 1em;
     height: 1em;
-    vertical-align: -.15em;
+    vertical-align: -.25em;
 }
 
 .site-header__link[aria-current=true],
