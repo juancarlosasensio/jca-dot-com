@@ -94,7 +94,7 @@
 .site-header__link .site-header__icon {
     width: 1em;
     height: 1em;
-    vertical-align: -.15em;
+    vertical-align: -.25em;
 }
 
 .site-header__link[aria-current=true],

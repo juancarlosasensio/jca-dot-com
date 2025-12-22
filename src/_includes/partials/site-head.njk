@@ -19,7 +19,7 @@
           <small>Full blog archive</small>
       </a>
       <ul>
-      {% for post in collections.wpContent | getPosts %}
+      {% for post in collections.wpContent | getPosts | limit(3) %}
         <li>
           <a class="site-header__link" href="/{{ post.slug }}" {% if page.url == "/"+post.slug+"/" %} aria-current="true"{% endif %}>
             {% if page.url == "/"+post.slug+"/" %}
@@ -59,17 +59,25 @@
         </li>
       </ul>
       <h2>Thinking</h2>
+      <a class="site-header__link" href="/thinking">
+        <svg focusable="false" class="site-header__icon">
+          <use xlink:href="/images/all.svg#icon-eye"></use>
+        </svg>
+          <small>All notes</small>
+      </a>
       <ul>
+      {% for note in collections.wpContent | getNotes | limit(3) %}
         <li>
-          <a href="/thinking" {% if page.url == "/thinking" %} aria-current="true"{% endif %}>
-            {% if page.url == "/thinking" %}
+          <a class="site-header__link" href="/{{ note.slug }}" {% if page.url == "/"+note.slug+"/" %} aria-current="true"{% endif %}>
+            {% if page.url == "/"+note.slug+"/" %}
               <svg class="site-header__icon" focusable="false">
               <use href="/images/all.svg#icon-triangle-right"></use>
             </svg>                
             {% endif %}
-            Notes
+            {{ note.title.rendered | safe }}
           </a>
-        </li> 
-      </ul>
+        </li>
+      {% endfor %}
+      </ul>  
     </nav>
 </header>
