@@ -1,0 +1,17 @@
+/*
+SPIN ON HOVER UTILITY
+*/
+@keyframes spin-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spin-on-hover:hover {
+    animation: spin-clockwise 2s ease-out;
+  }
+}
