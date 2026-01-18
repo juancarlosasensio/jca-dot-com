@@ -18,24 +18,56 @@
 
 .site-header__nav-toggle {
     font-size: var(--size-step-1);
+    font-family: var(--font-special);
     margin-top: var(--size-step-1);
     font-weight: 700;
     width: 100%;
     text-align: center;
     display: none;
+    gap: 0.5em;
+    align-items: center;
+    justify-content: center;
 }
 
-.site-header__nav-toggle path {
-    transition: d .25s;
+.site-header__nav-toggle .site-header__icon {
+    position: relative;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    stroke-width: 2.5;
 }
 
-.site-header__nav-toggle[aria-expanded=true] path {
-    d: path("M3,3 29,29 M16,16 16,16 M3,29 29,3");
+.site-header__nav-toggle .icon-hamburger,
+.site-header__nav-toggle .icon-close {
+    transition: opacity .25s ease-in-out, transform .25s ease-in-out;
+    transform-origin: center;
+}
+
+.site-header__nav-toggle .icon-hamburger {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.site-header__nav-toggle .icon-close {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.8);
+    position: absolute;
+    inset: 0;
+}
+
+.site-header__nav-toggle[aria-expanded=true] .icon-hamburger {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.8);
+}
+
+.site-header__nav-toggle[aria-expanded=true] .icon-close {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
 }
 
 @media (max-width: 827px) {
     .with-js .site-header__nav-toggle {
-        display: block;
+        display: flex;
     }
 
     .with-js .site-header__nav {
