@@ -18,16 +18,23 @@
 
 .site-header__nav-toggle {
     font-size: var(--size-step-1);
+    font-family: var(--font-special);
     margin-top: var(--size-step-1);
     font-weight: 700;
     width: 100%;
     text-align: center;
     display: none;
+    gap: 0.5em;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .site-header__nav-toggle .site-header__icon {
     position: relative;
     display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    stroke-width: 2.5;
 }
 
 .site-header__nav-toggle .icon-hamburger,
@@ -60,7 +67,7 @@
 
 @media (max-width: 827px) {
     .with-js .site-header__nav-toggle {
-        display: block;
+        display: flex;
     }
 
     .with-js .site-header__nav {
