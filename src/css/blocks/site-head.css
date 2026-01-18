@@ -25,12 +25,21 @@
     display: none;
 }
 
-.site-header__nav-toggle path {
-    transition: d .25s;
+.site-header__nav-toggle line {
+    transition: transform .25s, opacity .25s;
+    transform-origin: center;
 }
 
-.site-header__nav-toggle[aria-expanded=true] path {
-    d: path("M3,3 29,29 M16,16 16,16 M3,29 29,3");
+.site-header__nav-toggle[aria-expanded=true] .top {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.site-header__nav-toggle[aria-expanded=true] .middle {
+    opacity: 0;
+}
+
+.site-header__nav-toggle[aria-expanded=true] .bottom {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 @media (max-width: 827px) {
