@@ -32,7 +32,12 @@
     {% endif %}
   </head>
   <body>
-    {# <a class="[ skip-link ] [ button ]" href="#main-content">Skip to content</a> #}
+    <a class="skip-link" href="#main-content">
+      Skip to content
+      <svg class="icon" focusable="false" aria-hidden="true">
+        <use xlink:href="/images/all.svg#icon-arrow-right"></use>
+      </svg>
+    </a>
       <div class="sidebar" data-layout='main'>
         {% include 'partials/site-head.njk' %}
         {% block content %}{% endblock %}
