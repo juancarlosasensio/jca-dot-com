@@ -37,11 +37,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.skip-link svg {
-  width: 1.25em;
-  height: 1.25em;
-}
-
 /* Remove focus outline on main content when skip link targets it */
 #main-content:focus {
   outline: none;

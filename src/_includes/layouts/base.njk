@@ -34,7 +34,9 @@
   <body>
     <a class="skip-link" href="#main-content">
       Skip to content
-      {% include "icons/arrow-down.svg" %}
+      <svg class="icon" focusable="false" aria-hidden="true">
+        <use xlink:href="/images/all.svg#icon-arrow-right"></use>
+      </svg>
     </a>
       <div class="sidebar" data-layout='main'>
         {% include 'partials/site-head.njk' %}
