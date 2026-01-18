@@ -24,10 +24,15 @@
 
   /* Additional styling for visibility */
   padding: var(--space-xs) var(--space-s);
-  background-color: var(--color-theme-primary);
-  color: var(--color-theme-bg);
+  background-color: var(--color-dark);
+  color: var(--color-light);
   text-decoration: none;
   font-weight: 700;
   border-radius: 0.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Remove focus outline on main content when skip link targets it */
+#main-content:focus {
+  outline: none;
 }
