@@ -32,7 +32,10 @@
     {% endif %}
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content">
+      Skip to content
+      {% include "icons/arrow-down.svg" %}
+    </a>
       <div class="sidebar" data-layout='main'>
         {% include 'partials/site-head.njk' %}
         {% block content %}{% endblock %}

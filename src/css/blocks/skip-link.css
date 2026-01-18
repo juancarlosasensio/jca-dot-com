@@ -22,7 +22,12 @@
   white-space: normal;
   width: auto;
 
-  /* Additional styling for visibility */
+  /* Layout and spacing */
+  display: inline-flex;
+  gap: 0.5ch;
+  align-items: center;
+
+  /* Visual styling */
   padding: var(--space-xs) var(--space-s);
   background-color: var(--color-dark);
   color: var(--color-light);
@@ -30,6 +35,11 @@
   font-weight: 700;
   border-radius: 0.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.skip-link svg {
+  width: 1.25em;
+  height: 1.25em;
 }
 
 /* Remove focus outline on main content when skip link targets it */
