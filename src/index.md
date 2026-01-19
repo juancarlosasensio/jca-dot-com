@@ -5,7 +5,7 @@ layout: 'layouts/page'
 
 Hi, welcome to my nook on the world wide web. I'm glad you're here.
 
-I’m working towards a better web for people and the planet. Currently, I'm building personal web infrastructures for individuals who want to be sane and online
+I’m working towards a better web for people and the planet. Currently, I'm building personal web infrastructures for individuals who want to be healthy and online.
 
 My hope is to, one day, launch a microstudio to amplify this work. Stay tuned.
 
