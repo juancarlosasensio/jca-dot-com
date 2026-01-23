@@ -1,0 +1,13 @@
+<blockquote {% if data.cite %}cite="{{ data.cite.url }}"{% endif %}>
+  {% if data.content %}
+    <p>{{ data.content }}</p>
+  {% endif %}
+  {% if data.quote %}
+    <q>{{ data.quote }}</q>
+  {% endif %}
+  {% if data.cite %}
+    <footer>
+      <cite>{{ data.cite.text }}</cite>
+    </footer>
+  {% endif %}
+</blockquote>

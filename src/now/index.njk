@@ -1,0 +1,25 @@
+---js
+{
+  title: "What I'm up to now",
+  layout: "layouts/page.njk",
+  allPosts: function() {
+    return this.collections.wpContent;
+  },
+  eleventyComputed: {
+    nowEntries: function(data) {
+      return this.getNowEntries(data.allPosts());
+    }
+  },
+  permalink: "/now/index.html",
+  eleventyExcludeFromCollections: true
+}
+---
+
+<div class="[ alert ] repel bg-dark text-light p-s">
+  <a href="/now/archive">← Read previous entries</a>
+  <p>
+    <em>Last updated: {{ nowEntries[0].date | simpleDate }}</em>
+  </p>
+</div>
+
+{{ nowEntries[0].content.rendered | safe }}

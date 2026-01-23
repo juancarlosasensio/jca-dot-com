@@ -1,38 +1,31 @@
 ---
 title: Now Reading
-layout: "layouts/base.njk"
-pageTitleClasses: "text-align:center"
-pageComponents:
-  - Grid
+pageTitleClasses: "text-center"
+layout: "layouts/wider-content-page.njk"
 ---
 
-<p class="text-align:center">
+<p class="text-center">
  Books I've read. Books I'm reading. Books I recommend. Inspired by Venkatesh Rao's <a href="https://www.ribbonfarm.com/now-reading/" target="_blank">Now Reading</a> and Dave Rupert's <a href="https://daverupert.com/bookshelf" target="_blank">Bookshelf</a>.
 </p>
 
-{% if collections.books|length %}
+{% if collections.books | length %}
   {% for shelf, booksByShelf in collections.books | groupby("shelf") %}
-    <h2 class="text-align:center" >{{ shelf | capitalize }}</h2>
-    <div class="container max-width:100%">
-    <grid-l>
+    <h2 class="text-center" >{{ shelf | capitalize }}</h2>
+    <div class="container bg-dark p-l text-light">
+    <div class="grid">
       {% for book in booksByShelf %}
-        <box-l padding="0" borderWidth="0">
-          <stack-l class="book">
-            <frame-l ratio="4:5">
-              <img class="inverted" {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
-            </frame-l>
+        <article class="card" data-card-variant='book'>
+          <img {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
+          <div class="card__content flow">
             <h4>{{ book.title }}</h4>
-            <p>
-              {{ book.authors }}
-            </p>
-          </stack-l>
-        </box-l>
+            <p>{{ book.authors }}</p>
+          </div>
+        </article>
       {% endfor %}
-    </grid-l>
+    </div>
   </div>
   {% endfor %}
-{% endif %}
-
-{% if not collections.books|length %}
+{% else %}
   <p>No books added yet! Check back soon to see what I've been reading.</p>
+  <a href="/">← Back to homepage</a>
 {% endif %}

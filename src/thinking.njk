@@ -1,0 +1,29 @@
+---
+title: 'Thinking'
+eleventyExcludeFromCollections: true
+layout: 'layouts/page.njk'
+---
+
+<aside class="alert flow pl-s" data-alert-variant="content-disclaimer">
+  <h4>
+    <svg class="icon" focusable="false" aria-hidden="true">
+      <use xlink:href="/images/all.svg#icon-info"></use>
+    </svg>
+    Disclaimer
+  </h4>
+  <p>
+
+    This is a collection of unpolished thoughts, ideas, and reflections.
+    They are raw and unfiltered. Proceed at your own risk.
+  </p>
+</aside>
+
+<ul>
+{% for note in collections.wpContent | getNotes %}
+  <li>
+    <a href="/{{ note.slug }}">
+      {{ note.title.rendered | safe }}
+    </a>
+  </li>
+{% endfor %}
+</ul>

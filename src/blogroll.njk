@@ -1,0 +1,41 @@
+---
+title: 'Blogroll'
+pageTitleClasses: 'text-center'
+eleventyExcludeFromCollections: true
+layout: 'layouts/wider-content-page.njk'
+---
+
+{% if collections.blogroll | length %}
+  <p class="text-center">
+    The cool people, blogs and newsletters I read online, and where to find them.
+    What's the common thread? They make me hopeful about the future of the web.
+  </p>
+  <div class="container bg-dark p-l text-light">
+    <div class="grid">
+          {% for blog in collections.blogroll | sort(true, false, 'title' ) %}
+            <article class="card">
+              <div class="card__content flow">
+                <div class="card__heading">
+                  <em>{{ blog.latest_post.published | simpleDate if blog.latest_post.published}}</em>
+                </div>
+                <h4>
+                  <a href="{{ blog.site_url }}" target="_blank" class="no-underline text-light underline-on-hover">
+                    {{ blog.title }} <small>↗</small> 
+                  </a>
+                </h4>
+                {% if blog.latest_post.url %}
+                  <p>
+                    <a href="{{ blog.latest_post.url }}" target="_blank">
+                      {{ blog.latest_post.title if blog.latest_post.title else blog.latest_post.url }}
+                    </a>
+                  </p>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+    </div>
+  </div>    
+{% else %}
+  <p>The blogroll appears to be empty. Check back later to see the cool people I follow online.</p>
+  <a href="/">← Back to homepage</a>
+{% endif %}

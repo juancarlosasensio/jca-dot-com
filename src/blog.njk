@@ -1,14 +1,14 @@
 ---
 title: 'Blog'
 eleventyExcludeFromCollections: true
-layout: 'layouts/base.njk'
+layout: 'layouts/page.njk'
 ---
 
 <ul>
-{% for post in collections.blog | reverse %}
+{% for post in collections.wpContent | getPosts  %}
   <li>
-    <a href="{{ post.slug }}">
-      {{ post.title }}
+    <a href="/{{ post.slug }}">
+      {{ post.title.rendered | safe }}
     </a>
   </li>
 {% endfor %}

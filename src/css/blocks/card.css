@@ -1,0 +1,45 @@
+.card {
+  --focus-color: var(--color-primary);
+  --aspect-ratio: 1/1;
+
+  border: var(--stroke);
+  border-radius: var(--radius-l);
+  padding: var(--space-l);
+  position: relative;
+}
+
+.card__heading {
+  font-size: var(--size-step-00);
+  color: var(--color-light)
+}
+
+.card__meta {
+  --flow-space: var(--space-s);
+
+  font-size: var(--size-step-2);
+  line-height: var(--leading-flat);
+}
+
+.card__content {
+  margin-block-start: var(--space-l);
+}
+
+.card img {
+  aspect-ratio: var(--aspect-ratio);
+  object-fit: cover;
+  border-radius: var(--radius-m);
+}
+
+.card .button,
+.card a {
+  --flow-space: var(--space-l);
+}
+
+.card a {
+  word-wrap: break-word;
+}
+
+/* Variant exceptions */
+.card[data-card-variant='book'] {
+  --aspect-ratio: 4/6;
+}

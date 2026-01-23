@@ -1,0 +1,25 @@
+{% extends "layouts/base.njk" %}
+
+  {% block content %}
+    <main tabindex="-1" id="main-content">
+      <article class="wrapper prose flow pb-l">
+        <h1 {% if pageTitleClasses %} class="{{ pageTitleClasses }}" {% endif %} >{{ pageTitle if pageTitle else title }}</h1> 
+        {# {% if summary %}
+                {{ summary | safe }}
+              {% endif %}
+              {% if toc %}
+                <nav class="pattern-library__toc" aria-label="table of contents">
+                  <p>Skip to section:</p>
+                  <ul>
+                    {% for item in toc %}
+                      <li>
+                        <a href="{{ item.slug }}">{{ item.text }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </nav>
+              {% endif %} #}
+        {{ content | safe }}
+      </article>
+    </main>
+  {% endblock %}

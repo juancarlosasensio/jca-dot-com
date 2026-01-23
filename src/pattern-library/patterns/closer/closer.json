@@ -1,0 +1,25 @@
+{
+  "title": "Closer",
+  "context": {
+    "navLabel": "Secondary",
+    "navItems": [
+      {
+        "label": "Home",
+        "href": "#",
+        "current": true
+      },
+      {
+        "label": "Courses",
+        "href": "#"
+      },
+      {
+        "label": "About",
+        "href": "#"
+      },
+      {
+        "label": "Contact",
+        "href": "#"
+      }
+    ]
+  }
+}

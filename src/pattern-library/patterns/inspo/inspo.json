@@ -1,0 +1,12 @@
+{
+  "title": "Inspo",
+  "extraSampleCSS": "body { padding: 0; }",
+  "context": {
+    "heading": "Master the craft",
+    "displayHeading": ["Master", "the craft."],
+    "img": {
+      "src": "/images/inspo.jpg",
+      "alt": "Overhead shot of someone pouring frothed milk into a latté cup."
+    }
+  }
+}

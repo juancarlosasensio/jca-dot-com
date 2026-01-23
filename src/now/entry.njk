@@ -1,0 +1,21 @@
+---js
+{
+  pagination:{
+    data:"collections.wpContent",
+    size: 1,
+    alias: "item",
+    before: function(paginationData) { 
+      const notes = this.getNowEntries(paginationData);
+      return notes;
+    }
+  },
+  permalink:"/now/{{ item.date | simpleDate | slugify }}/index.html",
+  layout: "layouts/page.njk",
+  eleventyComputed: {
+    title:"{{ item.title.rendered | safe }}"
+  },
+  pageStylesheets: ["../css/wordpress.css"]    
+}
+---
+  
+{{ item.content.rendered | safe }}

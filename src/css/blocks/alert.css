@@ -1,0 +1,8 @@
+.alert {
+  font-size: 0.8em;
+}
+
+.alert[data-alert-variant="content-disclaimer"] {
+  border-left: 1px solid var(--color-dark);
+  border-left-width: var(--space-s);
+} 

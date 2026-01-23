@@ -1,22 +1,50 @@
-const { DateTime } = require("luxon");
 require('dotenv').config()
 
-const blog = require('./src/collections/blog.js');
+const rssPlugin = require('@11ty/eleventy-plugin-rss');
+
+const wpContent = require('./src/collections/blog.js');
 const books = require('./src/collections/books.js');
+const blogroll = require('./src/collections/blogroll.js');
 
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addFilter("simpleDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
+const simpleDateFilter = require('./src/filters/simpleDate.js');
+const notePostsFilter = require('./src/filters/notesPosts.js');
+const genericPostsFilter = require('./src/filters/genericPosts.js');
+const nowPageUpdatesFilter = require('./src/filters/nowPosts.js');
+const limitFilter = require('./src/filters/limit.js');
+
+module.exports = function (config) {
+  // Creates a global variable for the current __dirname to make including and
+  // working with files in the pattern library a little easier
+  global.__basedir = __dirname;
+
+
+  // Filters
+  config.addFilter("limit", limitFilter);
+  config.addFilter("simpleDate", simpleDateFilter);
+  config.addFilter("getNotes", notePostsFilter);
+  config.addFilter("getPosts", genericPostsFilter);
+  config.addFilter("getNowEntries", nowPageUpdatesFilter);
+
+  // Add all Wordpress posts as its own collection
+  config.addCollection('wpContent', async function collectionCallback(collectionApi) {
+    const allContent = await wpContent();
+    return allContent;
   });
+  
+  // Add books as its own collection
+  config.addCollection('books', books);
+  
+  // Add blogroll as its own collection
+  config.addCollection('blogroll', blogroll);
 
-  eleventyConfig.addCollection('blog', blog);
-  eleventyConfig.addCollection('books', books);
+  // Pass through fonts and images
+  config.addPassthroughCopy('./src/fonts');
+  config.addPassthroughCopy('./src/images');
+  config.addPassthroughCopy('./src/js');
+  config.addPassthroughCopy('./src/_redirects');
 
-  // For now, we want all our styles to be copied over
-  eleventyConfig.addPassthroughCopy('./src/css/**/*.css');
-  eleventyConfig.addPassthroughCopy('./src/images');
-  eleventyConfig.addPassthroughCopy('./src/js/**/*.js');
-  eleventyConfig.addPassthroughCopy({ static: "/" });
+  // Add RSS plugin
+  config.addPlugin(rssPlugin);
 
   return {
     markdownTemplateEngine: 'njk',

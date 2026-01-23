@@ -1,14 +1,25 @@
+---js
+{
+  pagination:{
+    data:"collections.wpContent",
+    size: 1,
+    alias: "item",
+    before: function(paginationData) { 
+      const notes = this.getPosts(paginationData);
+      return notes;
+    }
+  },
+  permalink:"/{{ item.slug }}/index.html",
+  layout: "layouts/page.njk",
+  eleventyComputed: {
+    title:"{{ item.title.rendered | safe }}"
+  },
+  pageStylesheets: ["../css/wordpress.css"]    
+}
 ---
-pagination:
-  data: collections.blog
-  size: 1
-  alias: item
-permalink: '/{{ item.slug }}/index.html'
-layout: 'layouts/base'
-eleventyComputed:
-  title: "{{ item.title | safe }}"
----
-
-{{ item.content | safe }}
   
-<a href="/blog">Back to blog</a>
+{{ item.content.rendered | safe }}
+
+<div>
+  <a href="/blog">← Back to blog</a>
+</div>

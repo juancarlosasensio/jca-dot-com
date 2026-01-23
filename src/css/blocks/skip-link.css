@@ -1,0 +1,43 @@
+.skip-link {
+  position: absolute;
+  top: var(--space-s);
+  left: var(--space-s);
+  z-index: 9999;
+
+  /* Visually hidden by default */
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.skip-link:focus {
+  /* Visible when focused */
+  clip: auto;
+  clip-path: none;
+  height: auto;
+  overflow: visible;
+  white-space: normal;
+  width: auto;
+
+  /* Layout and spacing */
+  display: inline-flex;
+  gap: 0.5ch;
+  align-items: center;
+
+  /* Visual styling */
+  padding: var(--space-xs) var(--space-s);
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Remove focus outline on main content when skip link targets it */
+#main-content:focus {
+  outline: none;
+}
