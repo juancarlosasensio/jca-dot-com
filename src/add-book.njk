@@ -16,12 +16,19 @@ eleventyExcludeFromCollections: true
     </noscript>
   </div>
 
-  {# Token authentication form - shown on first visit #}
-  <details>
-    <summary style="cursor: pointer; font-weight: 600; margin-bottom: var(--space-m);">
-      🔐 First time? Enter admin token
-    </summary>
-    <form action="/.netlify/functions/auth" method="POST" class="flow" style="margin-top: var(--space-s);">
+  {# Unauthenticated state - shown when not logged in #}
+  <div id="unauthenticated-section" style="display: none;">
+    <h1>Add Book to Library</h1>
+
+    <div class="alert warning" role="alert">
+      ⚠️ You must be authenticated to add books to your library.
+    </div>
+
+    <p style="color: var(--color-mid);">
+      Enter your admin token below to access the book import feature.
+    </p>
+
+    <form action="/.netlify/functions/auth" method="POST" class="flow">
       <div>
         <label for="token">Admin Token</label>
         <input
@@ -39,48 +46,92 @@ eleventyExcludeFromCollections: true
       </div>
       <button type="submit" class="button">Authenticate</button>
     </form>
-  </details>
 
-  {# Main book URL form #}
-  <h1>Add Book to Library</h1>
+    <details style="margin-top: var(--space-l);">
+      <summary style="cursor: pointer;">What is this page?</summary>
+      <div style="margin-top: var(--space-s); color: var(--color-mid);">
+        <p>This is an admin-only feature that allows you to quickly add books to your Airtable library by pasting URLs from supported book sites.</p>
+        <p style="margin-top: 0.5rem;"><strong>Supported sites:</strong> Amazon, Bookshop.org, ThriftBooks, Google Books, Open Library</p>
+      </div>
+    </details>
+  </div>
 
-  <p style="color: var(--color-mid);">
-    Paste a book URL from supported sites to automatically extract information,
-    or manually fill in the details on the next page.
-  </p>
+  {# Authenticated state - shown when logged in #}
+  <div id="authenticated-section" style="display: none;">
+    <h1>Add Book to Library</h1>
 
-  <form action="/.netlify/functions/extract" method="POST" class="flow">
-    <div>
-      <label for="url">Book URL</label>
-      <input
-        type="url"
-        id="url"
-        name="url"
-        required
-        placeholder="https://www.amazon.com/..."
-        pattern="https?://.+"
-        style="width: 100%;"
-      >
-      <small style="display: block; margin-top: 0.25rem; color: var(--color-mid);">
-        <strong>Supported sites:</strong> Amazon, Bookshop.org, ThriftBooks, Google Books, Open Library
-      </small>
+    <div class="alert success" id="auth-status-indicator" role="status">
+      ✓ Authenticated
     </div>
 
-    <button type="submit" class="button">Extract Book Info</button>
-  </form>
+    <p style="color: var(--color-mid);">
+      Paste a book URL from supported sites to automatically extract information,
+      or manually fill in the details on the next page.
+    </p>
 
-  <details style="margin-top: var(--space-l);">
-    <summary style="cursor: pointer;">Troubleshooting & Tips</summary>
-    <div style="margin-top: var(--space-s); color: var(--color-mid);">
-      <ul style="margin-left: var(--space-m); line-height: var(--leading-standard);">
-        <li>Make sure you're authenticated (see "First time?" section above)</li>
-        <li>URL must start with http:// or https:// and be publicly accessible</li>
-        <li>If extraction fails, you'll be able to enter info manually on the next page</li>
-        <li>The book will be added to the "Queued" shelf by default</li>
-        <li>You can add the same book multiple times (useful for different editions)</li>
-      </ul>
+    <form action="/.netlify/functions/extract" method="POST" class="flow" id="extract-form">
+      <div>
+        <label for="url">Book URL</label>
+        <input
+          type="url"
+          id="url"
+          name="url"
+          required
+          placeholder="https://www.amazon.com/..."
+          pattern="https?://.+"
+          style="width: 100%;"
+        >
+        <small style="display: block; margin-top: 0.25rem; color: var(--color-mid);">
+          <strong>Supported sites:</strong> Amazon, Bookshop.org, ThriftBooks, Google Books, Open Library
+        </small>
+      </div>
+
+      <button type="submit" class="button">Extract Book Info</button>
+    </form>
+
+    <details style="margin-top: var(--space-l);">
+      <summary style="cursor: pointer;">Troubleshooting & Tips</summary>
+      <div style="margin-top: var(--space-s); color: var(--color-mid);">
+        <ul style="margin-left: var(--space-m); line-height: var(--leading-standard);">
+          <li>URL must start with http:// or https:// and be publicly accessible</li>
+          <li>If extraction fails, you'll be able to enter info manually on the next page</li>
+          <li>The book will be added to the "Queued" shelf by default</li>
+          <li>You can add the same book multiple times (useful for different editions)</li>
+        </ul>
+      </div>
+    </details>
+
+    <div style="margin-top: var(--space-l); padding-top: var(--space-m); border-top: 1px solid var(--color-mid);">
+      <details>
+        <summary style="cursor: pointer; color: var(--color-mid);">Session Management</summary>
+        <div style="margin-top: var(--space-s); color: var(--color-mid);">
+          <p>Your authentication token is stored in a secure cookie and will expire in 30 days.</p>
+          <form action="/.netlify/functions/auth" method="POST" style="margin-top: 0.5rem;">
+            <input type="hidden" name="token" value="">
+            <button type="submit" class="button secondary" style="font-size: 0.875rem;">
+              Log Out (Clear Token)
+            </button>
+          </form>
+        </div>
+      </details>
     </div>
-  </details>
+  </div>
+
+  {# Loading state - shown while checking authentication #}
+  <div id="loading-section">
+    <h1>Add Book to Library</h1>
+    <p style="color: var(--color-mid);">
+      <span style="display: inline-block; animation: pulse 1.5s ease-in-out infinite;">⏳</span>
+      Checking authentication...
+    </p>
+  </div>
+
+  {# No-JS fallback message #}
+  <noscript>
+    <div class="alert warning" role="alert" style="margin-top: var(--space-m);">
+      ⚠️ JavaScript is required for authentication verification on this page. Please enable JavaScript to continue.
+    </div>
+  </noscript>
 
 </div>
 
@@ -110,66 +161,144 @@ eleventyExcludeFromCollections: true
     border-color: #f39c12;
     color: #f39c12;
   }
+
+  /* Loading animation */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
 </style>
 
 <script>
-  // Progressive enhancement - show auth status messages from query params
-  (function() {
+  // Check authentication and show appropriate UI
+  (async function() {
     'use strict';
 
+    const loadingSection = document.getElementById('loading-section');
+    const authenticatedSection = document.getElementById('authenticated-section');
+    const unauthenticatedSection = document.getElementById('unauthenticated-section');
+    const messagesContainer = document.getElementById('auth-messages');
+
+    // Parse query parameters for auth status messages
     const params = new URLSearchParams(window.location.search);
     const authStatus = params.get('auth');
     const errorType = params.get('error');
-    const messagesContainer = document.getElementById('auth-messages');
 
-    if (!messagesContainer) return;
+    // Function to show authentication status messages
+    function showAuthMessage() {
+      if (!messagesContainer) return;
 
-    let message = '';
-    let messageClass = '';
+      let message = '';
+      let messageClass = '';
 
-    if (authStatus === 'success') {
-      message = '✓ Authenticated successfully! You can now add books to your library.';
-      messageClass = 'success';
-    } else if (authStatus === 'failed') {
-      messageClass = 'error';
+      if (authStatus === 'success') {
+        message = '✓ Authenticated successfully! You can now add books to your library.';
+        messageClass = 'success';
+      } else if (authStatus === 'failed') {
+        messageClass = 'error';
 
-      switch (errorType) {
-        case 'invalid':
-          message = '❌ Invalid admin token. Please try again.';
-          break;
-        case 'missing':
-          message = '❌ Admin token is required.';
-          break;
-        case 'expired':
-          message = '❌ Your session has expired. Please re-authenticate below.';
-          break;
-        case 'server':
-          message = '❌ Server error during authentication. Please try again.';
-          break;
-        default:
-          message = '❌ Authentication failed. Please try again.';
+        switch (errorType) {
+          case 'invalid':
+            message = '❌ Invalid admin token. Please try again.';
+            break;
+          case 'missing':
+            message = '❌ Admin token is required.';
+            break;
+          case 'expired':
+            message = '❌ Your session has expired. Please re-authenticate below.';
+            break;
+          case 'server':
+            message = '❌ Server error during authentication. Please try again.';
+            break;
+          default:
+            message = '❌ Authentication failed. Please try again.';
+        }
+      }
+
+      if (message) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert ${messageClass}`;
+        alertDiv.setAttribute('role', 'alert');
+        alertDiv.textContent = message;
+        messagesContainer.appendChild(alertDiv);
+
+        // Clean up URL
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({}, document.title, '/add-book/');
+        }
+
+        // Auto-dismiss success message after 5 seconds
+        if (messageClass === 'success') {
+          setTimeout(() => {
+            alertDiv.style.transition = 'opacity 0.3s';
+            alertDiv.style.opacity = '0';
+            setTimeout(() => alertDiv.remove(), 300);
+          }, 5000);
+        }
       }
     }
 
-    if (message) {
-      const alertDiv = document.createElement('div');
-      alertDiv.className = `alert ${messageClass}`;
-      alertDiv.setAttribute('role', 'alert');
-      alertDiv.textContent = message;
-      messagesContainer.appendChild(alertDiv);
+    // Check authentication status
+    try {
+      const response = await fetch('/.netlify/functions/check-auth', {
+        method: 'GET',
+        credentials: 'same-origin',
+        cache: 'no-store'
+      });
 
-      // Clean up URL
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState({}, document.title, '/add-book/');
+      if (!response.ok) {
+        throw new Error('Failed to check authentication');
       }
 
-      // Auto-dismiss success message after 5 seconds
-      if (messageClass === 'success') {
-        setTimeout(() => {
-          alertDiv.style.transition = 'opacity 0.3s';
-          alertDiv.style.opacity = '0';
-          setTimeout(() => alertDiv.remove(), 300);
-        }, 5000);
+      const data = await response.json();
+
+      // Hide loading section
+      if (loadingSection) {
+        loadingSection.style.display = 'none';
+      }
+
+      // Show appropriate section based on auth status
+      if (data.authenticated) {
+        if (authenticatedSection) {
+          authenticatedSection.style.display = 'block';
+        }
+
+        // Auto-hide the auth status indicator after a few seconds
+        const authStatusIndicator = document.getElementById('auth-status-indicator');
+        if (authStatusIndicator && !authStatus) {
+          setTimeout(() => {
+            authStatusIndicator.style.transition = 'opacity 0.3s';
+            authStatusIndicator.style.opacity = '0';
+            setTimeout(() => authStatusIndicator.style.display = 'none', 300);
+          }, 3000);
+        }
+      } else {
+        if (unauthenticatedSection) {
+          unauthenticatedSection.style.display = 'block';
+        }
+      }
+
+      // Show auth status messages from query params
+      showAuthMessage();
+
+    } catch (error) {
+      console.error('Error checking authentication:', error);
+
+      // On error, hide loading and show unauthenticated state
+      if (loadingSection) {
+        loadingSection.style.display = 'none';
+      }
+      if (unauthenticatedSection) {
+        unauthenticatedSection.style.display = 'block';
+      }
+
+      // Show error message
+      if (messagesContainer) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert error';
+        alertDiv.setAttribute('role', 'alert');
+        alertDiv.textContent = '❌ Unable to verify authentication. Please try refreshing the page.';
+        messagesContainer.appendChild(alertDiv);
       }
     }
   })();
