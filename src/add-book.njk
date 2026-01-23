@@ -1,0 +1,180 @@
+---
+layout: layouts/wider-content-page.njk
+title: Add Book to Library
+permalink: /add-book/
+eleventyExcludeFromCollections: true
+---
+
+<div class="flow" style="max-width: 40rem; margin-inline: auto;">
+
+  {# Authentication status messages #}
+  <div id="auth-messages" role="status" aria-live="polite">
+    <noscript>
+      <div class="alert warning" style="padding: var(--space-s); border-radius: var(--radius-s); border: 1px solid #f39c12; color: #f39c12; background: var(--color-dark-glare); margin-bottom: var(--space-m);">
+        This page works without JavaScript, but requires cookies to be enabled for authentication.
+      </div>
+    </noscript>
+  </div>
+
+  {# Token authentication form - shown on first visit #}
+  <details>
+    <summary style="cursor: pointer; font-weight: 600; margin-bottom: var(--space-m);">
+      🔐 First time? Enter admin token
+    </summary>
+    <form action="/.netlify/functions/auth" method="POST" class="flow" style="margin-top: var(--space-s);">
+      <div>
+        <label for="token">Admin Token</label>
+        <input
+          type="password"
+          id="token"
+          name="token"
+          required
+          placeholder="Enter your secret admin token"
+          autocomplete="off"
+          style="width: 100%;"
+        >
+        <small style="display: block; margin-top: 0.25rem; color: var(--color-mid);">
+          Your token will be saved for 30 days in a secure cookie.
+        </small>
+      </div>
+      <button type="submit" class="button">Authenticate</button>
+    </form>
+  </details>
+
+  {# Main book URL form #}
+  <h1>Add Book to Library</h1>
+
+  <p style="color: var(--color-mid);">
+    Paste a book URL from supported sites to automatically extract information,
+    or manually fill in the details on the next page.
+  </p>
+
+  <form action="/.netlify/functions/extract" method="POST" class="flow">
+    <div>
+      <label for="url">Book URL</label>
+      <input
+        type="url"
+        id="url"
+        name="url"
+        required
+        placeholder="https://www.amazon.com/..."
+        pattern="https?://.+"
+        style="width: 100%;"
+      >
+      <small style="display: block; margin-top: 0.25rem; color: var(--color-mid);">
+        <strong>Supported sites:</strong> Amazon, Bookshop.org, ThriftBooks, Google Books, Open Library
+      </small>
+    </div>
+
+    <button type="submit" class="button">Extract Book Info</button>
+  </form>
+
+  <details style="margin-top: var(--space-l);">
+    <summary style="cursor: pointer;">Troubleshooting & Tips</summary>
+    <div style="margin-top: var(--space-s); color: var(--color-mid);">
+      <ul style="margin-left: var(--space-m); line-height: var(--leading-standard);">
+        <li>Make sure you're authenticated (see "First time?" section above)</li>
+        <li>URL must start with http:// or https:// and be publicly accessible</li>
+        <li>If extraction fails, you'll be able to enter info manually on the next page</li>
+        <li>The book will be added to the "Queued" shelf by default</li>
+        <li>You can add the same book multiple times (useful for different editions)</li>
+      </ul>
+    </div>
+  </details>
+
+</div>
+
+<style>
+  /* Alert styles for auth messages */
+  .alert {
+    padding: var(--space-s);
+    border-radius: var(--radius-s);
+    border: 1px solid;
+    margin-block: var(--space-m);
+  }
+
+  .alert.success {
+    background: var(--color-dark-glare);
+    border-color: var(--color-primary);
+    color: var(--color-light);
+  }
+
+  .alert.error {
+    background: var(--color-dark);
+    border-color: #e74c3c;
+    color: #e74c3c;
+  }
+
+  .alert.warning {
+    background: var(--color-dark-glare);
+    border-color: #f39c12;
+    color: #f39c12;
+  }
+</style>
+
+<script>
+  // Progressive enhancement - show auth status messages from query params
+  (function() {
+    'use strict';
+
+    const params = new URLSearchParams(window.location.search);
+    const authStatus = params.get('auth');
+    const errorType = params.get('error');
+    const messagesContainer = document.getElementById('auth-messages');
+
+    if (!messagesContainer) return;
+
+    let message = '';
+    let messageClass = '';
+
+    if (authStatus === 'success') {
+      message = '✓ Authenticated successfully! You can now add books to your library.';
+      messageClass = 'success';
+    } else if (authStatus === 'failed') {
+      messageClass = 'error';
+
+      switch (errorType) {
+        case 'invalid':
+          message = '❌ Invalid admin token. Please try again.';
+          break;
+        case 'missing':
+          message = '❌ Admin token is required.';
+          break;
+        case 'expired':
+          message = '❌ Your session has expired. Please re-authenticate below.';
+          break;
+        case 'server':
+          message = '❌ Server error during authentication. Please try again.';
+          break;
+        default:
+          message = '❌ Authentication failed. Please try again.';
+      }
+    }
+
+    if (message) {
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert ${messageClass}`;
+      alertDiv.setAttribute('role', 'alert');
+      alertDiv.textContent = message;
+      messagesContainer.appendChild(alertDiv);
+
+      // Clean up URL
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, '/add-book/');
+      }
+
+      // Auto-dismiss success message after 5 seconds
+      if (messageClass === 'success') {
+        setTimeout(() => {
+          alertDiv.style.transition = 'opacity 0.3s';
+          alertDiv.style.opacity = '0';
+          setTimeout(() => alertDiv.remove(), 300);
+        }, 5000);
+      }
+    }
+  })();
+</script>
+
+{% block scripts %}
+<script src="/js/add-book-enhance.js" defer></script>
+{% endblock %}
