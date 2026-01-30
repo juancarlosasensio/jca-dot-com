@@ -14,8 +14,20 @@ module.exports = async function () {
     return asset.getCachedValue();
   }
 
+  // Return empty array if WP_ROOT_URL is not configured
+  if (!process.env.WP_ROOT_URL) {
+    console.log('[blog] WP_ROOT_URL not configured, returning empty collection');
+    return [];
+  }
+
   // Grab the first page of posts
-  let res = await axios.get(url);
+  let res;
+  try {
+    res = await axios.get(url);
+  } catch (error) {
+    console.log('[blog] Failed to fetch posts, returning empty collection:', error.message);
+    return [];
+  }
 
   // Use the header to determine how many pages there are left to get
   const totalPages = parseInt(res.headers['x-wp-totalpages']);

@@ -13,12 +13,6 @@ const createBookFromRecord = (record) => ({
   });
 
 module.exports = async function() {
-  // create a connection to airtable base
-  var base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base(process.env.AIRTABLE_BASE_ID);
-
-  // set up an object we'll populate with data.
-  const books = [];
-
   // any unique-to-our-app key will work as the argument to the AssetCache constructor
   const asset = new AssetCache("books");
 
@@ -27,6 +21,18 @@ module.exports = async function() {
     // return cached data.
     return asset.getCachedValue();
   }
+
+  // Return empty array if Airtable credentials are not configured
+  if (!process.env.AIRTABLE_API_KEY || !process.env.AIRTABLE_BASE_ID) {
+    console.log('[books] Airtable credentials not configured, returning empty collection');
+    return [];
+  }
+
+  // create a connection to airtable base
+  var base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base(process.env.AIRTABLE_BASE_ID);
+
+  // set up an object we'll populate with data.
+  const books = [];
 
   try {
     await base('Table 1').select({

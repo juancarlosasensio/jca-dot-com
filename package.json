@@ -17,6 +17,7 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-cache-assets": "^2.3.0",
     "@11ty/eleventy-fetch": "^5.0.2",
+    "@11ty/eleventy-img": "^4.0.2",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@netlify/functions": "^3.0.0",
     "airtable": "^0.12.2",
