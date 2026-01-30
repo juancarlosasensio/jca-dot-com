@@ -9,11 +9,24 @@
 
 .site-header__logo {
   --flow-space: var(--space-s-m);
-  
+
   aspect-ratio: var(--aspect-ratio);
   object-fit: cover;
   width: 8em;
   height: 8em;
+}
+
+.site-header__logos {
+  aspect-ratio: 1/1;
+  width: 100%;
+  max-width: 15rem;
+  height: auto;
+}
+
+@media (max-width: 1058px) {
+  .site-header__logos {
+    max-width: 8rem;
+  }
 }
 
 .site-header__nav-toggle {
