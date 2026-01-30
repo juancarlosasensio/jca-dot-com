@@ -7,7 +7,7 @@
             <span class="rolodex__number">*{{ item.heading.number }}</span>
             <span>{{ item.heading.text }}</span>
           </h3>
-          <img src="{{ item.img.src }}" alt="{{ item.img.alt }}"/>
+          <img src="{{ item.img.src }}" alt="{{ item.img.alt }}" width="{{ item.img.width | default(400) }}" height="{{ item.img.height | default(300) }}" loading="lazy"/>
         </a>
       </li>
     {% endfor %}

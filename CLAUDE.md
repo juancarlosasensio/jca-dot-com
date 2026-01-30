@@ -37,9 +37,16 @@
 
 ## Agent Instructions
 
-When making code changes, planning features, or reviewing code:
+**REQUIRED: Before making ANY code changes**, you MUST:
 
-1. Always consult `.claude/agents/eleventy-expert.md` for Eleventy best practices
-2. Apply rules from `.claude/rules/` based on the type of change
+1. **Read `.claude/agents/eleventy-expert.md`** using the Read tool and apply its checklist
+2. **Read the relevant rule file** from `.claude/rules/` based on the type of change:
+   - `styling.md` - CSS, Tailwind, design tokens
+   - `templates-data.md` - Nunjucks, layouts, data files, collections
+   - `assets.md` - Images, fonts, static files, JavaScript
+   - `infrastructure.md` - Netlify, plugins, build config
+
 3. On every PR involving UI: ask if existing patterns from `src/pattern-library/` should be used
 4. Suggest official Eleventy plugins when use cases match
+
+Do NOT skip these steps. Reading the agent and rules files ensures consistency with project conventions.

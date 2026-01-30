@@ -2,7 +2,8 @@
     font-family: Barlow Condensed;
     src: url('/fonts/barlowcondensed-bold.woff2') format("woff2");
     font-weight: 700;
-    font-style: normal
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
