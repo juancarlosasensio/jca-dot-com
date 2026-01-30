@@ -43,11 +43,29 @@ netlify/functions/   # Serverless functions (search-books.js)
 - **PostCSS** with nesting, imports, and cssnano for production
 - **Netlify** for hosting and serverless functions
 
-## External Data Sources
+## Guiding Principles
 
-- **WordPress REST API**: Blog posts fetched via `src/collections/blog.js` (8-hour cache)
-- **Airtable**: Book data via `src/collections/books.js`
-- **Open Library API**: Book search in `netlify/functions/search-books.js`
+- **Static-first**: Leverage Eleventy's build-time rendering. Avoid client-side JS unless essential.
+- **Progressive enhancement**: HTML works without JS. CSS enhances layout. JS enhances interactivity.
+- **No frameworks**: Do not introduce React, Vue, TypeScript, or similar. Vanilla JS only.
+- **Netlify free tier**: Stay within 100GB bandwidth, 300 build mins, 125K function calls/month.
+- **Security**: Never expose API keys client-side. All secrets in `.env` or Netlify env vars.
+
+## External Dependencies
+
+Data sources and what requires changes *outside* this repo:
+
+- **WordPress REST API**: Blog posts via `src/collections/blog.js` (8-hour cache). Content types/fields require WP admin changes.
+- **Airtable**: Book data via `src/collections/books.js`. Schema changes require manual updates in Airtable UI.
+- **Open Library API**: Book search in `netlify/functions/search-books.js`. Public API, no config needed.
+- **Netlify**: Environment variables set in Netlify dashboard (Site settings → Environment variables), not committed.
+
+## PR Standards
+
+Every PR must include:
+- Brief explanation of *why* (not just what)
+- Links to relevant docs or best practices when applicable
+- Note any external changes required (Airtable, WordPress, Netlify dashboard)
 
 ## Code Style
 
