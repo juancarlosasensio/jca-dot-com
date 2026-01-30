@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
+const Image = require('@11ty/eleventy-img');
 
 const wpContent = require('./src/collections/blog.js');
 const books = require('./src/collections/books.js');
@@ -45,6 +46,33 @@ module.exports = function (config) {
 
   // Add RSS plugin
   config.addPlugin(rssPlugin);
+
+  // Image optimization shortcode
+  // Usage: {% image "src/images/photo.jpg", "Alt text", "class-name" %}
+  // For LCP images, add fetchpriority and eager loading
+  config.addAsyncShortcode('image', async function(src, alt, className = '', sizes = '100vw', isLCP = false) {
+    const metadata = await Image(src, {
+      widths: ['auto'],
+      formats: ['avif', 'webp', 'auto'],
+      urlPath: '/images/',
+      outputDir: './dist/images/',
+      filenameFormat: function (id, src, width, format) {
+        const name = src.split('/').pop().split('.')[0];
+        return `${name}-${width}w.${format}`;
+      }
+    });
+
+    const imageAttributes = {
+      alt,
+      sizes,
+      loading: isLCP ? 'eager' : 'lazy',
+      decoding: isLCP ? 'sync' : 'async',
+      ...(isLCP && { fetchpriority: 'high' }),
+      ...(className && { class: className })
+    };
+
+    return Image.generateHTML(metadata, imageAttributes);
+  });
 
   return {
     markdownTemplateEngine: 'njk',

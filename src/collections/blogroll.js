@@ -11,6 +11,12 @@ module.exports = async function () {
     return asset.getCachedValue();
   }
 
+  // Return empty array if Feedbin credentials are not configured
+  if (!process.env.FEEDBIN_USERNAME || !process.env.FEEDBIN_PASSWORD) {
+    console.log('[blogroll] Feedbin credentials not configured, returning empty collection');
+    return [];
+  }
+
   // Fetch blog URLs from Feedbin using the correct URL and credentials
   const feedbinUrl = 'https://api.feedbin.com/v2/subscriptions.json';
   const auth = {
