@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Personal website and blog for Juan Carlos Asensio at https://juancarlosasensio.com. Built with Eleventy (11ty) static site generator, Tailwind CSS, and CUBE CSS methodology.
+Personal website and blog for Juan Carlos Asensio at https://juancarlosasensio.com, powered by Airtable and WordPress. Built with Eleventy (11ty) static site generator, Tailwind CSS, and CUBE CSS methodology.
 
 ## Quick Commands
 
