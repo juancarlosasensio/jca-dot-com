@@ -65,7 +65,7 @@
     transform: rotate(0deg) scale(1);
 }
 
-@media (max-width: 50rem) {
+@media (max-width: 40rem) {
     .with-js .site-header__nav-toggle {
         display: flex;
     }
@@ -76,6 +76,11 @@
 
     [aria-expanded=true]+.site-header__nav {
         display: block;
+    }
+
+    .site-header__logos {
+        width: clamp(4em, 12vw, 5.5em);
+        height: clamp(4em, 12vw, 5.5em);
     }
 }
 
