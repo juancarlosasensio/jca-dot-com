@@ -12,8 +12,8 @@
 
   aspect-ratio: var(--aspect-ratio);
   object-fit: cover;
-  width: clamp(4em, 12vw, 8em);
-  height: clamp(4em, 12vw, 8em);
+  width: clamp(5.5em, 15vw, 8em);
+  height: clamp(5.5em, 15vw, 8em);
 }
 
 .site-header__nav-toggle {
