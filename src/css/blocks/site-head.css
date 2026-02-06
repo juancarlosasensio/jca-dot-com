@@ -12,8 +12,8 @@
 
   aspect-ratio: var(--aspect-ratio);
   object-fit: cover;
-  width: clamp(4em, 12vw, 8em);
-  height: clamp(4em, 12vw, 8em);
+  width: clamp(5.5em, 15vw, 8em);
+  height: clamp(5.5em, 15vw, 8em);
 }
 
 .site-header__nav-toggle {
@@ -65,7 +65,7 @@
     transform: rotate(0deg) scale(1);
 }
 
-@media (max-width: 70rem) {
+@media (max-width: 50rem) {
     .with-js .site-header__nav-toggle {
         display: flex;
     }
