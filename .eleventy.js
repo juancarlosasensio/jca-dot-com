@@ -43,6 +43,11 @@ module.exports = function (config) {
   config.addPassthroughCopy('./src/js');
   config.addPassthroughCopy('./src/_redirects');
 
+  // Pass through favicon files to root
+  config.addPassthroughCopy('./src/favicon.ico');
+  config.addPassthroughCopy('./src/apple-touch-icon.png');
+  config.addPassthroughCopy('./src/site.webmanifest');
+
   // Add RSS plugin
   config.addPlugin(rssPlugin);
 
