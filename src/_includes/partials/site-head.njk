@@ -2,13 +2,19 @@
     <div class="flex justify-center align-center">
       <a href="/">
         <picture>
-          <source srcset="/images/phenakistoscope.avif" type="image/avif">
-          <source srcset="/images/phenakistoscope.webp" type="image/webp">
+          <source srcset="/images/phenakistoscope-160.avif 160w, /images/phenakistoscope.avif 240w"
+                  sizes="(max-width: 760px) 80px, 96px"
+                  type="image/avif">
+          <source srcset="/images/phenakistoscope-160.webp 160w, /images/phenakistoscope.webp 240w"
+                  sizes="(max-width: 760px) 80px, 96px"
+                  type="image/webp">
           <img class="site-header__logo spin-on-hover"
                src="/images/phenakistoscope.png"
+               srcset="/images/phenakistoscope-160.png 160w, /images/phenakistoscope.png 240w"
+               sizes="(max-width: 760px) 80px, 96px"
                alt="Juan Carlos Asensio logo"
-               width="240"
-               height="240"
+               width="96"
+               height="96"
                loading="eager">
         </picture>
       </a>
