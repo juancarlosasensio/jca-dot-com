@@ -1,21 +1,24 @@
 const getBookData = (book) => {
   const bookData = {
-    coverImage: {src: '', alt: ''},
+    coverImage: {src: '', alt: '', cover_i: ''},
     title: '',
+    subtitle: '',
     author: '',
     year: ''
   }
   // If a cover ID exists, use it to create the image URL
   if (book.cover_i) {
+    bookData.coverImage.cover_i = book.cover_i;
     bookData.coverImage.src = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
     bookData.coverImage.alt = `${book.title} cover`;
   } else {
     // Otherwise, use a placeholder image
-    bookData.coverImage.src = 'https://via.placeholder.com/80x120?text=No+Cover';
+    bookData.coverImage.cover_i = 'no-cover';
+    bookData.coverImage.src = 'https://openlibrary.org/images/icons/avatar_book-lg.png';
     bookData.coverImage.alt = 'No book cover available';
   }
-
   bookData.title = book.title ? book.title : 'No Title Available';
+  bookData.subtitle = book.subtitle ? book.subtitle : 'No Subtitle Available';
   bookData.author = book.author_name ? book.author_name.join(', ') : 'Unknown Author';
   bookData.year = book.first_publish_year ? book.first_publish_year : 'Year not available';
 
@@ -23,13 +26,12 @@ const getBookData = (book) => {
 }
 
 export default async function handler(req, context) {
-  const { query } = context.params;
-  // Book Search functionality using the Open Library Search API
+  const { query, offset } = context.params;
+  const decodedQuery = decodeURIComponent(query);
+  const limit = 10;
+
   try {
-    // Construct the API URL for the Open Library Search API
-    // const query = 'the lord of the rings';
-    const apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&sort=new`;
-    // Fetch data from the API
+    const apiUrl = `https://openlibrary.org/search.json?q=${decodedQuery}&fields=title,subtitle,author_name,first_publish_year,cover_i&limit=${limit}&offset=${offset}&mode=everything`;
     const response = await fetch(apiUrl);
     // If the response is not OK, throw an error
     if (!response.ok) {
@@ -47,7 +49,7 @@ export default async function handler(req, context) {
         });
 
     // Return the results as JSON
-    return new Response(JSON.stringify(results), {
+    return new Response(JSON.stringify({ results, numFound: data.numFound }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });    
@@ -68,4 +70,4 @@ export default async function handler(req, context) {
   }
 }
 
-export const config = { path: "/search-books/:query" };
+export const config = { path: "/search-books/:query/:offset" };
