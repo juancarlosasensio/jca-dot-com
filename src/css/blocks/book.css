@@ -8,4 +8,5 @@
 .book img {
   aspect-ratio: var(--aspect-ratio);
   object-fit: cover;
+  width: 100%;
 }
