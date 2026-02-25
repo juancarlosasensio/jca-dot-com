@@ -1,0 +1,11 @@
+.book {
+  --flow-space: var(--space-xs);
+  --aspect-ratio: 4/6;
+  padding: var(--space-s);
+  position: relative;
+}
+
+.book img {
+  aspect-ratio: var(--aspect-ratio);
+  object-fit: cover;
+}
