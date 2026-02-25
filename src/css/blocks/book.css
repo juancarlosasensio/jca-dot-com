@@ -10,3 +10,11 @@
   object-fit: cover;
   width: 100%;
 }
+
+/* Below 'lg' breakpoint (viewports.large: 940px) from design-tokens/viewports.json */
+@media (max-width: 939px) {
+  .book {
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+}
