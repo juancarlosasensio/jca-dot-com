@@ -1,0 +1,20 @@
+.book {
+  --flow-space: var(--space-xs);
+  --aspect-ratio: 4/6;
+  padding: var(--space-s);
+  position: relative;
+}
+
+.book img {
+  aspect-ratio: var(--aspect-ratio);
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Below 'lg' breakpoint (viewports.large: 940px) from design-tokens/viewports.json */
+@media (max-width: 939px) {
+  .book {
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+}

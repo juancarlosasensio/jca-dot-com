@@ -1,0 +1,30 @@
+{% extends "layouts/page.njk" %}
+
+{% block content %}
+  <main tabindex="-1" id="main-content">
+    <article class="wrapper prose flow pb-l">
+      <h1>{{ title }}</h1>
+
+      {% if showDisclaimer %}
+        <aside class="alert flow pl-s" data-alert-variant="content-disclaimer">
+          <h4>
+            <svg class="icon" focusable="false" aria-hidden="true">
+              <use xlink:href="/images/all.svg#icon-info"></use>
+            </svg>
+            Disclaimer
+          </h4>
+          <p>
+            This is part of a collection unpolished thoughts, ideas, and reflections.
+            It is raw, unfiltered and unfinished. Proceed at your own risk.
+          </p>
+        </aside>
+      {% endif %}
+
+      {{ content | safe }}
+
+      <div>
+        <a href="{{ backLink }}">← Back to {{ backLinkText }}</a>
+      </div>
+    </article>
+  </main>
+{% endblock %}
