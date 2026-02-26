@@ -1,7 +1,10 @@
 const notePostsFilter = require('../filters/notesPosts.js');
 
 module.exports = {
-  layout: "layouts/page.njk",
+  layout: "layouts/content-item.njk",
+  showDisclaimer: true,
+  backLink: '/thinking',
+  backLinkText: 'Notes',
   pagination: {
     data: "collections.wpContent",
     size: 1,
@@ -13,7 +16,6 @@ module.exports = {
   eleventyComputed: {
     title: data => data.item?.title?.rendered || '',
     permalink: data => {
-      // Only generate permalink for pagination items, not the template itself
       if (!data.item) return false;
       return `/${data.item.slug}/index.html`;
     }
