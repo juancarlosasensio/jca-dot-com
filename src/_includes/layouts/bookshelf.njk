@@ -1,0 +1,48 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+  <main class="wider-content" tabindex="-1" id="main-content">
+    <article class="wrapper prose centered flow">
+      <h1 {% if pageTitleClasses %} class="{{ pageTitleClasses }}" {% endif %}>{{ title }}</h1>
+
+      {{ content | safe }}
+
+      {# Navigation for all shelf pages - appears on every page #}
+      {% if shelves | length %}
+        <nav class="text-center" aria-label="Filter by shelf">
+          <ul class="flow-space-xs" style="list-style: none; padding: 0;">
+            <li style="display: inline;">
+              <a href="/bookshelf/"{% if isMainPage %} aria-current="page"{% endif %}>All ({{ allBooksCount }})</a> •
+            </li>
+            {% for shelfData in shelves %}
+              <li style="display: inline;">
+                <a href="/bookshelf/{{ shelfData.slug }}/"{% if currentShelf == shelfData.name %} aria-current="page"{% endif %}>{{ shelfData.name | capitalize }} ({{ shelfData.count }})</a>{% if not loop.last %} • {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+
+      {# Display books in a flat grid - same layout for all pages #}
+      {% if items | length %}
+        <div class="container bg-dark p-l text-light">
+          <div class="grid">
+            {% for book in items %}
+              <article class="card" data-card-variant='book'>
+                <img {% if loop.index > 3 %} loading="lazy" {% endif %}
+                     src="{{ book.coverImage }}"
+                     alt="Book cover for {{ book.title }}, by {{ book.authors }}">
+                <div class="card__content flow">
+                  <h4>{{ book.title }}</h4>
+                  <p>{{ book.authors }}</p>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <p class="text-center">No books in this shelf yet.</p>
+      {% endif %}
+    </article>
+  </main>
+{% endblock %}
