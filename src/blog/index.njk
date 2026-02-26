@@ -1,11 +1,12 @@
 ---
-title: 'Blog'
+permalink: /blog/index.html
 eleventyExcludeFromCollections: true
-layout: 'layouts/page.njk'
+title: 'Blog'
+layout: 'layouts/listing.njk'
 ---
 
 <ul>
-{% for post in collections.wpContent | getPosts  %}
+{% for post in collections.wpContent | getPosts %}
   <li>
     <a href="/{{ post.slug }}">
       {{ post.title.rendered | safe }}

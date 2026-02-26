@@ -1,0 +1,17 @@
+---
+permalink: /thinking/index.html
+eleventyExcludeFromCollections: true
+title: 'Thinking'
+layout: 'layouts/listing.njk'
+showDisclaimer: true
+---
+
+<ul>
+{% for note in collections.wpContent | getNotes %}
+  <li>
+    <a href="/{{ note.slug }}">
+      {{ note.title.rendered | safe }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
