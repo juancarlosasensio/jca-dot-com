@@ -9,12 +9,12 @@
       {# Navigation for all shelf pages #}
       {% set navigation = shelves | buildBookshelfNav(allBooksCount, currentShelf) %}
       {% if navigation | length %}
-        <nav class="text-center" aria-label="Filter by shelf">
-          <ul class="flow-space-xs">
+        <nav aria-label="Bookshelves">
+          <ul class="cluster" role="list" data-cluster-variant="x-center">
             {% for navItem in navigation %}
               {% set navItemUrl = "/bookshelf/" + (navItem.label | slugify if loop.index > 1) %}
               {% set isCurrentPage = (page.url == navItemUrl or page.url == navItemUrl + "/") %}
-              <li style="display: inline;">
+              <li>
                 <a href="{{ navItemUrl }}"{% if isCurrentPage %} aria-current="true" class="font-weight-bold"{% endif %}>
                   {% if isCurrentPage %}
                     <svg class="site-header__icon" focusable="false">
