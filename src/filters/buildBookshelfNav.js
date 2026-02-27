@@ -6,8 +6,6 @@
  *
  * @param {Array} shelves - Array of shelf objects with name, slug, and count
  * @param {number} allBooksCount - Total number of books across all shelves
- * @param {boolean} isMainPage - Whether this is the main "All" books page
- * @param {string|null} currentShelf - Name of current shelf, or null for main page
  * @returns {Array} Navigation items with href, label, count, and isCurrent
  */
 module.exports = function(shelves, allBooksCount) {
