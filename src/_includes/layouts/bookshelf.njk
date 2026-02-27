@@ -7,14 +7,16 @@
       <p class="text-center">Books I've read. Books I'm reading. Books I recommend. Inspired by Venkatesh Rao's <a href="https://www.ribbonfarm.com/now-reading/">Now Reading</a> and Dave Rupert's <a href="https://daverupert.com/bookshelf">Bookshelf</a>.</p>
 
       {# Navigation for all shelf pages #}
-      {% set navigation = shelves | buildBookshelfNav(allBooksCount, isMainPage, currentShelf) %}
+      {% set navigation = shelves | buildBookshelfNav(allBooksCount, currentShelf) %}
       {% if navigation | length %}
         <nav class="text-center" aria-label="Filter by shelf">
           <ul class="flow-space-xs">
             {% for navItem in navigation %}
+              {% set navItemUrl = "/bookshelf/" + (navItem.label | slugify if loop.index > 1) %}
+              {% set isCurrentPage = (page.url == navItemUrl or page.url == navItemUrl + "/") %}
               <li style="display: inline;">
-                <a href="/bookshelf/{% if loop.index > 1 %}{{ navItem.label | slugify }}{% endif %}"{% if navItem.isCurrent %} aria-current="true" class="font-weight-bold"{% endif %}>
-                  {% if navItem.isCurrent %}
+                <a href="{{ navItemUrl }}"{% if isCurrentPage %} aria-current="true" class="font-weight-bold"{% endif %}>
+                  {% if isCurrentPage %}
                     <svg class="site-header__icon" focusable="false">
                       <use href="/images/all.svg#icon-triangle-right"></use>
                     </svg>

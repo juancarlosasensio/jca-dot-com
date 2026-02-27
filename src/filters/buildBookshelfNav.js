@@ -10,14 +10,13 @@
  * @param {string|null} currentShelf - Name of current shelf, or null for main page
  * @returns {Array} Navigation items with href, label, count, and isCurrent
  */
-module.exports = function(shelves, allBooksCount, isMainPage, currentShelf) {
+module.exports = function(shelves, allBooksCount) {
   const navigation = [];
 
   // Add "All" navigation item first
   navigation.push({
     label: 'All',
-    count: allBooksCount,
-    isCurrent: isMainPage === true
+    count: allBooksCount
   });
 
   // Add shelf navigation items
@@ -25,8 +24,7 @@ module.exports = function(shelves, allBooksCount, isMainPage, currentShelf) {
     shelves.forEach(shelf => {
       navigation.push({
         label: shelf.name,
-        count: shelf.count,
-        isCurrent: currentShelf === shelf.name
+        count: shelf.count
       });
     });
   }
