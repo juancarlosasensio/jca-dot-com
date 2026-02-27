@@ -28,20 +28,16 @@
 
       {# Display books in a flat grid - same layout for all pages #}
       {% if items | length %}
-        <div class="container bg-dark p-l text-light">
-          <div class="grid">
-            {% for book in items %}
-              <article class="card" data-card-variant='book'>
-                <img {% if loop.index > 3 %} loading="lazy" {% endif %}
-                     src="{{ book.coverImage }}"
-                     alt="Book cover for {{ book.title }}, by {{ book.authors }}">
-                <div class="card__content flow">
-                  <h4>{{ book.title }}</h4>
-                  <p>{{ book.authors }}</p>
-                </div>
-              </article>
-            {% endfor %}
-          </div>
+        <div class="grid">
+          {% for book in items %}
+            <article class="book">
+              <img {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
+              <div class="mt-s flow-space-xs">
+                <h4 class="book-title">{{ book.title }}</h4>
+                <p class="book-authors">{{ book.authors }}</p>
+              </div>
+            </article>
+          {% endfor %}
         </div>
       {% else %}
         <p class="text-center">No books in this shelf yet.</p>
