@@ -15,7 +15,6 @@ module.exports = function(shelves, allBooksCount, isMainPage, currentShelf) {
 
   // Add "All" navigation item first
   navigation.push({
-    href: '/bookshelf/',
     label: 'All',
     count: allBooksCount,
     isCurrent: isMainPage === true
@@ -25,7 +24,6 @@ module.exports = function(shelves, allBooksCount, isMainPage, currentShelf) {
   if (shelves && Array.isArray(shelves)) {
     shelves.forEach(shelf => {
       navigation.push({
-        href: `/bookshelf/${shelf.slug}/`,
         label: shelf.name,
         count: shelf.count,
         isCurrent: currentShelf === shelf.name
