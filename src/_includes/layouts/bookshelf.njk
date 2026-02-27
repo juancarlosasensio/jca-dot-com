@@ -1,0 +1,49 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+  <main class="wider-content" tabindex="-1" id="main-content">
+    <article class="wrapper prose centered flow">
+      <h1 {% if pageTitleClasses %} class="{{ pageTitleClasses }}" {% endif %}>{{ title }}</h1>
+      <p class="text-center">Books I've read. Books I'm reading. Books I recommend. Inspired by Venkatesh Rao's <a href="https://www.ribbonfarm.com/now-reading/">Now Reading</a> and Dave Rupert's <a href="https://daverupert.com/bookshelf">Bookshelf</a>.</p>
+
+      {# Navigation for all shelf pages #}
+      {% set navigation = shelves | buildBookshelfNav(allBooksCount, currentShelf) %}
+      {% if navigation | length %}
+        <nav aria-label="Bookshelves">
+          <ul class="cluster" role="list" data-cluster-variant="x-center">
+            {% for navItem in navigation %}
+              {% set navItemUrl = "/bookshelf/" + (navItem.label | slugify if loop.index > 1) %}
+              {% set isCurrentPage = (page.url == navItemUrl or page.url == navItemUrl + "/") %}
+              <li>
+                <a href="{{ navItemUrl }}"{% if isCurrentPage %} aria-current="true" class="font-weight-bold"{% endif %}>
+                  {% if isCurrentPage %}
+                    <svg class="site-header__icon" focusable="false">
+                      <use href="/images/all.svg#icon-triangle-right"></use>
+                    </svg>
+                  {% endif %}
+                  {{ navItem.label | capitalize }} ({{ navItem.count }})</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+
+      {# Display books in a flat grid - same layout for all pages #}
+      {% if items | length %}
+        <div class="grid">
+          {% for book in items %}
+            <article class="book">
+              <img {% if "loop.index > 3" %} loading="lazy" {% endif %} src="{{ book.coverImage }}" alt="Book cover for {{ book.title }}, by {{ book.authors }}">
+              <div class="mt-s flow-space-xs">
+                <h4 class="book-title">{{ book.title }}</h4>
+                <p class="book-authors">{{ book.authors }}</p>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-center">No books in this shelf yet.</p>
+      {% endif %}
+    </article>
+  </main>
+{% endblock %}

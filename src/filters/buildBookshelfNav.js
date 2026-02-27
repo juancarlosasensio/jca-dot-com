@@ -1,0 +1,31 @@
+/**
+ * Build Bookshelf Navigation Filter
+ *
+ * Transforms shelf data into a unified navigation array for bookshelf pages.
+ * This filter works around Eleventy's limitation with eleventyComputed in paginated contexts.
+ *
+ * @param {Array} shelves - Array of shelf objects with name, slug, and count
+ * @param {number} allBooksCount - Total number of books across all shelves
+ * @returns {Array} Navigation items with href, label, count, and isCurrent
+ */
+module.exports = function(shelves, allBooksCount) {
+  const navigation = [];
+
+  // Add "All" navigation item first
+  navigation.push({
+    label: 'All',
+    count: allBooksCount
+  });
+
+  // Add shelf navigation items
+  if (shelves && Array.isArray(shelves)) {
+    shelves.forEach(shelf => {
+      navigation.push({
+        label: shelf.name,
+        count: shelf.count
+      });
+    });
+  }
+
+  return navigation;
+};

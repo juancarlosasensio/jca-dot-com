@@ -11,6 +11,7 @@ const notePostsFilter = require('./src/filters/notesPosts.js');
 const genericPostsFilter = require('./src/filters/genericPosts.js');
 const nowPageUpdatesFilter = require('./src/filters/nowPosts.js');
 const limitFilter = require('./src/filters/limit.js');
+const buildBookshelfNavFilter = require('./src/filters/buildBookshelfNav.js');
 
 module.exports = function (config) {
   // Creates a global variable for the current __dirname to make including and
@@ -24,6 +25,7 @@ module.exports = function (config) {
   config.addFilter("getNotes", notePostsFilter);
   config.addFilter("getPosts", genericPostsFilter);
   config.addFilter("getNowEntries", nowPageUpdatesFilter);
+  config.addFilter("buildBookshelfNav", buildBookshelfNavFilter);
 
   // Add all Wordpress posts as its own collection
   config.addCollection('wpContent', async function collectionCallback(collectionApi) {
