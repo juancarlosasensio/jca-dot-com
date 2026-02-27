@@ -11,12 +11,24 @@
         <nav class="text-center" aria-label="Filter by shelf">
           <ul class="flow-space-xs">
             <li style="display: inline;">
-              <a href="/bookshelf/"{% if isMainPage %} aria-current="true"{% endif %}>All ({{ allBooksCount }})</a> •
+              <a href="/bookshelf/"{% if isMainPage %} aria-current="true"{% endif %}>
+                {% if isMainPage %}
+                  <svg class="site-header__icon" focusable="false">
+                    <use href="/images/all.svg#icon-triangle-right"></use>
+                  </svg>
+                {% endif %}
+                All ({{ allBooksCount }})</a>
             </li>
 
             {% for shelfData in shelves %}
               <li style="display: inline;">
-                <a href="/bookshelf/{{ shelfData.slug }}/"{% if currentShelf == shelfData.name %} aria-current="true"{% endif %}>{{ shelfData.name | capitalize }} ({{ shelfData.count }})</a>{% if not loop.last %} • {% endif %}
+                <a href="/bookshelf/{{ shelfData.slug }}/"{% if currentShelf == shelfData.name %} aria-current="true" class="text-bold" {% endif %}>
+                  {% if currentShelf == shelfData.name %}
+                    <svg class="site-header__icon" focusable="false">
+                      <use href="/images/all.svg#icon-triangle-right"></use>
+                    </svg>
+                  {% endif %}
+                  {{ shelfData.name | capitalize }} ({{ shelfData.count }})</a>{% if not loop.last %} {% endif %}
               </li>
             {% endfor %}
           </ul>
