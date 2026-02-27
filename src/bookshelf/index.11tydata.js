@@ -27,6 +27,7 @@ module.exports = {
       return data.collections.books.length;
     },
     isMainPage: () => true,
+    title: () => 'Now Reading',
     currentShelf: () => null,
     pageTitleClasses: () => 'text-center'
   }

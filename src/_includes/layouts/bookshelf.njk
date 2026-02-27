@@ -4,19 +4,19 @@
   <main class="wider-content" tabindex="-1" id="main-content">
     <article class="wrapper prose centered flow">
       <h1 {% if pageTitleClasses %} class="{{ pageTitleClasses }}" {% endif %}>{{ title }}</h1>
-
-      {{ content | safe }}
+      <p class="text-center">Books I've read. Books I'm reading. Books I recommend. Inspired by Venkatesh Rao's <a href="https://www.ribbonfarm.com/now-reading/">Now Reading</a> and Dave Rupert's <a href="https://daverupert.com/bookshelf">Bookshelf</a>.</p>
 
       {# Navigation for all shelf pages - appears on every page #}
       {% if shelves | length %}
         <nav class="text-center" aria-label="Filter by shelf">
-          <ul class="flow-space-xs" style="list-style: none; padding: 0;">
+          <ul class="flow-space-xs">
             <li style="display: inline;">
-              <a href="/bookshelf/"{% if isMainPage %} aria-current="page"{% endif %}>All ({{ allBooksCount }})</a> •
+              <a href="/bookshelf/"{% if isMainPage %} aria-current="true"{% endif %}>All ({{ allBooksCount }})</a> •
             </li>
+
             {% for shelfData in shelves %}
               <li style="display: inline;">
-                <a href="/bookshelf/{{ shelfData.slug }}/"{% if currentShelf == shelfData.name %} aria-current="page"{% endif %}>{{ shelfData.name | capitalize }} ({{ shelfData.count }})</a>{% if not loop.last %} • {% endif %}
+                <a href="/bookshelf/{{ shelfData.slug }}/"{% if currentShelf == shelfData.name %} aria-current="true"{% endif %}>{{ shelfData.name | capitalize }} ({{ shelfData.count }})</a>{% if not loop.last %} • {% endif %}
               </li>
             {% endfor %}
           </ul>

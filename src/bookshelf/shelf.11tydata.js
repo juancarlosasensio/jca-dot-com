@@ -1,10 +1,19 @@
 module.exports = {
   layout: 'layouts/bookshelf.njk',
+  title: 'Now Reading',
+  pageTitleClasses: 'text-center',
+  pagination: {
+    data: "collections.books",
+    size: 1,
+    alias: "shelf",
+    before: function(paginationData) {
+      // Extract unique shelf names from books collection
+      const uniqueShelves = [...new Set(paginationData.map(book => book.shelf))];
+      return uniqueShelves;
+    }
+  },
+  permalink: "/bookshelf/{{ shelf | slugify }}/index.html",
   eleventyComputed: {
-    title: data => {
-      // Capitalize shelf name for page title
-      return data.shelf.charAt(0).toUpperCase() + data.shelf.slice(1).replace(/-/g, ' ');
-    },
     items: data => {
       // Filter books to only those on current shelf
       return data.collections.books.filter(book => book.shelf === data.shelf);
@@ -31,6 +40,5 @@ module.exports = {
     },
     isMainPage: () => false,
     currentShelf: data => data.shelf,  // Pass current shelf name to layout
-    pageTitleClasses: () => 'text-center'
   }
 };
