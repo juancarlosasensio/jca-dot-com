@@ -9,11 +9,11 @@
 
 .site-header__logo {
   --flow-space: var(--space-s-m);
-  
-  aspect-ratio: var(--aspect-ratio);
-  object-fit: cover;
-  width: 8em;
-  height: 8em;
+
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  width: clamp(4.8rem, 4.4rem + 1.9vw, 6rem);
+  height: auto;
 }
 
 .site-header__nav-toggle {
